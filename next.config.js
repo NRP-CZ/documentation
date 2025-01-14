@@ -9,5 +9,5 @@ module.exports = {
     unoptimized: true,
   },
   defaultShowCopyCode: true,
-  basePath: "/docs"
+  basePath: "/documentation"
 }
