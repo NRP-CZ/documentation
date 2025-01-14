@@ -1,14 +1,42 @@
-# Overview
+# Overview of the National Repository Platform
 
-Czech National Repository Platform is a set of infrastructure services
-intended to support the operation of digital repositories in the Czech Republic.
+The National Repository Platform (NRP) offers an environment for storing scientific data in data repositories. The platform will support the academic community in storing large data sets equipped with rich descriptive metadata, supporting the ideas of data findability, accessibility, interoperability, and reusability (FAIR).
+
+The NRP will offer three generic implementations of repository systems and a plethora of supporting tools, e.g. tools for data management planning, handling metadata, licensing, automated metadata collection, and many others.
+
+The scientific community thus obtains tools to safely store, manage, and share their data while keeping full control over access to the data and possible publication. The repositories will be created based on scientific community needs, a catch-all repository is available for long-tail users.
+
+## What is the NRP
+
+The NRP is:
+- distributed geographically throughout the Czech Republic,
+- multi-tenant, i.e. it contains many tailored repositories,
+- system for repository instantiation, it means repositores can be built from pre-fabricated components “as a service.”
+
+## What is a Repository
+
+A repository is a technical, personal, and process solution for long-term storage and publication of citable digital objects. Less formally, repositories can be also characterised as follows:
+- systems for storing data along with rich descriptive metadata,
+- they support FAIR principles,
+- they have web interfaces and APIs for machine access,
+- they bear responsibility for stored data (organisational as well as technical),
+- they contain “citable data sets and documents.”
+
+By “citable”, we mean that the repository offers guarantees that data sets and documents have not been altered after they are marked as permanent. Practical implementation depends on the repository, but the goal is to make research replicable. It doesn't prevent correcting errors, but corrections must not be performed in place, altering data somebody may rely upon.
+
+## Repository Implementations in the NRP
 
 The platform hosts repositories built using several frameworks, including:
 
-* Invenio Platform - a digital repository platform based on Invenio RDM, provided by CESNET
-* Clarin DSpace - a digital repository platform based on DSpace, provided by LINDAT/CLARIN
-* ARL - a digital repository platform used on the Czech Academy of Sciences
+* CESNET Invenio: a digital repository platform based on Invenio RDM, provided by CESNET
+* CLARIN DSpace: a digital repository platform based on DSpace, provided by LINDAT/CLARIN
+* ASEP/ARL: a digital repository platform used on the Czech Academy of Sciences
 
-This document focuses mostly on the Invenio Platform. For more information about the other platforms,
-please refer to the documentation of the respective platform.
+Alternative repository implementations can be run in the infrastructure as well, provided they can be operated within Kubernetes containers and store their data into Ceph/S3 interface.
+
+
+## Myths and Misconceptions about Repositories
+
+- Contrary to popular belief, storing data in a repository doesn't mean it is published. In fact, publication of data is always in hands of the user and user's community, and can be controlled with high precision.
+- The NRP doesn't contain processing environments. Computation facilities are available elsewhere in the e-infrastrcture, though, e.g. MetaCentrum or IT4I.
 
