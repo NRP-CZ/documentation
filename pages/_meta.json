@@ -8,7 +8,12 @@
     "title": "Overview",
     "type": "page"
   },
-  "use-cases": {
-    "title": "NRP Use Cases"
+  "end_users": {
+    "title": "End Users",
+    "type": "page"
+  },
+  "repo_admins": {
+    "title": "Repository Administrators",
+    "type": "page"
   }
 }

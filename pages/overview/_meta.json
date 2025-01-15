@@ -1,6 +1,9 @@
 {
   "index": {
-    "title": "Overview"
+    "title": "Introduction to the NRP"
+  },
+  "use-cases": {
+    "title": "Use Cases"
   },
   "infrastructure": {
     "title": "Infrastructure"
