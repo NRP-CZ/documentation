@@ -4,16 +4,16 @@
     "title": "NRP Documentation",
     "display": "hidden"
   },
-  "overview": {
-    "title": "Overview",
+  "intro-to-nrp": {
+    "title": "Introduction",
     "type": "page"
   },
   "end_users": {
-    "title": "End Users",
+    "title": "For End Users",
     "type": "page"
   },
   "repo_admins": {
-    "title": "Repository Administrators",
+    "title": "For Repository Administrators",
     "type": "page"
   }
 }
