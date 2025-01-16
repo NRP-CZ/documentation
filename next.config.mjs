@@ -16,7 +16,7 @@ export default {
     return [
       {
         source: '/',
-        destination: '/en/index',
+        destination: '/en',
         permanent: true,
       },
     ];
