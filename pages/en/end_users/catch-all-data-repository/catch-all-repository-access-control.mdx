@@ -1,0 +1,18 @@
+import { Cards, Card, Callout } from 'nextra/components'
+
+# Access control and publication of the records
+
+In the Catch-all data repository we distinguish several record states. 
+
+**Draft** - this is the default state once you save a new record. In this state, you can edit the record - add data sets, edit keywords or attach the article. You can even delete the draft and start from scratch. Once you finish with editing you can click on the **Request record approval** button.
+  
+**Waiting for approval** - once you click on the **Request record approval** button you can also request DOI. In this state is the record waiting for the curator to review and approve your draft. In this state, you can only display the metadata of your record. The curator will review your record and in case there are no discrepancies your record will be approved. If the curator finds some discrepancy you will be contacted via email to correct your record and the record will be moved back to **draft** state.
+
+**Approved** -  if your record does not contain any missing parts or denotation the curator will approve it. 
+
+**Publicated/Public** - this is the final state of your record. In this state is assigned DOI and your record becomes publicly findable.
+
+<Callout type="warning" emoji="⚠️">
+**Public** state is final. Editing public record is not possible without a
+dministrator action. At the same time is all metadata publically accessible. However the data in **Public** state can be protected by time embargo, see below.
+</Callout>
