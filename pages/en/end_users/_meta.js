@@ -4,5 +4,8 @@ export default {
   },
   "catch-all-data-repository": {
     "title": "Catch-all Data Repository"
+  },
+  "national-metadata-directory": {
+    "title": "National Metadata Directory"
   }
 }
