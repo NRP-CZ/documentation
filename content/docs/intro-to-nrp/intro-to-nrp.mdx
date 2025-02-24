@@ -17,27 +17,29 @@ The scientific community thus obtains tools to safely store, manage, and share t
 
 The NRP is:
 - distributed geographically throughout the Czech Republic,
-- multi-tenant, i.e. it contains many tailored repositories,
+- multi-tenant, i.e. it contains many repositories tailored for particular user groups,
 - system for repository instantiation, it means repositores can be built from pre-fabricated components “as a service.”
 
 ## What is a Repository
 
-A repository is a technical, personal, and process solution for long-term storage and publication of citable digital objects. Less formally, repositories can be also characterised as follows:
-- systems for storing data along with rich descriptive metadata,
-- they support FAIR principles,
-- they have web interfaces and APIs for machine access,
-- they bear responsibility for stored data (organisational as well as technical),
-- they contain “citable data sets and documents.”
+A repository is a technical, personal, and process solution for long-term storage and publication of citable digital objects.
 
-By “citable”, we mean that the repository offers guarantees that data sets and documents have not been altered after they are marked as permanent. Practical implementation depends on the repository, but the goal is to make research replicable. It doesn't prevent correcting errors, but corrections must not be performed in place, altering data somebody may rely upon.
+Less formally, repositories can be characterised as follows:
+- systems for storing data along with rich descriptive metadata,
+- supporting FAIR principles,
+- equipped with web interfaces and APIs for machine access,
+- bearing responsibility for stored data (organisational as well as technical),
+- serving to store “citable data sets and documents.”
+
+By “citable”, we mean that the repository offers guarantees that data sets and documents have not been altered after they are marked as permanent. Practical implementation depends on the repository, but the goal is to make research replicable. Note this requirement doesn't stop users from correcting errors, there are ways of error correction that keep track of the change, such as including a corrected dataset or a patch file for the original one.
 
 ## Repository Implementations in the NRP
 
 The platform hosts repositories built using several frameworks, including:
 
-* CESNET Invenio: a digital repository platform based on Invenio RDM, provided by CESNET
-* CLARIN DSpace: a digital repository platform based on DSpace, provided by LINDAT/CLARIN
-* ASEP/ARL: a digital repository platform used on the Czech Academy of Sciences
+* CESNET Invenio: a digital repository software based on Invenio RDM, provided by CESNET,
+* CLARIN DSpace: a digital repository software based on DSpace, provided by LINDAT/CLARIN,
+* ASEP/ARL: a digital repository software used on the Czech Academy of Sciences.
 
 Alternative repository implementations can be run in the infrastructure as well, provided they can be operated within Kubernetes containers and store their data into Ceph/S3 interface.
 
