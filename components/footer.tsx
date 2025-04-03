@@ -5,7 +5,7 @@ export function Footer() {
    return (
      <footer className="mt-auto border-t bg-fd-card py-12 text-fd-secondary-foreground">
      <div className="container flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between z-20">
-        <Image src={Banner} alt="publicity banner"/>
+        <Image src={Banner} alt="publicity banner" className="z-20"/>
      </div>
      </footer>
    );
