@@ -4,7 +4,7 @@ import Banner from '@/public/img/publicity/ENG_eu-msmt-eosc-loga-barevne-ochrana
 export function Footer() {
    return (
      <footer className="mt-auto border-t bg-fd-card py-12 text-fd-secondary-foreground">
-     <div className="w-full flex justify-center">
+     <div className="container flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <Image src={Banner} alt="publicity banner"/>
      </div>
      </footer>
