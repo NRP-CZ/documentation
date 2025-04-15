@@ -8,8 +8,6 @@ This is the documentation of the National Repository Platform.
 ---
 This project output was developed within the [EOSC CZ](https://www.eosc.cz/projekty/narodni-podpora-pro-eosc) initiative throught the project **National Repository Platform for Research Data** (CZ.02.01.01/00/23_014/0008787) founded by Programme Johannes Amos Comenius (P JAC) of the Ministry of Education, Youth and Sports of the Czech Republic (MEYS).
 
-For more information, please contact us at: info@eosc.cz
-
 ---
 
 <p align="left">
