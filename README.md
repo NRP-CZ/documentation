@@ -1,5 +1,18 @@
 This is the documentation of the National Repository Platform.
 
-This documentation was developed within the [EOSC CZ](https://www.eosc.cz) initiative with support from public funding **Open Science I** calls under the **Jan Amos Comenius Programme (OP JAK)** of the Ministry of Education, Youth and Sports of the Czech Republic (MŠMT).
 
-![EU/MSMT/EOSC logolink](https://raw.githubusercontent.com/NRP-CZ/documentation/refs/heads/fumadocs/public/img/publicity/ENG_eu-msmt-eosc-loga-barevne-ochrana-zona-paticka.svg?raw=true)
+<p align="left">
+  <img src="https://webcentrum.muni.cz/media/3831863/seda_eosc.png" alt="EOSC CZ Logo" height="90">
+</p>
+
+---
+This project output was developed within the [EOSC CZ](https://www.eosc.cz/projekty/narodni-podpora-pro-eosc) initiative throught the project **National Repository Platform for Research Data** (CZ.02.01.01/00/23_014/0008787) founded by Programme Johannes Amos Comenius (P JAC) of the Ministry of Education, Youth and Sports of the Czech Republic (MEYS).
+
+For more information, please contact us at: info@eosc.cz
+
+---
+
+<p align="left">
+  <img src="https://webcentrum.muni.cz/media/3832168/seda_eu-msmt_eng.png" alt="EU and MŠMT Logos" height="90">
+</p>
+
