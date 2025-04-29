@@ -1,6 +1,7 @@
 {
   "title": "For Repository Administrators",
   "pages": [
-    "repo_admins"
+    "repo_admins",
+    "data_processing"
   ]
 }

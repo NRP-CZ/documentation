@@ -1,0 +1,33 @@
+---
+title: Data Processing Documentation
+---
+
+# Data Processing Infrastructure
+
+The data processing infrastructure is a core component of the National Repository Platform (NRP). It is built on a managed Kubernetes container platform, accessible either through the Rancher web interface or the native Kubernetes API.
+
+## Getting Access
+
+To utilize the data processing infrastructure, you need an active NRP account (VO NRP) and an assigned Kubernetes project.
+
+To request a Kubernetes project, please contact us at [nrp-support@cesnet.cz](mailto:nrp-support@cesnet.cz) and provide the following information:
+
+- Preferred name for the project
+- Required resource quotas (CPU and Memory)
+- List of users or user group(s) to be granted access
+
+## Using the Infrastructure
+
+Once your project is successfully created, you can start using the data processing capabilities.
+
+The NRP Kubernetes environment is based on the same infrastructure as used in [CERIT-SC](https://www.cerit-sc.cz/), and therefore, you can refer to CERIT-SC documentation for detailed guidance.
+
+### Accessing the Platform
+
+- **Rancher Web UI**: Use the [Rancher documentation](https://docs.cerit.io/en/docs/rancher/rancher) to manage your Kubernetes resources via the user-friendly web interface.
+- **kubectl CLI**: Follow the [kubectl documentation](https://docs.cerit.io/en/docs/kubernetes/kubectl) to configure your Kubernetes context and interact directly with the cluster using the command-line interface.
+
+### Additional Resources
+
+- **PostgreSQL**: If your data processing requires PostgreSQL, refer to the [Postgres Operator documentation](https://docs.cerit.io/en/docs/operators/postgres-cnpg) for setup and management instructions.
+
