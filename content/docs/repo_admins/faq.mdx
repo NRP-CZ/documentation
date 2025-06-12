@@ -15,7 +15,7 @@ When evaluating a CORS OPTIONS request, the system incorrectly uses the default 
    The CORS OPTIONS request will then use this auxiliary tenant and its CORS settings instead of the original bucket.  
    The subsequent PUT request works correctly with the original bucket.
    
-3) Include the tenant in the pre-signed URL in the format <tenant>%3A<bucket> instead of the bucket name itself, if the used systems allow it.  
+3) Include the tenant in the pre-signed URL in the format `<tenant>%3A<bucket>` instead of the bucket name itself, if the used systems allow it.  
    Note: the python botocore library does not allow the "**`:`**" character (urlencoded "`%3A`") to be included in the bucket name, only after modifying the bucket name validator with:
    ```
    botocore.handlers.VALID_BUCKET = re.compile(r'^[a-zA-Z0-9.\-_:]{1,255}$')
