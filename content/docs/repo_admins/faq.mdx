@@ -1,0 +1,25 @@
+---
+title: FAQ
+---
+
+# Connecting applications to Ceph/S3 storage
+
+## Workarounds to the CORS OPTIONS request processing error when calling HTTP PUT method
+
+In Ceph version "**quincy**" (17.x.), there is a bug in processing CORS OPTIONS request for HTTP PUT method directed to pre-signed URL.  
+When evaluating a CORS OPTIONS request, the system incorrectly uses the default tenant (with an empty name) instead of the tenant of the user, who signed the URL.
+
+### There are 2 workarounds:
+
+1) Create a bucket in the default tenant (with an empty name) with the same name and CORS settings as the original bucket.  
+   The CORS OPTIONS request will then use this auxiliary tenant and its CORS settings instead of the original bucket.  
+   The subsequent PUT request works correctly with the original bucket.
+   
+3) Include the tenant in the pre-signed URL in the format <tenant>%3A<bucket> instead of the bucket name itself, if the used systems allow it.  
+   Note: the python botocore library does not allow the "**`:`**" character (urlencoded "`%3A`") to be included in the bucket name, only after modifying the bucket name validator with:
+   ```
+   botocore.handlers.VALID_BUCKET = re.compile(r'^[a-zA-Z0-9.\-_:]{1,255}$')
+   ```
+
+There is probably a different type of bug in Ceph version "**reef**" (18.x.) that cannot be bypassed by either of the two workarounds listed.  
+For Ceph version "**squid**" (19.x.), the bug is apparently fixed.
