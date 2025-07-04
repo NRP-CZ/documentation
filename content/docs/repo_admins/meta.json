@@ -2,6 +2,7 @@
   "title": "For Repository Administrators",
   "pages": [
     "repo_admins",
+    "exports-to-nma",
     "running_applications",
     "faq"
   ]

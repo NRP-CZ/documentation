@@ -1,0 +1,25 @@
+---
+title: Exports to the NMA
+---
+
+This document is intended for administrators of repositories in the
+National Repository Platform who need to export metadata to the National Metadata Directory (NMA).
+
+There are several use cases.
+
+For repositories in the NRP based on standard implementations:
+  - the repository exports an OAI-PMH endpoint exporting CCMM (this functionality is ready in standard repositories)
+  - the procedure is handled when the repository is set up
+  - repository administrator must notify the NMA administrator to set up metadata harvests
+  - repository administrator gets access to a community in NMA to be able to easily identify exports from the repository
+ 
+For repositories in the NRP based on alternative implementations:
+  - the repository must export an OAI-PMH endpoint, the repository administrator is responsible for establishing that
+  - otherwise see above
+
+For repositories that cannot natively serialise the metadata into CCMM,
+repository administator is responsible for creating and maintaining XSLT
+transformation of the native repository format to CCMM. The transformation
+must be publicly available and made known to the NMA administrator.
+
+
