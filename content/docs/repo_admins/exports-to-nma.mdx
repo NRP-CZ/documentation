@@ -8,18 +8,51 @@ National Repository Platform who need to export metadata to the National Metadat
 There are several use cases.
 
 For repositories in the NRP based on standard implementations:
-  - the repository exports an OAI-PMH endpoint exporting CCMM (this functionality is ready in standard repositories)
-  - the procedure is handled when the repository is set up
-  - repository administrator must notify the NMA administrator to set up metadata harvests
-  - repository administrator gets access to a community in NMA to be able to easily identify exports from the repository
+  - the repository publishes an OAI-PMH endpoint that must have a ccmm-xml metadataPrefix.
+    This functionality is ready in standard repositories with supported metadata schemas
+  - repository administrator must notify the NMA administrator to set up metadata harvests as described below
+  - repository administrator gets access to a community in NMA to be able to control the
+    harvests and see their status.
  
-For repositories in the NRP based on alternative implementations:
-  - the repository must export an OAI-PMH endpoint, the repository administrator is responsible for establishing that
-  - otherwise see above
+For repositories in the NRP based on alternative implementations that can not export ccmm-xml natively:
+  - the repository must export an OAI-PMH endpoint with a metadataPrefix that should 
+    provide as complete metadata as feasible.
+  - repository administrator will create and publish a XSLT transformation
+    capable of transforming XML from the given metadata prefix to the ccmm-xml as required
+    by NMA. The XSLT transformation must be publicly available on a stable HTTPS URL.
 
-For repositories that cannot natively serialise the metadata into CCMM,
-repository administator is responsible for creating and maintaining XSLT
-transformation of the native repository format to CCMM. The transformation
-must be publicly available and made known to the NMA administrator.
+## Steps for Adding a Repository to be Harvested by the NMA
 
+1. The administrator of the candidate repository contacts the NMA team via the support email channel.
+   
+2. They provide:
+   - OAI endpoint
+   - setspec
+   - metadataPrefix
+   - Optional HTTPS URL of the XSLT transformation (stored either within the repository or on an external server, e.g., GitHub)
 
+3. The NMA team will:
+   - Spin up a test NMA repository
+   - Set up the harvest
+   - Assign the administrator of the candidate repository (or any other appointed person) as a harvest manager
+   - Start the harvest
+
+4. The harvest manager can:
+   - Monitor progress and errors via the web-based UI
+   - Make changes to their export code or XSLT transformation if systemic errors occur
+   - Restart the harvest to test changes  
+     *(The NMA team provides support via the email channel if needed.)*
+
+5. When testing is complete, the repository administrator:
+   - Notifies the NMA team that the harvest is ready for production (via the support email channel)
+   - Includes contact details for production harvest managers in the email
+
+6. The NMA team will:
+   - Copy settings to the production server
+   - Add production harvest managers
+   - Start the production harvest
+   - Add a task for periodic harvesting
+
+7. For each completed harvest, harvest managers receive:
+   - A notification email
+   - Basic harvest statistics
