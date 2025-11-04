@@ -2,6 +2,14 @@
 title: National Repository Platform Infrastructure
 ---
 
+The data centers operated for the NRP are based on object storage technology utilizing Ceph and applications are run in Kubernetes containers. These data centers are located exclusively within the Czech Republic, meaning all your data remains within the country. The distributed model of data storage and service provisioning enhances data redundancy through the use of geographical replicas. This approach ensures that data in the NRP can withstand media failures, and even significant damage to one of the geographical locations.
+
+|  Data Center | Type              | Location                      | Raw capacity PB | In operation since | Status             |
+| :-----       | :-----            | :-----                        | :-----          | :-----             | :-----             |
+| NRP1 CESNET  | Ceph+Kubernetes   | Ostrava+Ústí n. Labem         | 33.6            | 2025               | online             |
+
+
+
 
 On the infrastructure level, the platform provides the following services
 ready to be used by all the repositories:
