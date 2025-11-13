@@ -2,6 +2,7 @@
   "title": "Catch-all Data Repository",
   "pages": [
     "catch-all-repository-introduction",
+    "catch-all-getting-started",
     "catch-all-repository-record-creation",
     "catch-all-repository-access-control"
   ]
