@@ -1,0 +1,76 @@
+---
+title: Record Life Cycle and Visibility
+---
+
+In the Catch-all data repository we distinguish several record states. 
+
+**Draft** - this is the default state once you (as a submitter) save a new record. In this state, you can edit the record - add data sets, edit keywords or attach any files. You can even delete the draft and start from scratch. Once you finish editing, you can click on the **Request record approval** button.
+  
+**Waiting for approval** - once you click on the **Request record approval** button you can also request DOI. In this state, the record is waiting for the curator to review and approve your draft. In this state, you can only display the metadata of your record. The curator will review your record and in case there are no discrepancies your record will be approved. If the curator finds some discrepancy you will be contacted via email to correct your record and the record will be moved back to the **draft** state.
+
+**Approved** -  the record was approved by the curator. 
+
+**Published/Public** - this is the final state of your record. If DOI was requested, it gets assigned. The record becomes publicly findable.
+
+<Callout type="warn" icon="⚠️">
+**Public** state is final. Editing public record is no longer possible. Metadata of the record is public, regardless whether the record is embargoed or not.
+
+If the record is not embargoed, the data is publicly accessible as well. Data of records under embargo is NOT publicly accessible until the embargo period finishes. Data of published records for which the embargo period elapsed is automatically made publicly available.
+</Callout>
+
+## Setting Embargo for the Records
+
+Access embargo is controlled using **Date available** field of the draft
+form.
+
+After the record is published, its metadata is immediately publicly
+available. Its data, however, will be publicly available only after the
+Date available passes.
+
+If the **Date available** is left blank, the system automatically
+use the current date when is the record published by curator, making the
+record publicly available immediately.
+
+If you choose the date in the past because the dataset was published elsewhere earlier, then this date remains in the metadata record, and the data will naturally be publicly accessible as soon as the record is published. 
+
+<Callout type="warn" icon="⚠️">
+Permanently locking/hiding datasets/files is currently not supported. Alternatively, you can keep your record in a draft state, where your data is not visible to anyone except for you. The consequence is that unpublished records cannot obtain DOI and cannot be shared with anyone (e.g. journal publishers).
+</Callout>
+
+
+<Callout type="warn" icon="⚠️">
+It is not possible to set an embargo selectively for individual files in the record. The embargo applies to all data attached to the record.
+</Callout>
+
+Mode of access to the dataset is shown with lock icons described below.
+
+### Private Record
+**Blue lock with an avatar** => private record and files, it is visible only to the author and repository curator. This symbol accompanies the record until it is published.
+
+![repo-access](/img/nrp/catch-all-data-repository/partialy_closed_access_persona.jpg)
+
+### Public Record Types
+**Green lock** => public record, public data/files, accessible to all users.
+
+![repo-access](/img/nrp/catch-all-data-repository/open_access.jpg)
+
+**Blue lock with a clock** => there is embargo for data/files in the record. Data will be accessible after the embargo date set in the record (Date available).
+
+![repo-access](/img/nrp/catch-all-data-repository/partialy_closed_access_embargo.jpg)
+
+## Types of Roles in the Catch-all Data Repository
+**Anonymous end-user** - can see only public records and data/files, which are not limited with **[embargo](#access-embargo-for-published-records)**.
+
+**Logged user** - member of **[VO_nr](catch-all-repository-introduction#register-to-access-and-create-your-very-first-record)** can create a new records and can see their own records and data/files (regardless to **[embargo](#access-embargo-for-published-records)**) and of course all public records.
+
+**Data repository curator** - can see the records of all catch-all repository users, but only for the sake of checking the consistency of the records proposed for approval.
+
+
+## Roles in Communities
+
+FIXME
+
+## Deleting Records
+
+FIXME
+

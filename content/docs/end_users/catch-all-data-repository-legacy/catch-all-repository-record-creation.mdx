@@ -1,0 +1,119 @@
+---
+title: Creating Records in the Catch-all Data Repository
+---
+
+In this guide describes the Catch-all Data Repository dashboard and the step-by-step process on how to create your record in the catch-all data repository.
+
+
+## Logging into the Repository
+
+<Callout type="warn" icon="⚠️">
+To be able to log in you need to be registered into virtual organization **[VO_nr](catch-all-repository-introduction#register-to-access-and-create-your-very-first-record)**.
+</Callout>
+
+Browse to the [catch-all repository](https://data.narodni-repozitar.cz).
+
+To manipulate your records and/or handle communities, you need to log in via the **LOG IN** button and select your home institution.
+
+Naturally, authenticated users can search for records and/or **BROWSE ALL RECORDS**
+in the repository the same way as general public. In addition to that, they
+can handle communities and create new records.
+
+
+<Callout type="warn" icon="⚠️">
+If you click on **BROWSE ALL RECORDS** you can see all public records. To see your drafts you have to **select the community** where you drafted your record. That is why the number of **results** can differ depending on communities selected.
+</Callout>
+
+
+![new-record](/img/nrp/catch-all-data-repository/data-repo3.png)
+
+<Callout type="info" emoji="ℹ️">
+**About communities** <br/>
+Communities represent groups of users. The **General community** is the
+community where new records are created by default.
+
+As the repository is used by several user groups as a temporary solution
+before their specialised repository is established, you may see other
+communities as well.
+
+Communities may have specific user sub-groups with specific permissions,
+e.g. to create records, to curate records etc.
+
+This documentation describes the defaults in the General community, unless
+specified otherwise.
+</Callout>
+
+## Creation of a New Record
+
+Note that finalised records will **get published** in the Catch-all repository, either immediately, or after the embargo period elapses.
+
+For dataset deposition into the repository, follow those steps:
+
+![new-record](/img/nrp/catch-all-data-repository/data-repo2.png) 
+
+1. Log in to the [catch-all repository](https://data.narodni-repozitar.cz/) using you institutional identity.
+
+2. Then click on **Upload** button.
+
+3. Then you can start to fill in the insert form, which is quite
+   self-explanatory.
+
+	a) The form is divided into multiple sections. <br/>
+	b) The starred fields are mandatory. <br/>
+	c) In some fields, it is necessary to select a value from a controlled dictionary. If a suitable value is missing, please contact the [catch-all data repository support](catch-all-repository-introduction.mdx#general-information). <br/>
+	d) Check the context help of the fields. <br/>
+	e) Public access to the datasets is controlled with the **Date available** setup, see [access control section](catch-all-repository-access-control#access-embargo-for-published-records). <br/>
+
+4. If you filled in all data fields and there are no errors you can save a draft. Error fields are denoted with red colour.
+
+5. Attach the data/files
+	
+	a) The formats of the data/files are not limited. <br/>
+	b) Maximal size of the data/files is limited up to **500 GB**. Contact
+    support if you need bigger datasets (although we would likely try to
+    discourage you from that). <br/>
+	c) You can add descriptions to the individual files (pencil icon under the file name). <br/>
+
+6. Finish the upload by clicking on the green button **Upload file**.
+
+7. Once you finish with inserting you can check your data set and its
+   metadata.
+
+	a) The blue items are interactive and you can click on them to see other records with the same values. <br/>
+	b) In the left menu you can find [record stage](catch-all-repository-access-control.mdx). <br/>
+	c) In the right panel you can find all available action relating to the records. The list of available actions depends on the [record stage](catch-all-repository-access-control.mdx). <br/>
+	c) For advanced users and machine processing is possible to `View Record Metadata` in json format. <br/>
+
+![new-record](/img/nrp/catch-all-data-repository/actions.png)
+
+8. Until you `Request Record Approval` you can always `Edit` the draft - change the values or upload data. 
+
+	a) While uploading the file **DO NOT FORGET** to finish the upload via click in `Upload file` button. <br/>
+	b) Once you finish uploading **DO NOT FORGET** to save the record. <br/>
+
+9. In case your record has relating publication/paper with DOI identificator you can attach this paper to your record.
+
+	a) Currently **you cannot** attach other types of documents. <br/>
+	b) The steps to attach the paper is as follows: <br/>
+		
+		I. Chose the option "Attach Article". <br/>
+		II. Insert the DOI identificator in the number format (NOT URL), e.g. **10.1108/nlw-09-2015-0068**. <br/>
+		III. The paper metadata will be automatically fetched, please chek that is correct and it showed paper which you wish to attach. <br/>
+		IV. Once finished click on "Create Article" button. <br/>
+
+![new-record](/img/nrp/catch-all-data-repository/article.png)
+
+10. Once you will consider your record draft is finished you can click on **Request Record Approval** button.
+
+	a) During this step you can request DOI identificator. <br/>
+
+![new-record](/img/nrp/catch-all-data-repository/doi_request.png)
+
+<Callout type="info" emoji="ℹ️">
+**DOI Request** <br/>
+If you are interested in obtaining a permanent DOI identifier, you can request it when submitting the record for approval. In the blue column of the action list, select the option "Submit record for approval." In the next step, the system will ask if you want to assign a DOI, so check the appropriate box. If you have listed multiple publishers in the record, you will be asked to select the primary one. The request is processed at the moment the record is published, and the DOI will be included in the record. **You can freely manipulate the record and files using the edit action until you submit the record for approval. So, make sure to check everything thoroughly. After that, it is no longer possible to make changes to the record without the help of administrators.**
+</Callout>
+
+
+You may be also interested in [details on user roles and record
+life-cycle](catch-all-repository-access-control).
