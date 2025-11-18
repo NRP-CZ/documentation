@@ -15,12 +15,14 @@ to transfer tickets to colleagues who are better equipped to solve them.
 We provide a list of NRP-relevant supporting channels.
 
 
-|Queue           |Mail alias             |Description               |Perun groups|
-|----------------|-----------------------|--------------------------|------------|
-|`nrp-repo_L3`   |`nrp-repo_L3@eosc.cz`  |                          | `VO_repo_operations:rt_queues:repo_L3_support[_watchers]` |
-|`cesnet-invenio_developers`|`cesnet-invenio@eosc.cz`|              | `VO_repo_operations:rt_queues:cesnet-invenio_developers[_watchers]` |
-|`nrp-repo_datarepo`|`nrp-repo_datarepo@eosc.cz`|                   | `VO_repo_datarepo_prod:rt_queues:support[-watchers]` |
-|`narodni-repozitar`|`support@narodni-repozitar.cz`|                | `VO_repo_docsrepo_prod:rt_queues:support[-watchers]` |
+|Queue                      |Mail alias                     |Responsibilities                                      |Perun groups|
+|---------------------------|-------------------------------|------------------------------------------------------|------------|
+|`nrp-repo_L3`              |`nrp-repo_L3@eosc.cz`          |Running application in the NRP Kubernetes             | `VO_repo_operations:rt_queues:repo_L3_support[_watchers]` |
+|`cesnet-invenio_developers`|`cesnet-invenio@eosc.cz`       |Developers of CESNET Invenio                          | `VO_repo_operations:rt_queues:cesnet-invenio_developers[_watchers]` |
+|`nrp-repo_datarepo`        |`nrp-repo_datarepo@eosc.cz`    |Supporting end users of Catch-all Data Repository     | `VO_repo_datarepo_prod:rt_queues:support[-watchers]` |
+|`narodni-repozitar`        |`support@narodni-repozitar.cz` |Supporting end users of Catch-all Document Repo       | `VO_repo_docsrepo_prod:rt_queues:support[-watchers]` |
+|`karantena`                |n/a                            |A queue to flag spam                                  | |
+|`du-support`               |`du-support@cesnet.cz`         |E-infra and NRP storage services/Ceph                 | |
 
 
 
