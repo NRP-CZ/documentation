@@ -41,7 +41,7 @@ elapses, the record is automatically published in full
 
   - supported dataset licenses are variants of Creative Commons
 
-  - metadata is publicly available and completely free to use, it is harvested by the National Metadata Directory and other search services; note that metadata is not considered a work of authorship
+  - metadata is publicly available and completely free to use, it is harvested by the National Metadata Directory and other search services; note that metadata is not considered a work of authorship (i.e. its license is CC0)
   
   - for using the data, kindly follow its license
 
@@ -52,13 +52,15 @@ user authentication)
 
   - after the record is finalised, its data cannot be changed any more, a new version of the record must be created should changing the data be necessary; metadata, though, can be corrected any time
   
-  - FIXME record versioning?
+  - canonical DOI is assigned to the latest version of the record (and kept pointing to the latest version), each record version has its own unique and persistent DOI; all record versions are interlinked in the repository
 
   - data deletion is handled upon user request by user support
 
-  - for the time being, there is no data life cycle policy yet. Note that it is the policy of organisations assigning persistent identifiers (e.g. DOI) that at least a basic metadata record of a dataset must be preserved forever, even if the data itself is deleted. FIXME: any options to limit record lifetime by the submitter?
+  - note that it is the policy of organisations assigning persistent identifiers (e.g. DOI) that at least a basic metadata record of a dataset must be preserved forever, even if the data itself is deleted
 
-  - FIXME preservation policy (data retention, LTP)
+  - due to support of diverse file formats, no automatic format conversion is supported
+  
+  - binary consistency of data is regularly checked; the data is stored in multiple geographical locations, the frontends of the repository run in multiple locations as well for high availability
 
 ## Terms of Service
 

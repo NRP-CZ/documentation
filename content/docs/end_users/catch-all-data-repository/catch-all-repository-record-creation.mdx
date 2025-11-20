@@ -2,6 +2,58 @@
 title: Creating Records in the Catch-all Data Repository
 ---
 
+## Specification for the New Release
+
+This specification describes basic behaviour of submission workflow in the
+repository for the General community (i.e. all users of the repository
+unless stated otherwise):
+
+- all users who are members of appropriate VO can create records
+  (such users are called submitters)
+- there can be fair use policy that
+  restricts submitters to create at most N records containing at most M bytes of
+  data; they need to become members of a special group (handled by user
+  support) to get unlimited access
+- submitters can create a new record using CCMM metadata model and upload
+  files to the record (number and size of files limited by applicable
+  quotas)
+- metadata-only records are supported (i.e. records without files)
+- until publication, the record is visible only to the submitter
+- the submitter can create a “share link (preview only)”, i.e. an URL, a
+  recipient of the share link can view the record of metadata and download
+  data files (typical use: sending the link to a reviewer). Share links
+  can have limited validity.
+- the submitter can create a “share link with editing”, in addition, it
+  allows the recipient of the link to edit the record with the same
+  permissions as the submitter
+- after saving the record, compliance with the metadata model is checked
+  and errors reported
+- the submitter can use “advanced check” functionality before submitting the record. In the advanced check, a LLM is triggered to check the metadata and act
+  as a curator, providing recommendations for the submitter to improve
+  quality of the metadata of the record.
+- DOI policy: by default, records and all their versions are assigned DOIs;
+  the submitter can opt-out from assigning DOI (e.g. for metadata-only
+  records)
+- if a new version of a record with DOI is created, then the new version
+  will get a DOI automatically
+- publishing: after clicking on publish, the record is published (i.e. will
+  become publicly available for the whole internet)
+
+- (for future releases) grace period will be supported for published
+  records that allows to change data files during the period. After the
+  grace period, data files are locked.
+
+- the record can be published with an embargo: metadata is immediately
+  published, but record's files are hidden until the embargo expires. The
+  files are published after the expiration. (Share links to download the
+  data are still supported for embargoed records as well.)
+
+- restricted records are not supported in the catch-all repository (i.e.
+  records that are never published)
+
+## IGNORE THE REST FOR NOW!
+
+
 In this guide describes the Catch-all Data Repository dashboard and the step-by-step process on how to create your record in the catch-all data repository.
 
 
