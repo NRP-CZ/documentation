@@ -6,6 +6,7 @@
     "exports-to-nma",
     "running_applications",
     "user_support",
-    "faq"
+    "faq",
+    "documentation-contribution"
   ]
 }
