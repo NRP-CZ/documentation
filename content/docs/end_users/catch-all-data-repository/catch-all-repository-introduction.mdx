@@ -29,13 +29,13 @@ TL;DR what you need to know:
 
   - the Data Catch-all Repository is operated by CESNET in scope of the [National Repository Platform project](https://www.eosc.cz/en/projects/national-repository-platform-for-research-data-nrp/national-repository-platform)
   
-  - users of the national e-infrastructure (i.e. staff and students of public universities, the Academy of Sciences and other research organisations) and their direct collaborators may depose data there; a registration is necessary for data deposition
+  - users of the national e-infrastructure (i.e. staff and students of public universities, the Academy of Sciences and other research organisations) and their direct collaborators may depose data there; a registration is necessary for data deposition in the identity management system Perun
 
   - [generic metadata model CCMM](https://github.com/techlib/CCMM) covering basic needs is supported (similar to a bibliographic record)
 
   - [persistent identifiers (DOI)](https://www.doi.org/) can be assigned
 
-  - the records in the repository are published by default; an embargo period
+  - the records in the repository are published (open access) by default; an embargo period
 may be set: data of embargoed records are kept private and after the period
 elapses, the record is automatically published in full
 
@@ -50,7 +50,9 @@ user authentication)
 
   - there are no restriction on file formats, files can be zipped
 
-  - after the record is finalised, its data cannot be changed any more, a new version of the record must be created should changing the data be necessary; metadata, though, can be corrected any time
+  - previews of files is available for common file types (ZIP, PDF, JPG, PNG, CSV, TXT)
+
+  - after the record is published, its data cannot be changed any more, a new version of the record must be created should changing the data be necessary; metadata, though, can be corrected any time
   
   - canonical DOI is assigned to the latest version of the record (and kept pointing to the latest version), each record version has its own unique and persistent DOI; all record versions are interlinked in the repository
 
@@ -61,6 +63,8 @@ user authentication)
   - due to support of diverse file formats, no automatic format conversion is supported
   
   - binary consistency of data is regularly checked; the data is stored in multiple geographical locations, the frontends of the repository run in multiple locations as well for high availability
+
+  - [user communities are supported](catch-all-getting-started)
 
 ## Terms of Service
 

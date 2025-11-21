@@ -9,10 +9,11 @@ repository for the General community (i.e. all users of the repository
 unless stated otherwise):
 
 - all users who are members of appropriate VO can create records
-  (such users are called submitters)
+  (such users are called submitters); this requires registration in the AAI
+  system
 - there can be fair use policy that
   restricts submitters to create at most N records containing at most M bytes of
-  data; they need to become members of a special group (handled by user
+  data in at most K files; they need to become members of a special group (handled by user
   support) to get unlimited access
 - submitters can create a new record using CCMM metadata model and upload
   files to the record (number and size of files limited by applicable
@@ -21,7 +22,7 @@ unless stated otherwise):
 - until publication, the record is visible only to the submitter
 - the submitter can create a “share link (preview only)”, i.e. an URL, a
   recipient of the share link can view the record of metadata and download
-  data files (typical use: sending the link to a reviewer). Share links
+  data files before the record is published (typical use: sending the link to a reviewer). Share links
   can have limited validity.
 - the submitter can create a “share link with editing”, in addition, it
   allows the recipient of the link to edit the record with the same
@@ -30,7 +31,8 @@ unless stated otherwise):
   and errors reported
 - the submitter can use “advanced check” functionality before submitting the record. In the advanced check, a LLM is triggered to check the metadata and act
   as a curator, providing recommendations for the submitter to improve
-  quality of the metadata of the record.
+  quality of the metadata of the record. The LLM is operated on premise in
+  the national infrastructure.
 - DOI policy: by default, records and all their versions are assigned DOIs;
   the submitter can opt-out from assigning DOI (e.g. for metadata-only
   records)
