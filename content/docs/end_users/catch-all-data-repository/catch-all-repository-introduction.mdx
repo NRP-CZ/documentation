@@ -27,43 +27,40 @@ available for you, then welcome to the catch-all repository. Make sure to get fa
 
 TL;DR what you need to know:
 
-  - the Data Catch-all Repository is operated by CESNET in scope of the [National Repository Platform project](https://www.eosc.cz/en/projects/national-repository-platform-for-research-data-nrp/national-repository-platform)
+  - the Catch-all Data Repository is operated by CESNET as part of the [National Repository Platform project](https://www.eosc.cz/en/projects/national-repository-platform-for-research-data-nrp/national-repository-platform)
+    
+  - users of the national e-infrastructure (i.e. staff and students of public universities, the Academy of Sciences, and other research organisations), as well as their direct collaborators, may deposit data there; registration in the identity management system Perun is necessary for data deposition 
   
-  - users of the national e-infrastructure (i.e. staff and students of public universities, the Academy of Sciences and other research organisations) and their direct collaborators may depose data there; a registration is necessary for data deposition in the identity management system Perun
+  - [the CCMM metadata model](https://github.com/techlib/CCMM) is used as the internal metadata scheme of the repository
 
-  - [generic metadata model CCMM](https://github.com/techlib/CCMM) covering basic needs is supported (similar to a bibliographic record)
+  - [DOI](https://www.doi.org) persistent identifiers can be assigned to records
+  
+  - by default, data in published records are open access; an embargo period may be set, during which the data remain private; once the embargo expires, the data are made available automatically
 
-  - [persistent identifiers (DOI)](https://www.doi.org/) can be assigned
-
-  - the records in the repository are published (open access) by default; an embargo period
-may be set: data of embargoed records are kept private and after the period
-elapses, the record is automatically published in full
+  - published data are publically accessible on the internet (without any user authentication)
 
   - supported dataset licenses are variants of Creative Commons
 
-  - metadata is publicly available and completely free to use, it is harvested by the National Metadata Directory and other search services; note that metadata is not considered a work of authorship (i.e. its license is CC0)
+  - metadata are publicly available and completely free to use; they are harvested by the National Metadata Directory and other search services; note that, as metadata are not considered a work of authorship, their license is CC0
   
-  - for using the data, kindly follow its license
-
-  - published data is accessible to the public internet (without any
-user authentication)
+  - when using the publisdhed data, kindly follow the specified license
 
   - there are no restriction on file formats, files can be zipped
 
-  - previews of files is available for common file types (ZIP, PDF, JPG, PNG, CSV, TXT)
+  - file previews are available for common file types (ZIP, PDF, JPG, PNG, CSV, TXT)
 
-  - after the record is published, its data cannot be changed any more, a new version of the record must be created should changing the data be necessary; metadata, though, can be corrected any time
-  
-  - canonical DOI is assigned to the latest version of the record (and kept pointing to the latest version), each record version has its own unique and persistent DOI; all record versions are interlinked in the repository
+  - once a record has been published, its data files can no longer be changed; a new version of the record must be created, should changing the data be necessary; the metadata, though, can be corrected at any time
+    
+  - every record has a canonical DOI registered to represent all its versions, and each individual version has its own unique, persistent DOI; all versions are interlinked in the repository, and the canonical DOI always resolves to the latest version of the record.
 
   - data deletion is handled upon user request by user support
 
-  - note that it is the policy of organisations assigning persistent identifiers (e.g. DOI) that at least a basic metadata record of a dataset must be preserved forever, even if the data itself is deleted
+  - note that organisations assigning persistent identifiers (e.g. DOIs) require that at least a basic metadata record for a dataset be kept permanently, even if the data themselves are deleted
 
-  - due to support of diverse file formats, no automatic format conversion is supported
+  - due to support of diverse file formats, no automatic format conversion is provided
   
-  - binary consistency of data is regularly checked; the data is stored in multiple geographical locations, the frontends of the repository run in multiple locations as well for high availability
-
+  - binary consistency of data is regularly checked; data are stored in multiple geographic locations, and the repository frontends also run in multiple locations to ensure high availability
+  
   - [user communities are supported](catch-all-getting-started)
 
 ## Terms of Service
