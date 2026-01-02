@@ -2,5 +2,58 @@
 title: Verifying Datasets for RIV
 ---
 
+Having a metadata record in the National Metadata Directory (NMD) is
+mandatory for datasets collected to IS VaVaI/RIV.
 
+For datasets indexed in the NMD, you can find the “link to the NMD for RIV”
+in the listing of each metadata record, such as here:
+![sign-in-with-social-identities](/img/nrp/national-metadata-directory/riv-link-in-record-metadata.png)
+
+
+<Callout type="warn" title="TESTING">
+  Web interface for internal record ingest testing is https://test1.nma.du.cesnet.cz/
+</Callout>
+
+## Verifying Datasets for RIV
+
+Note that a dataset must have a persistent identifier to be acceptable as
+“result of type T” by RIV. It is usually DOI or Handle (but other types are
+also acceptable).
+
+Browse to the National Metadata Directory at https://nma.eosc.cz.
+
+Select “Verify dataset for RIV”. You will be asked to log in (refer to
+[description how to register and log in if you need
+help](national-metadata-directory-access)).
+
+Insert the DOI or Handle of the record to the following form (DOI should be
+preferred if the dataset has both types of PID):
+![obtain-link-for-riv-form](/img/nrp/national-metadata-directory/obtain-link-for-riv-form.png)
+
+Following outcomes are possible:
+
+### 1. The Dataset is Already Registered in the NMD
+
+In that case, its metadata is displayed, including the link for RIV.
+
+### 2. Metadata of the Dataset Could be Harvested
+
+If the NMD doesn't know the dataset yet, it will attempt to retrieve and
+download its metadata. If that succeeds, the NMD will announce it
+registered a dataset. Again, its metadata will show the link for RIV.
+
+Note that the NMD does its best to retrieve the metadata from DataCite
+and/or the primary repository.
+
+### 3. Metadata of the Dataset Could Not be Harvested
+
+FIXME: TBD
+
+## General Comments
+
+Ideally, the repository you use for your datasets should be harvested by
+the NMD automatically. If that is not the case (in cases 2 or 3 described
+above), consider notifying the administrator of the repository to arrange
+to have its metadata harvested by the NMD. You can point them to the
+[documentation on exports to the NMD](../../repo_admins/exports-to-nma).
 
