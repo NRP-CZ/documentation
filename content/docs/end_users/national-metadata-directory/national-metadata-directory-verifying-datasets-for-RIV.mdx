@@ -3,16 +3,12 @@ title: Verifying Datasets for RIV
 ---
 
 Having a metadata record in the National Metadata Directory (NMD) is
-mandatory for datasets collected to IS VaVaI/RIV.
+mandatory for datasets (i.e. T-type records) collected to IS VaVaI/RIV.
 
-For datasets indexed in the NMD, you can find the “link to the NMD for RIV”
+For datasets already indexed in the NMD, you can find the “link to the NMD for RIV”
 in the listing of each metadata record, such as here:
-![sign-in-with-social-identities](/img/nrp/national-metadata-directory/riv-link-in-record-metadata.png)
+![riv-link-in-record-metadata.png](/img/nrp/national-metadata-directory/riv-link-in-record-metadata.png)
 
-
-<Callout type="warn" title="TESTING">
-  Web interface for internal record ingest testing is https://test1.nma.du.cesnet.cz/
-</Callout>
 
 ## Verifying Datasets for RIV
 
@@ -34,7 +30,8 @@ Following outcomes are possible:
 
 ### 1. The Dataset is Already Registered in the NMD
 
-In that case, its metadata is displayed, including the link for RIV.
+In that case, its metadata is displayed, including the link for RIV as
+described above.
 
 ### 2. Metadata of the Dataset Could be Harvested
 
@@ -48,9 +45,9 @@ and/or the primary repository.
 ### 3. Metadata of the Dataset Could Not be Harvested
 
 If the NMD could not retrieve dataset's metadata, you will receive a
-warning stating **Dataset was registered with issues. Please check/correct
-the metadata below**. In that case, fill in the requested basic metadata
-manually and save the record.
+warning stating **We detected some metadata issues within the record. To obtain a URL for RIV reporting, please check and correct the metadata below.**. In that case, fill in the requested basic metadata
+manually. For authors/creators, use the “Add creator” button. Don't forget
+to save the record when you are finished.
 
 ## Correcting Recent Records
 
