@@ -2,18 +2,30 @@
 title: Implementations of Repository Systems
 ---
 
-This document collects documentation of particular repository
-implementations.
+There are three core repository systems supported by NRP: CESNET Invenio,
+CLARIN DSpace, and ASEP/ARL. The different repository systems have essentially the same core functionality but
+may differ in the details of how specific features are implemented and the extent to which you
+can customize the features. The repository system specialists can help guide repository administrators through
+the process of selecting the right software solution, for more information, 
+[see](https://www.eosc.cz/en/services/data-storage/repositories-in-nrp/creating-repositories-in-the-nrp).
 
 ## CESNET Invenio
 
-  - [InvenioRDM mainstream code](https://inveniosoftware.org/products/rdm/)
-  - [Specifics of CESNET Invenio in the NRP](https://nrp-cz.github.io/docs/)
-    - especially [docs on customisation](https://nrp-cz.github.io/docs/customize)
+  - [InvenioRDM website](https://inveniosoftware.org/products/rdm/)
+  - [Documentation of CESNET Invenio specific features developed for NRP](https://nrp-cz.github.io/docs/)
+    - especially [docs on customization](https://nrp-cz.github.io/docs/customize) and [system prerequisites 
+    for local development](https://nrp-cz.github.io/docs/installation#prerequisites)
+  - [CESNET Invenio code](https://github.com/oarepo/oarepo)
 
 
 ## CLARIN DSpace
 
   - [CLARIN DSpace code](https://github.com/ufal/clarin-dspace)
+  - [Overview of DSpace features](https://wiki.lyrasis.org/display/DSDOC7x/Functional+Overview)
 
+## ASEP/ARL
+  - [ASEP/ARL documentation](https://asep-portal.lib.cas.cz/uvod-do-asep/datovy-repozitar/)
 
+If none of the core repository systems meet your needs it is also possible to build an instance
+of your own repository system on NRP resources, but in that case, you will bear the costs of integrating 
+and updating your repository system within the infrastructure.

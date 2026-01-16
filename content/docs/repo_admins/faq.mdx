@@ -23,3 +23,14 @@ When evaluating a CORS OPTIONS request, the system incorrectly uses the default 
 
 There is probably a different type of bug in Ceph version "**reef**" (18.x.) that cannot be bypassed by either of the two workarounds listed.  
 For Ceph version "**squid**" (19.x.), the bug is apparently fixed.
+
+# How granular should datasets be?
+
+NRP does not limit the maximum size of a dataset nor the maximum number of files in a dataset. However, 
+these can be purposefully limited by the policy of a specific repository.
+When deciding on dataset granularity, think about how you expect the data will be used. For example,
+if you expect users to analyze data locally on their notebooks, do not store terabyte large datasets. 
+Also consider how you expect the dataset to be cited when deciding on the granularity. If users will 
+always use the same hundred files in their research, it would be annoying for them to all be individual 
+datasets with their own persistent identifiers that they would all need to cite.
+Dataset granularity customs are highly domain specific.
