@@ -27,10 +27,34 @@ For Ceph version "**squid**" (19.x.), the bug is apparently fixed.
 # How granular should datasets be?
 
 NRP does not limit the maximum size of a dataset nor the maximum number of files in a dataset. However, 
-these can be purposefully limited by the policy of a specific repository.
-When deciding on dataset granularity, think about how you expect the data will be used. For example,
+these can be purposefully limited by the policy of a specific repository to reflect domain specific customs
+regarding dataset granularity.
+
+In general:
+- When deciding on dataset granularity, think about how you expect the data will be used. For example,
 if you expect users to analyze data locally on their notebooks, do not store terabyte large datasets. 
-Also consider how you expect the dataset to be cited when deciding on the granularity. If users will 
+- If a dataset contains thousands of small files, it is better from the perspective of the infrastructure to 
+deposit a single zip file. However, if users regularly need to access only individual files, it makes more 
+sense to store individual files.
+- Also consider how you expect the dataset to be cited when deciding on the granularity. If users will 
 always use the same hundred files in their research, it would be annoying for them to all be individual 
 datasets with their own persistent identifiers that they would all need to cite.
-Dataset granularity customs are highly domain specific.
+
+# Will there be a fee or specific conditions that need to be met for data storage above a certain volume or duration?
+
+The data storage was purchased from the NRP project, and after the project it will be maintained by CESNET. When the 
+data storage needs to be renewed, a new project will be submitted, but there is no guarantee that the funding will be obtained.
+In that case, it is up to the repository administrators to ensure financing for the hardware (some form of co-financing).
+
+Co-financing is also an option in the case of a repository taking up a disproportionate amount of data capacity. 
+However, at this stage we are not able to state a specific amount of storage utilization above which it would be necessary to 
+co-finance and how much it would cost. For now there is enough storage capacity in NRP.
+
+Sustainability of NRP is still an open question overall. It makes more sense to us to address any potential co-funding at the level 
+of scientific communities than to charge end users for uploading large datasets. In any case, repository administrators will be included 
+in these discussions.
+
+The storage is designed to be long-term, NRP will not decide on deleting data older than x years, that is a matter of policy of the given repository.
+
+In NRP we do not expect to make formally guaranteed space reservations. Of course, if we know about some capacity requirements 
+ahead of time, we will count on them.
