@@ -1,6 +1,7 @@
 {
   "pages": [
     "index",
+    "overview",
     "intro-to-nrp",
     "end_users",
     "repo_admins"
