@@ -13,7 +13,7 @@ and models of dividing responsibilities in operation of services in the
 NRP. The basic division is whether you intend to use core repository
 systems (i.e. CESNET-Invenio, CLARIN-DSpace, ASEP/ARL) or a specific
 implementation of a repository or of a related service (we told you that
-you need to read the condition linked above first!). In addition to that,
+you need to read the conditions linked above first!). In addition to that,
 there are subtleties depending on the level of customisation your user
 group requests for your repository even in case of core repository systems.
 
@@ -45,18 +45,18 @@ sites. Additional physical locations will be added later.
 
 For ensuring data integrity, the files are equipped with checksums. In
 addition to standard Ceph data scrubbing to ensure data consistency, the
-checksums are also periodically checked. Should a mismatch be detected, the
+checksums are also periodically verified. Should a mismatch be detected, the
 situation is handled by the infrastructure operators.
 
 For data confidentiality, the content of the disks is encrypted. While the
 infrastructure itself logically handles plain text of the files (unless
 additional layer of encryption is deployed for sensitive data), this
-ensures that the content of disks removed for replacement is completely unusable for whoever touches the equipment. Additional layer of protection is added by supplier contracts that require the suppliers to destroy the content of the disks before shipping to the manufacturer etc.
+ensures that the content of disks removed for replacement is completely unusable for whoever removes the equipment. Additional layer of protection is added by supplier contracts that require the suppliers to destroy the content of the disks before shipping to the manufacturer etc.
 
 We call this concept a **virtually reliable S3**.
 
 Again, this storage layer is typically used by the repository, not by the
-end user.
+repository end user.
 
 Note that due to the shear volume of the infrastructure, no standard
 backups are performed on the S3 storage, we rely solely on the properties
@@ -67,7 +67,8 @@ of the stretch cluster.
 The applications such as repositories are run in Kubernetes clusters. The
 clusters are co-located with the storage facilities and take advantage of
 geographical distribution. Operation of containers running in NRP is
-resilient to outages of single sites.
+resilient to outages of whole sites, just the throughput of the system
+would be reduced.
 
 ## Repositories and Applications
 
@@ -77,13 +78,13 @@ NRP Containers and store data to the NRP Storage.
 # Involved Personnel, Roles, and Responsibilities
 
 The storage and containers of the NRP are operated by the infrastructure
-personnel, directly reachable through [L3 support](user_support/user_support).
+personnel, directly reachable through [L3 and storage support channels](user_support/user_support).
 
 The repository itself is managed by the _repository administrator_ (you
 have read the conditions linked on the top, haven't you? And note that the repo
 admin is a role and responsibility, not a single person!). Who
 exactly operates the technical part of the repository depends on many
-details. We provide a general overview and details of the setup always need
+details. We provide a generic overview. Keep in mind that the details of the setup always need
 to be carefully negotiated for individual cases.
 
 ## Running Specific Applications and/or Other Repository Implementations
@@ -130,7 +131,8 @@ managed by the infrastructure.
 
 In that case, the repository can be _fully managed by the NRP staff_ from
 development to full operation. It includes updates and ensuring
-compatibility of custom code.
+compatibility of custom code. In other words, the repository administrator
+does not need to touch the code nor the deployment ever.
 
 ### Highly Customised Instances of CESNET-Invenio Repositories
 
