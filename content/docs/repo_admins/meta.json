@@ -3,8 +3,9 @@
   "pages": [
     "repo_admins",
     "repository-implementations",
-    "exports-to-nma",
+    "operating-repositories-and-services-in-the-nrp",
     "running_applications",
+    "exports-to-nma",
     "national-metadata-directory",
     "user_support",
     "faq",
