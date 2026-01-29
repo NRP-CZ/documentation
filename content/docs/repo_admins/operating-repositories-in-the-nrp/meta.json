@@ -1,9 +1,9 @@
 {
   "title": "Operating Repositories in the NRP",
   "pages": [
-    "repository-implementations",
     "operating-repositories-and-services-in-the-nrp",
     "running_applications",
+    "repository-implementations",
     "exports-to-nma"
   ]
 }
