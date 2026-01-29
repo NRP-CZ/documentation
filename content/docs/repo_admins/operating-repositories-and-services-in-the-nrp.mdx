@@ -17,11 +17,11 @@ you need to read the conditions linked above first!). In addition to that,
 there are subtleties depending on the level of customisation your user
 group requests for your repository even in case of core repository systems.
 
-# Generic NRP Architecture
+## Generic NRP Architecture
 
 To discuss its usage at this level, it is necessary to understand the basic architecture of the NRP.
 
-## NRP Storage
+### NRP Storage
 
 Storage layer of the NRP consists of Ceph clusters exporting S3 service.
 The clusters are geographically distributed throughout the Czech Republic.
@@ -62,7 +62,7 @@ Note that due to the shear volume of the infrastructure, no standard
 backups are performed on the S3 storage, we rely solely on the properties
 of the stretch cluster.
 
-## Running Applications in NRP Containers
+### Running Applications in NRP Containers
 
 The applications such as repositories are run in Kubernetes clusters. The
 clusters are co-located with the storage facilities and take advantage of
@@ -70,12 +70,12 @@ geographical distribution. Operation of containers running in NRP is
 resilient to outages of whole sites, just the throughput of the system
 would be reduced.
 
-## Repositories and Applications
+### Repositories and Applications
 
 As it is obvious at this point, repositories and other applications run in
 NRP Containers and store data to the NRP Storage.
 
-# Involved Personnel, Roles, and Responsibilities
+## Involved Personnel, Roles, and Responsibilities
 
 The storage and containers of the NRP are operated by the infrastructure
 personnel, directly reachable through [L3 and storage support channels](user_support/user_support).
@@ -87,7 +87,7 @@ exactly operates the technical part of the repository depends on many
 details. We provide a generic overview. Keep in mind that the details of the setup always need
 to be carefully negotiated for individual cases.
 
-## Running Specific Applications and/or Other Repository Implementations
+### Running Specific Applications and/or Other Repository Implementations
 
 For running services and repository implementations that are not directly
 supported by the NRP, the infrastructure offers the storage and environment
@@ -95,15 +95,15 @@ to run containers only. The repository administrator must ensure the
 technical operation of the repository itself (including sufficient
 personnel to prepare the deployment and to guarantee a reasonable quality of service throughout the whole life cycle).
 
-## Running an instance of CLARIN-DSpace
+### Running an instance of CLARIN-DSpace
 
 FIXME
 
-## Running an instance of ASEP/ARL
+### Running an instance of ASEP/ARL
 
 FIXME
 
-## Running an instance of CESNET-Invenio
+### Running an instance of CESNET-Invenio
 
 There are two basic models of operating CESNET-Invenio-based repositories
 that depend whether there are customised components developed and
@@ -122,7 +122,7 @@ repository consists of
     validation,
   - anything else specific for the repository.
 
-### CESNET-Invenio Fully Managed by the NRP
+#### CESNET-Invenio Fully Managed by the NRP
 
 In general, simple customisations like look&feel and small extensions of
 standard metadata models will usually be done by CESNET's development team
@@ -134,7 +134,7 @@ development to full operation. It includes updates and ensuring
 compatibility of custom code. In other words, the repository administrator
 does not need to touch the code nor the deployment ever.
 
-### Highly Customised Instances of CESNET-Invenio Repositories
+#### Highly Customised Instances of CESNET-Invenio Repositories
 
 Should the repository administrator require more extensive customisations
 (large metadata models especially with complex verification logic, fully
