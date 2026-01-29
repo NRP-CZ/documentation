@@ -43,10 +43,11 @@ location, 6 data replicas in total. It makes the data resilient to the loss
 of up to 5 disks and, e.g. to the total physical destruction of one of the
 sites. Additional physical locations will be added later.
 
-For ensuring data integrity, the files are equipped with checksums. In
-addition to standard Ceph data scrubbing to ensure data consistency, the
-checksums are also periodically verified. Should a mismatch be detected, the
-situation is handled by the infrastructure operators.
+For ensuring data integrity, the files are equipped with checksums. During
+standard Ceph data scrubbing, the checksums are also periodically verified.
+Should a mismatch be detected, the situation is handled by the
+infrastructure operators. An additional independent layer of checksums is
+usually added by the repository itself.
 
 For data confidentiality, the content of the disks is encrypted. While the
 infrastructure itself logically handles plain text of the files (unless
