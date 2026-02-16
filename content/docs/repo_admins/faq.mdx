@@ -1,8 +1,8 @@
 ---
-title: FAQ
+title: FAQs
 ---
 
-# Connecting applications to Ceph/S3 storage
+# How to connect applications to Ceph/S3 storage?
 
 ## Workarounds to the CORS OPTIONS request processing error when calling HTTP PUT method
 
@@ -23,3 +23,19 @@ When evaluating a CORS OPTIONS request, the system incorrectly uses the default 
 
 There is probably a different type of bug in Ceph version "**reef**" (18.x.) that cannot be bypassed by either of the two workarounds listed.  
 For Ceph version "**squid**" (19.x.), the bug is apparently fixed.
+
+# How granular should datasets be?
+
+NRP does not limit the maximum size of a dataset nor the maximum number of files in a dataset. However, 
+these can be purposefully limited by the policy of a specific repository to reflect domain specific customs
+regarding dataset granularity.
+
+In general:
+- When deciding on dataset granularity, think about how you expect the data will be used. For example,
+if you expect users to analyze data locally on their notebooks, do not store terabyte large datasets. 
+- If a dataset contains thousands of small files, it is better from the perspective of the infrastructure to 
+deposit a single zip file. However, if users regularly need to access only individual files, it makes more 
+sense to store individual files.
+- Also consider how you expect the dataset to be cited when deciding on the granularity. If users will 
+always use the same hundred files in their research, it would be annoying for them to all be individual 
+datasets with their own persistent identifiers that they would all need to cite.
