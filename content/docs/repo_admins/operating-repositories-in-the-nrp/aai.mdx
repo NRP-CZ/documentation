@@ -1,71 +1,72 @@
 ---
-title: Authentication and Authorization Infrastructure (AAI) in NRP
+title: Authentication and Authorization Infrastructure (AAI)
 ---
 
+Repositories and related services in NRP integrate with authentication and authorization infrastructure (AAI)
+to deliver streamlined login process and access control to users across NRP. The solution is provided by the
+[e-INFRA CZ AAI](https://perun.e-infra.cz/) service powered by [Perun AAI](https://perun-aai.org/) software.
 
-<Callout type="warn" icon="⚠️">
-  This documentation is a work in progress and may contain inaccuracies or omissions.
-  If you have any questions, please contact us at support@eosc.cz.
-</Callout>
+The integration is realized using the OIDC protocol for authentication and some authorization capabilities
+require API calls if a repository provides these (like integration with computational workflows). It must be
+implemented by the developers and/or operators of the repository system.
 
+Current AAI architecture for NRP is described in [this document](https://www.eosc.cz/media/3854788/inicialni-architektura-aai-pro-nrp.pdf).
 
-The architecture of AAI for NRP is described in detail in [this document (Czech only)](https://www.eosc.cz/media/3854788/inicialni-architektura-aai-pro-nrp.pdf)
-
-The software solution used for authorizing and authenticating users is called [Perun](https://perun-aai.org/). NRP is using the 
-[e-INFRA instance of Perun](https://perun.einfra.cesnet.cz/login). Integration with Perun AAI is realised via standard protocols, either OIDC or SAML.
-
-# How it Works?
+# How does it work for end users?
 
 ## Authentication
-- On the repository login page the user presses the login button (or "Login with e-INFRA" button if more login options are allowed).
-- The user selects their institution from a list of members in the academic login federation (includes Czech and International academic institutions)
-  - It is possible to enable also social logins (Google, ORCID, Apple ID, GitHub etc.). However the user's identity is less certain for this method so it is not preferred
-- The user signs in via institutional login
-- IF the user is new to e-INFRA, they will need to register with e-INFRA
-- IF the user is new to the repository, they need to register to it
-  - Registration may be approved manually or automatically according to rules set by the admins (see bellow)
-- User is signed into the repository
+
+AAI lets users log in with their home institution or social identity to access a repository in NRP, so that they needn't register and log in with each repository or service individually.
+
+- Users click on the Login button on the repository home page
+- Users select their home institution or social identity provide
+    - *Note social identities are less trustworthy because of fake accounts*
+- Users new to e-INFRA CZ or the repository must register with it, and consent to the terms of use and processing of their personal data
+    - *Note applications can be approved manually or automatically*
+- Users are logged in and redirected to the repository home page
 
 ## Authorisation
-- Perun shares selected user attributes with the repository, such as their login, name, email, affiliation or group membership upon login. 
-Changes may also be propagated from Perun to the repository, as well as from the repository to Perun.
-- The repository can then map these attributes to the user profile and the repository permission system
-- Attributes may be shared across services, e.g. for access to sensitive data or compute time 
 
+In the ideal case, access control is invisible to the end users; they get what they need and nothing more.
 
-# How to Get There? (For Integrators)
+AAI collects user attributes and lets repository administrators manage user groups and their association
+to protected resources. It may propagate this data to a repository if requested for user access control. 
 
-When using one of the basic NRP repository systems integration is simpler since underlying technical layer had already been implemented. 
-However, the degree of integration may vary. Even so, AAI must be set up for each repository instance, since it may have specific requirements 
-(custom defined roles, groups/communities, sensitive data, membership dependent on membership in a different organization etc.). 
-In some cases the NRP Repository System Provider may offer to set up AAI on behalf of the repository administrator, this will be agreed upon
-in communication with the repository system specialists.
+By default, user group membership in AAI represents user's membership and role in community (e.g.
+*data curator for canine research*) that determines the scope of their access and permitted operations
+(e.g. *canine-related datasets and approving uploads*).
 
-The repository system specialists will help guide you through formulating what you need out of AAI and will then share a detailed integration manual with you.
+There are features on the AAI roadmap that will enable automation of more complex access control
+use cases.
 
-Before starting, you as a repository administrator must decide on:
+# How can integrators get there?
 
-- Full name (≤128 characters) 
-- Short name (≤24 characters; only letters, digits, dot, dash and underscore) 
-- Email of the primary technical administrator responsible for operating the repository 
+If you choose one of the basic NRP repository systems, some groundwork has already been done for you.
+However, you must still decide which access control capabilities you repository needs (like *custom roles*)
+and the degree of their automation (like *synchronizations*), which will drive the scope of AAI integration
+and configuration. 
+
+Repository system specialists will help you clarify and formulate your requirements. Then, depending on
+your specific case, the repository system provider may offer to integrate and configure AAI on you behalf,
+or the repository system specialists will provide you with the necessary documentation to do it yourself.
+
+In any case, you, as the repository administrator, must decide on:
+- Repository full name (≤128 characters)
+- Repository short name (≤24 characters; only letters, digits, dot, dash and underscore)
+- Email of the primary technical administrator responsible for operating the repository
 - Name of the institution and department responsible for operating the repository
-- Name of the software platform (e.g. CESNET Invenio, CLARIN-DSpace, ASEP/ARL, ...) 
-- Will it run on the standardized NRP infrastructure? Yes/No  (i.e. CESNET S3 storage and K8s cluster) 
+- The chosen repository system (e.g. CESNET Invenio, CLARIN-DSpace, ASEP/ARL, etc.)
+- Whether the repository will run on CESNET S3 storage and K8s cluster infrastructure
+- Data your repository needs for access control, if any (like user's academic affiliation)
+- Properties of the storage space for provisioned files (like a URL endpoint for upload)
 
-Optionally provide also:
+Afterwards, this information is used by you and/or the repository system provider to:
+- Register the repository in the [AAI Service Registry](https://spadmin.e-infra.cz/auth/requests/new)
+- Create a virtual organization and facility records for the repository in the [AAI Admin GUI](https://perun.e-infra.cz/)
+- Customize the group structure, registration process and email notifications in the [AAI Admin GUI](https://perun.e-infra.cz/)
+- Set up the resource structure and cross-link it with the group structure in the [AAI Admin GUI](https://perun.e-infra.cz/)
+- Configure or implement integration of non-standard access control capabilities, if any
 
-- List of custom attributes required for controlling access to or within R/S 
-- Properties of the storage space for provisioned files (e.g. URL endpoint) 
+Note repository integration with AAI must be tested before it is enabled for use in production environment.
 
-The general process is as follows:
-
-- Register new service at [spadmin.e-infra.cz/auth/requests/new](https://spadmin.e-infra.cz/auth/requests/new)
-- The AAI admins will create a Virtual Organisation and Facility in Perun for your repository and assign you as manager.
-- In the Virtual Organisation (VO) you may customize:
-  - Groups
-  - Registration Forms
-  - Notifications
-- User groups in Perun then need to be linked to the facility via resources.
-- AAI Integration Testing
-
-The repository system administrators can arrange a consultation with the AAI team.
+Finally, if necessary, the repository system provider can arrange a consultation with AAI specialists for you.
