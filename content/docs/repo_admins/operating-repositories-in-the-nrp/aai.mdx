@@ -6,7 +6,7 @@ Repositories and related services in NRP integrate with authentication and autho
 to deliver streamlined login process and access control to users across NRP. The solution is provided by the
 [e-INFRA CZ AAI](https://perun.e-infra.cz/) service powered by [Perun AAI](https://perun-aai.org/) software.
 
-The integration is realized using the OIDC protocol for authentication and some authorization capabilities
+The integration is realized using the OIDC protocol for authentication, some authorization capabilities
 require API calls if a repository provides these (like integration with computational workflows). It must be
 implemented by the developers and/or operators of the repository system.
 
@@ -19,9 +19,9 @@ Current AAI architecture for NRP is described in [this document](https://www.eos
 AAI lets users log in with their home institution or social identity to access a repository in NRP, so that they needn't register and log in with each repository or service individually.
 
 - Users click on the Login button on the repository home page
-- Users select their home institution or social identity provide
+- Users select their home institution or social identity provider
     - *Note social identities are less trustworthy because of fake accounts*
-- Users new to e-INFRA CZ or the repository must register with it, and consent to the terms of use and processing of their personal data
+- Users new to e-INFRA CZ or the repository must register with it (submit an application), and consent to the terms of use and processing of their personal data
     - *Note applications can be approved manually or automatically*
 - Users are logged in and redirected to the repository home page
 
@@ -41,7 +41,7 @@ use cases.
 
 # How can integrators get there?
 
-If you choose one of the basic NRP repository systems, some groundwork has already been done for you.
+If you choose one of the core NRP repository systems, some groundwork has already been done for you.
 However, you must still decide which access control capabilities your repository needs (like *custom roles*)
 and the degree of their automation (like *synchronizations*), which will drive the scope of AAI integration
 and configuration. 
