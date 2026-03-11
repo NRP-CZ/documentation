@@ -33,6 +33,8 @@ behind support@eosc.cz).
 
 **Specific Repositories**
 
+Those queues may often be used by repository end users.
+
 |Queue                      |Mail alias                     |Responsibilities                                                              |Perun groups|
 |---------------------------|-------------------------------|------------------------------------------------------------------------------|------------|
 |`nrp-repo_datarepo`        |`nrp-repo_datarepo@eosc.cz`    |Supporting end users of Catch-all Data Repository https://datarepo.eosc.cz    | `VO_repo_datarepo_prod:rt_queues:support[-watchers]` |
@@ -67,8 +69,9 @@ The most important roles of users in tickets are:
 Queues have two groups of personnel assigned:
   - queue handlers, those can see the contents of all tickets in the queue including comments,
   - queue watchers who receive mail notification (replies and comments).
-Those are typically filled in by the same group of people (e.g. when
+Those are usually identical groups of people (but don't have to be, e.g. when
 somebody uses just the web interface and is not interested in mail floods).
+The groups are set up in Perun by the repository administrator.
 
 ### Mailing into RT
 
@@ -85,10 +88,12 @@ support-com@eosc.cz). Anything sent to the comment address is distributed
 to the queue staff and to people in AdminCC of the ticket. It is NOT sent
 to the requestor, nor to people in CC.
 
-Should the ticket be transferred to another queue, keep in mind that
+Even if the ticket is transferred to another queue,
 replies to mails in the conversation will be filed by RT to the ticket
-regardless of where they were adressed (if it makes you curious, there are
-X-RT- headers for tracking that).
+regardless of the recipient address (if it makes you curious, there are
+X-RT- headers for tracking that). In other words, sending a subsequent
+email in a conversation does not have to be received to the queue where it
+is addressed, but to a queue where the ticket currently resides.
 
 Note that queue settings may vary, but often adding just people to e-mail
 CC does *not* add them to the ticket as well. Check the ticket in the web
@@ -104,6 +109,7 @@ never see it again.
 
 It is useful to change status of resolved tickets to “resolved” (they also
 disappear from the default queue overview). You may want to use “feedback”
+status
 when user input is expected for a longer time. Should a new mail appear to
 a resolved ticket, it gets opened again automatically.
 
