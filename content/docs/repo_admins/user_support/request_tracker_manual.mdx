@@ -1,0 +1,109 @@
+---
+title: Manual for Request Tracker
+---
+
+Please see the comprehensive video howto [here on Youtube](https://www.youtube.com/watch?v=yQa44O3EwvM). If you need just a quick overview, try the following Quick and Dirty Intro to Using RT.
+
+## Quick and Dirty Intro to Using RT
+
+RT queues can be reached either via mail (for everybody), or, if you are managing a queue, through a web interface [https://rt.e-infra.cz](https://rt.e-infra.cz).
+
+Kindly respect the purpose of each particular RT queue. When having a queue
+set up for a particular task, you neither want the queues to be very
+specific (as it makes triaging tickets complicated), nor very broad (as it
+causes lots of people to read tons of unrelated stuff).
+
+In a queue, there are tickets. A ticket typically represents a single user
+case (an email conversation over an issue), but local customs vary from queue to queue. Don't try to twist
+reality to fit the model, tickets are messy, deal with it.
+
+### Users in Tickets
+
+From RT perspective, a user is an email address (usually) representing a person.
+
+The most important roles of users in tickets are:
+  - Requestor(s): the person who wants something to be done
+  - CC: persons who want to be informed about the case
+  - Owner: the person expected to solve the issue
+  - AdminCC: additional person(s) who can manage the ticket
+
+### Queues in RT
+
+Queues have two groups of personnel assigned:
+  - queue handlers, those can see the contents of all tickets in the queue including comments,
+  - queue watchers who receive mail notification (replies and comments).
+Those are usually identical groups of people (but don't have to be, e.g. when
+somebody uses just the web interface and is not interested in mail floods).
+The groups are set up in Perun by the repository administrator.
+
+### Mailing into RT
+
+Each queue has its primary mail address for requests and replies (for this
+example, support@eosc.cz).
+
+Any *new* conversation to this address is recorded as a new ticket.
+Usually, the sender receives an info mail that the request has been
+recorded which also includes the ticket number.
+
+In addition to that, there are by convention two addresses for comments
+having “-c” and “-com” added to the recipient name (e.g. support-c@eosc.cz,
+support-com@eosc.cz). Anything sent to the comment address is distributed
+to the queue staff and to people in AdminCC of the ticket. It is NOT sent
+to the requestor, nor to people in CC.
+
+Even if the ticket is transferred to another queue,
+replies to mails in the conversation will be filed by RT to the ticket
+regardless of the recipient address (if it makes you curious, there are
+X-RT- headers for tracking that). In other words, sending a subsequent
+email in a conversation does not have to be received to the queue where it
+is addressed, but to a queue where the ticket currently resides.
+
+Note that queue settings may vary, but often adding just people to e-mail
+CC does *not* add them to the ticket as well. Check the ticket in the web
+interface to make sure all actors are assigned to your preferences.
+Sometimes requestors add new people to CC of their reply, the same
+suggestion applies (if you happen to notice).
+
+Finally, spam. Should a spam appear as a new ticket, you will improve spam
+recognition by switching the ticket to the “karantena” queue and you will
+never see it again.
+
+### Ticket Lifecycle
+
+It is useful to change status of resolved tickets to “resolved” (they also
+disappear from the default queue overview). You may want to use “feedback”
+status
+when user input is expected for a longer time. Should a new mail appear to
+a resolved ticket, it gets opened again automatically.
+
+
+### Switching Tickets Among Queues, Child Tickets
+
+If you need some help from another team, you have two basic choices:
+  - you can either transfer the ticket to the queue handled by the
+    appropriate team to resolve it (or move it in that direction),
+  - or you can create a child ticket.
+
+*Transferring the ticket to another queue* is most useful in cases when solving of the issue
+at hand needs to be taken over by the team completely. By transferring the
+ticket, you make them fully responsible to resolve. A little hint: it
+may be useful to write a comment for them with a summary what you expect
+them to do. It may also include your wish to get the ticket back to you
+after they handle their portion of the problem. Handlers of the new queue
+will also see the complete history of the ticket.
+
+Note you may lose access to the ticket, so if you need to be consulted in
+between or stay in touch with the issue, set yourself as AdminCC before
+changing the ticket's queue.
+
+*Creating a child ticket* means creating a completely new request in a queue
+(anywhere you see fit) that is loosely linked to the original request. Note
+that the child ticket *must* contain full detail of what you request your
+colleagues to do, as they may or may not have access to the original
+ticket. It is a courtesy to your colleagues to create a child ticket for
+them if it is a part of complex and tangled conversation and you just need
+them to do a specific well defined step for you. And the relationship is
+also shifted: when creating a child ticket, *you* are the requestor, not
+the person from the parent ticket. Child tickets are most useful for
+decomposing the issue into smaller steps, each of them potentially assigned
+to somebody else. Use it if the added complexity is worth the effort.
