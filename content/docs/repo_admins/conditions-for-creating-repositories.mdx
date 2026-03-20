@@ -1,0 +1,178 @@
+---
+title: Conditions for Creating New and Modifying Existing Domain Repositories in the National Repository Platform
+---
+
+L. Matyska and the EOSC-CZ, CARDS, and NRP Projects 
+
+Version 3.4 
+
+## 1. Terminology 
+
+The _National Repository Platform (NRP)_ is a distributed system for creating repository instances, developed primarily within the NRP and IPs EOSC-CZ projects with the support of the IPs CARDS. 
+
+A _repository instance_ (or simply repository, where no ambiguity arises) refers to a specific repository of a research group or institution. Examples of repository instances include a catch-all data repository or the “repository of fish genomic data”. 
+
+A _repository software system_ refers to the software package on which repository instances are built. Within the NRP, three supported standard repository systems are available: CESNET Invenio, CLARIN DSpace, and ASEP/ARL. (Do not confuse the terms _repository instance_ and _repository system_.) Repositories may also be built on other, alternative repository systems. Examples of alternative repository systems include Islandora (used in the pilot ArchaeoVault repository), or a custom system on which a repository instance is built for the specific needs of a particular scientific group (such as the pilot repository for biodiversity herbaria). 
+
+In addition to repository systems, the NRP also provides the infrastructure for running them—covering layers from hardware to data storage (via the S3 protocol) and application runtime environments in containers (Kubernetes). For the purposes of this document, it is not necessary to further distinguish these layers; practically, they represent the availability of _S3_ and _Kubernetes as services_ for operators of individual repository systems as well as the repositories themselves within the National Data Infrastructure. We will refer to this layer as the _data storage and application runtime environment_, or, in a more technical context, as _S3 + Kubernetes_.
+
+A specific role is held by the National Metadata Directory (NMA), which is a repository instance designated exclusively for the automated aggregation of metadata from all repository instances operated within the NRP (and possibly other third-party repositories as well). The NMA is developed and operated under the IPs EOSC-CZ project. Metadata exported to the NMA must have a permissive license that allows unrestricted harvesting and distribution (effectively equivalent to CC0; note that stating this requirement in terms of licensing does not have the goal to trigger discussion whether metadata is a specific object with a license). 
+
+The _National Catalogue of Repositories (NKR)_ has a specific role in the infrastructure; it will register repositories and their characteristics and will be established under the IPs CARDS project. 
+
+## 2. High-Level Architecture of the NRP
+
+For the purposes of this document, the architecture of the NRP can be simplified into four layers that provide services one to another: 
+
+  1. At the highest level are the end users of the repositories. These users are typically only interested in using specific repositories (for uploading or downloading data), or in searching for relevant records within the repositories or the National Metadata Directory. 
+  1. The end users are served by repository administrators, who are primarily responsible for the operation and configuration of the repositories. Repository administrators either use a standard implementation of a repository system (and thus rely on the services of the third layer), or operate a custom system, in which case they typically access the services of the fourth layer directly. 
+  1. The operation and development of standard repository systems is ensured by the NRP, which provides these systems to repository administrators as a service (within the limits described in this document). 
+  1. At the lowest level, the infrastructure provides the operation of the technical foundation of the NRP, specifically storage and the environment for running applications/containers (S3 and Kubernetes). 
+
+## 3. General Principles of the NRP 
+
+Within the NRP, we define a _repository_ (repository instance) as follows: “A repository is the technical, personal, and procedural provision of a long-term storage for the preservation and publication of citable digital objects.” 
+
+All repositories within the NRP meet this definition. In particular, they must contain citable records and provide both a web interface and an API for machine access. 
+
+A citable record refers to the reliable preservation of a clearly identified digital object (e.g., a dataset). This involves two fundamental components: object identification and a guarantee of immutability. 
+
+Object identification typically means assigning a persistent identifier (commonly a DOI). In case of repositories that behave more like databases, an appropriate system for unambiguous identification of individual records with equivalent properties is used. 
+
+The guarantee of immutability is a precise description of which modifications are allowed once a record has been finalized. Generally, the data in a finalized record should not be altered. In the case of metadata, it may be appropriate to allow the addition of references to related items, such as “UsedBy” or “ObsoletedBy” relationships. Corrections should primarily be implemented through versioning. The purpose of making the record citable is to ensure reproducibility of scientific results, providing guarantees that the data remains identical to that referenced, for example, in the literature. This prevents situations in which different users rely on the assumption that a given dataset is still the same, while it has in fact been modified—even if only by a minor correction. 
+
+This does not imply that the NRP must enforce a single, uniform policy on corrections and modifications across all repositories. Such policies should be set according to the needs and practices of each user community. Nevertheless, every repository must define its own policy aimed at minimizing allowed changes, preferring mechanisms like versioning or separately identified “patch” bundles for larger datasets. The repository’s policy must explicitly delimit and precisely describe the scope of permitted changes. A system that allows arbitrary changes to closed records without any of the guarantees described above cannot be considered a repository. 
+
+As a side note, it is worth mentioning that a technical repository instance can, in some repository systems, be divided into logical components (usually called _communities_), which have independently configured user access controls and workflows over a shared set of metadata models. A community within a repository therefore behaves like an independent repository (in the sense used, for example, in the Open Science II project call) and should be regarded as such in all respects. 
+
+From an organizational perspective, it may make sense to aggregate thematically related repositories into shared technical instances. We recommend consulting with the repository system specialists—whose contact information is available on the EOSC website—to determine appropriate granularity. 
+
+Wherever this document refers to a repository, it naturally also applies to a logical repository within a shared technical instance. 
+
+For completeness, the term _collection_ is also noted. In Invenio, a collection refers to a “named search result,” i.e. a selection of records based on predefined criteria (e.g. “all records of authors from a certain group”). 
+
+Any additional systems operated within the NRP must be directly related to the purpose of the repository platform (for example, the Data Stewardship Wizard – DSW – supported within the NRP). Hardware and personnel capacity for such tools is planned within the NRP. 
+
+Conversely, the NRP does not provide capacity for general storage of unannotated data for end users, nor does it offer computing resources for end users. However, the NRP will ensure basic connectivity to the computing infrastructure of e-INFRA CZ (primarily MetaCentrum and IT4Innovations). The environment for data storage and running applications within the NRP must serve exclusively the purposes of the NRP. 
+
+In addition to the repository software systems themselves and the pilot repository instances implemented on them, the NRP also includes auxiliary services as an integral part of its infrastructure—most notably authentication and authorization infrastructure (AAI), data transfer tools, and similar components. 
+
+The second fundamental principle of operating NRP systems is that all repositories being developed must, to the greatest extent possible, use the supported standard systems operated within the platform. This is the only way to ensure proper support from the EOSC-CZ, NRP, and CARDS projects. If, for any reason, these repository systems are not suitable—for example, the pilot Czech herbaria specimens repository, which is an established tool used by a broad professional community across Europe and operates on its own repository infrastructure while utilizing the NRP's S3+Kubernetes environment—the NRP allows for the development of custom solutions. In such cases, however, the creator and administrator of the repository must possess sufficient technical expertise and personnel capacity to operate and maintain such a solution and cannot expect additional support from the NRP. 
+
+Furthermore, even in such scenarios, the repository (or custom repository system) must be connected to the standard AAI interface, provide an appropriate API, and establish integration with the National Metadata Directory (NMA), data transfer services, and any other tools gradually deployed within the NRP—tools that will be automatically integrated with officially supported repository systems within the NRP project. 
+
+In all cases, repositories should be established in consultation with the relevant domain-specific expert working group of EOSC, which should shape recommendations regarding appropriate structure, granularity, and domain-specific metadata models for repositories in different fields. 
+
+Since operating a repository inevitably creates requirements for setup and ongoing maintenance, repositories should not be overly narrowly specialized (for example, “a repository for a faculty department” or “a repository for photographs from the Dolní Dvorska archaeological site, 1960–1980”), as such narrowly scoped repositories would be very difficult, if not impossible, to sustain in the long term. 
+
+## 4. Basic Use Cases of NRP 
+
+To provide a basic overview of the service levels available within the NRP, we distinguish three basic use cases of the NRP: 
+
+  1. Establishment of a repository using standard repository systems, i.e., as an instance of CESNET Invenio, CLARIN DSpace, or ASEP/ARL (corresponding to point B of the OS II call—i.e., the creation of new repositories). 
+  1. Establishment of a repository using alternative repository systems in justified cases (also corresponding to point B of the call). 
+  1. Integration of an existing repository currently operated outside of the NRP systems (corresponding to point A of the call, which applies exclusively to existing repositories). 
+
+ 
+
+### General notes on role assignment in repository administration and operation: 
+
+Whenever this document refers to the assignment of a certain role, it does not imply any assumptions about required staffing capacity or number of individuals. However, for the sake of redundancy and continuity, it is strongly recommended that each role be covered by more than one person. At the same time, it is assumed that one person may perform multiple roles in relation to the repository and the NRP. Parts of the associated responsibilities can, of course, be delegated to other individuals—for example, the repository administrator may delegate the roles of curator, reviewer, etc. 
+
+It is expected that newly created repositories will undergo a pilot phase to set up their configuration and produce the necessary supporting documentation and then enter production. 
+
+Unless otherwise specified, all described roles must exist and be staffed for the entire duration of production operation of the given repository. The repository administrator must be available throughout the entire lifecycle of the repository. 
+
+Likewise, all required documentation must be maintained throughout the production operation of the repository. 
+
+### 4.1 Establishing a Repository Using Core Repository Systems 
+
+The NRP provides a repository for a scientific community or an institution as a service. In general, this is covered by following steps: 
+
+  1. Consultations related to the selection of an appropriate repository system (from the supported core systems: CESNET Invenio, CLARIN DSpace, ASEP/ARL), including methodological and analytical support to define the needs and expectations of the user community. 
+  1. Consultations regarding the selection (or development) of a discipline-specific metadata model, with consideration of its feasibility in the respective repository systems. 
+  1. Consultations concerning interoperability/mapping of the discipline-specific profile to the core metadata model for the National Metadata Directory (NMA). 
+  1. Creation of the repository instance based on the aforementioned analysis (including functionality testing in collaboration with the repository administrator). In cases where custom components are developed by the user group, support is provided in the form of documentation and consultations. 
+  1. Operation of all NRP layers from hardware (including reliable data storage) to the setup of the relevant repository instance. For repositories with custom user-developed components, the NRP provides an environment for their operation, along with documentation and consultation support for such an operation mode. 
+  1. This includes full integration into all required systems, in particular (for these activities, no special additional capacity is expected from the repository administrator, unless explicitly stated otherwise): 
+    - Deployment of standard metadata profiles and their registration, excluding specific schemas beyond the capabilities of the standard repository systems. 
+    - Standard metadata profiles include the CCMM profile (Czech Core Metadata Model, https://github.com/techlib/CCMM) and those derived from it by adding domain-specific elements—typically under a few dozen elements and without complex dependencies. For larger metadata models, involvement of the user group is expected. *Note:* each repository system has its own limitations in terms of complexity of model definition. Repository administrators must select a model and provide a standardized description that meets the specific requirements of the repository system (e.g. JSON in YAML for Invenio). The National Repository Platform (NRP) will then set up the repository with this model and requires cooperation from the repository administrator/technical contact for testing and fine-tuning. For more complex models that require additional modifications, repository administrators must have sufficient technical and personnel resources to implement the necessary adjustments to the repository system or its interface. These activities and associated costs are not covered by the NRP, which only provides capacity for using pre-prepared standardized procedures. 
+    - Technical setup of metadata harvesting into the NMA, in accordance with the Czech Core Metadata Model. 
+    - Technical configuration of the data deposition workflow. 
+    - Integrated persistent identifier (PID) assignment functionality, along with available methodological and administrative support (see identifikatory.cz). 
+    - Technical integration with the e-INFRA CZ/EOSC CZ AAI systems, including the configuration of user roles and groups within the repository instance. 
+    - Prefabricated materials for user documentation creation that cover common parts provided by the infrastructure. These also serve as a template for creating documentation for a specific system. To create a documentation instance, the existing website https://docs.nrp.eosc.cz/ and the e-INFRA CZ documentation system (source documents in Markdown managed in Git) can be used.  
+    - User support for repository administrators, L2 and L3 support for escalated requests from end users of the repositories (but not L1 end-user support). For user support by the repository administrator, a queue in the RT system can be provided, along with the creation of an appropriate email alias.  
+    - Integration into the national e-infrastructure environment, specifically the availability of tools for transferring data between the repository, general storage, and computational resources within the e-INFRA CZ infrastructure (MetaCentrum, IT4I, CESNET storage, etc.).  
+    - Configuration of repository system logging into the central logging system.  
+    - Inclusion in cybersecurity monitoring (CESNET-CERTS, FTAS), performing security and particularly penetration tests of systems. Incident handling and collaboration with the cybersecurity team.  
+    - Collection of statistical data on the operation and usage of the system.  
+    - Operational monitoring.  
+  1. We expect that repositories created as instances of the core NRP repository systems will meet the technical and organizational requirements for the infrastructure of trusted repositories from the perspective of grant providers in the Czech Republic.   
+  1. General terms of service will be prepared for the operation of the NRP. Repositories can be established by individuals demonstrably connected to the academic community in the Czech Republic. However, for trusted repositories, it is expected that there will be contractual arrangements with the relevant user institutions, i.e. institutions related to the user community that established the repository.  
+
+The primary contact for requests to establish repositories is the specialists for NRP core repository systems; see the service description at https://www.eosc.cz/sluzby/ukladani/repozitare-v-nrp/zalozeni-repozitare-v-nrp. These specialists act as system integrators, conducting a basic analysis with the repository administrator and data curator, and arranging consultations with other NRP specialists when necessary. 
+
+*In this scenario, the user community is expected to:*
+
+    Establish the role of the repository administrator. The repository administrator is the partner of the infrastructure operator (primarily the NRP project) for agreement on the configuration of the repository in all the points described below. The repository administrator also has primary responsibility for the data stored in the repository and all the settings described below (which can, of course, be delegated to other individuals as needed). The repository administrator is also informed about operational events of the repository and repository systems or the entire NRP (updates, outages, etc.). The repository administrator is also responsible for collaborating with the cybersecurity team and reporting cybersecurity incidents if they occur at the level of the repository they manage. 
+    Establish the role of a data curator, who sets general rules for the data stored in the repository (e.g. regarding retention periods based on record type) and makes decisions on specific datasets (e.g. addressing deletion requests). The curator also acts as a metadata specialist, ensuring metadata harmonization within the repository in accordance with established domain-specific metadata profiles and ensuring metadata interoperability with other systems (especially NMA). They participate in setting the domain-specific metadata profile. These roles can be separated if necessary. 
+    Define the domain-specific metadata profiles available in the repository (in collaboration with IPs CARDS and specialists for the respective systems), utilizing tools for metadata profile management. However, implementing a metadata profile in the repository requires serialization of the profile into the repository configuration and the creation of a user interface for metadata entry and search. The NRP infrastructure will handle this for standard metadata models (i.e., CCMM). For larger and more complex metadata models, the user community/repository administrator must ensure the capacity for implementation on their side (the NRP will provide documentation and potential consultations). Define the metadata schema elements that will be exported to the NMA (mapping to the Czech Core Metadata Model). For metadata profiles that exceed the capabilities of core repository systems, collaborate on implementing their support. 
+    Determine the list of licenses available in the data deposition process. 
+    Determine the list of supported data formats that can be stored in the repository (this can even be “any”). 
+    Define the workflow for data deposition (e.g. the record approval process). 
+    Define the workflow for data access (from open access to a process involving approval by an ethics committee or an access control committee). 
+    Define the roles of user groups in the repository, such as regular submitter, curator, approver in different workflow parts. Link these roles to groups of individuals in the EOSC CZ AAI. 
+    Create user documentation for the repository. The NRP will provide prefabricated components describing the basic functioning of individual repository systems within the NRP and recommended documentation templates. However, the user documentation must describe the metadata models used, the repository's deposition workflow, the search interface, descriptions of group roles within the repository, and similar aspects for specific repository instances. Tools from e-INFRA CZ/NRP can be used for documentation creation, which is done in Markdown format and maintained in GIT. 
+    Describe the repository policy, especially when a record is considered closed—this policy should clearly define when a stored record in the repository is considered finalized and what changes are permissible in finalized records (e.g. “adding a metadata item with a link to a correction or usage of the record, but nothing else”). The repository policy description can also be prepared as certification documentation (e.g. for Core Trust Seal). 
+    Provide user support (first level) for end-users of the repository. The NRP will provide optional tools for tracking user requests. Other levels of user support, which include escalated requests requiring intervention from infrastructure administrators and support for the repository administrators themselves, are covered by NRP resources. 
+    Submit information to the National Repository Catalogue—register the repository and its parameters in the National Repository Catalogue (NKR) and send updates in case of changes. The records include metadata profiles (schemas) and the controlled vocabularies and ontologies used. Submission of information about the repository to NKR should be automated via OAI-PMH or API. 
+
+### 4.2 Establishing a Repository Operated on NRP Resources Without Using Core Repository Systems 
+
+In necessary cases (where, even after consultation, it is not possible to utilize any of the three standard repository systems), it is possible to operate repositories built on alternative implementations of repository systems directly within the NRP environment.  
+
+In such cases, the user community managing such a repository will essentially receive access from NRP to an environment for data storage and application operation (specifically S3 and Kubernetes). However, they will be responsible for all activities and bear all associated costs related to the installation and integration of the alternative repository system and the specific instance of the repository or repositories (if they wish to operate more than one) within the NRP environment and its operation. 
+
+*The repository administrator must also take responsibility for:*
+
+  1. All items described as the administrator's responsibility in the case of using core repository systems.  
+  1. Installing and operating the repository and the appropriate software infrastructure (typically an alternative repository system) within the application environment, utilizing the NRP's storage layers.  
+  1. Deploying domain-specific metadata profiles and registering them (integrated into the metadata profile registration system), harmonizing metadata within the given repository, and ensuring metadata interoperability with other systems, especially NMA (this can also be handled by the repository curator).  
+  1. Selecting and implementing the assignment of persistent identifiers from among the standard supported types, configuring the assigned ranges.  
+  1. Setting up the technical configuration for metadata harvesting into the NMA according to NMA's requirements, in compliance with the core metadata model (CCMM). 
+  1. Technically configuring the workflow for data deposition and access control to the data.  
+  1. Configuring technical integrations with the EOSC CZ AAI systems and defining the roles of user groups in the repository instance.  
+  1. Creating user documentation.  
+  1. Creating documentation for system administration and operation.  
+  1. Providing user support for end-users at all levels, from L1 to L3, except for requests directly related to the operation and configuration of the application environment and data storage (S3 + Kubernetes).  
+  1. Providing tools for integration into the national e-infrastructure environment, especially for transferring data between the repository, data storage, and computational resources in the e-INFRA CZ infrastructure.  
+  1. Configuring the logging of repository systems into the NRP's central logging system.  
+  1. Establishing cybersecurity oversight (CESNET-CERTS, FTAS). Collaboration in conducting security and especially penetration tests for the repository and systems directly related to it. Handling incidents and collaborating with the cybersecurity team. Mandatory reporting of cybersecurity incidents.  
+  1. Compliance with standard service conditions and defining additional conditions in cooperation with NRP compliance. 
+  1. Collecting statistical data on the system's operation and usage.  
+  1. Operational monitoring. 
+
+The repository administrator must also ensure that sufficient system administrators and other personnel are available to maintain stable operation of the system. 
+
+### 4.3 Integration of an Existing Independently Operated Repository into the NRP/National Data Infrastructure (NDI)  
+
+This use case covers situations where an existing repository, operated as an independent entity, is to be connected to the NRP/NDI environment.  
+
+The administrator of a repository operated outside of NRP has full responsibility for its operation, from hardware to the repository service itself. To consider such a repository as “connected to NRP/NDI,” it must generally satisfy the same conditions as repositories in alternative implementations directly operated within NRP. However, the repository administrator is also responsible for operating hardware resources, system management, and complete user support. This concerns not only the repository system itself and its data storage but also other components necessary for its operation. The administrator of such a repository must ensure functionality equivalent to that provided by NRP. There are no restrictions on how this is achieved and implemented, but all functionalities must be provided in an adequate form (adequacy is primarily determined by the administrator but the administrator may be asked to provide justification of the measures by the NRP administrators).  
+
+The minimum requirements for connecting a repository to the NDI environment include
+  - Providing metadata to NMA in accordance with the core metadata model 
+  - Submitting information to the National Repository Catalogue 
+  - Connecting the repository to the EOSC CZ AAI 
+  - Defining APIs for data transfer 
+  - Assigning PIDs (not necessarily DOIs) 
+
+These repositories are also subject to all provisions concerning administrators, roles, licensing settings, and other policies and conditions related to the operation of the repository. The repository must also have appropriate cybersecurity infrastructure and at least a basic level of monitoring to ensure operational quality and data collection for statistical purposes. The repository must be logged, which is essential for analysing cybersecurity incidents. The repository administrator is also responsible for sufficient compliance with legal and other regulations, depending on the nature of the data and operation. 
+
+Within technical possibilities and capacities, NRP services are available to the administrator of the existing repository, and it is strongly recommended to make as wide use of standard services as possible. Specific configurations will need to be addressed for each specific repository. Depending on the specific technical situation, a combination of an independent repository solution as described in this section with certain NRP services can be considered (for example, a model where such a repository uses S3 in NRP as one of its data storage solutions). 
+
+## 5. Final Remarks 
+
+The primary goal of this document is to provide a tangible understanding of the level of service that NRP offers for individual use cases. Given its structure, we did not consider it useful to integrate a temporal perspective into the document; the timeline for the availability of individual services can be found in the project's timeline.
+
