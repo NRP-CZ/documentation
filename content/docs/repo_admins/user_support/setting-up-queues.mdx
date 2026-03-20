@@ -1,0 +1,72 @@
+---
+title: Setting up RT Queues
+---
+
+This description is mainly useful for repository system specialists who
+need to establish an RT queue, usually for first level support of
+repository end users. The request is typically made on behalf of the
+repository administrator due to its complexity and relations to other
+infrastructure systems.
+
+## Setting up an RT queue
+
+In order to set up an RT queue, you should provide the following
+information:
+  1. suggested name of the queue (preferably short and starting with
+     `nrp-` by convention)
+  1. short description (e.g. “End user support of repository XYZ,
+     https://XYZ.repo.cz”). Note that it is very useful to know the URL
+     where the repository shall be running.
+  1. the queue will technically be reachable via technical mails such as
+     `nrp-myqueue@rt.cesnet.cz`, `nrp-myqueue-c@rt.cesnet.cz`, and
+     `nrp-myqueue-com@rt.cesnet.cz` (the `-c` and `-com` variants are for
+     comments). You'll likely want to use an email alias on the repository
+     domain, make sure that you will be able to establish such an alias
+     that will redirect to the rt.cesnet.cz addresses. State the
+     user-oriented mail addresses you intend to use (i.e. those on the
+     repository domain) in your request.
+  1. people managing with the access to the queue should preferably be
+     defined in a group in a virtual organisation. You need two groups, one
+     for people with access to the contents of the queue, the other for
+     “watchers”, i.e. those who receive mail notifications. Provide those
+     groups, preferably via an URL to Perun to the management of the queue.
+     If you are a repository administrator in NRP, you need to have such a
+     group anyway.
+  1. State explicitly that the queue should have NRP default configuration
+     (see below), or suggest deviations from the default when appropriate.
+     Note that deviations from the default should be supported by a
+     significant technical and/or operational arguments.
+
+To request a queue, send the information above to support@eosc.cz. Feel
+free to provide additional information you see fit.
+
+Note that if the repository domain is not under the control of the
+infrastructure, you will need to request configuring mail aliases (the
+exact procedure depends on who operates the domain).
+
+Kindly make sure that the queue is listed in this documentation!
+
+## Default configuration of NRP queues
+
+Unless explicitly discussed otherwise, NRP support queues use following
+configuration and properties:
+
+  - People with access to the queue will see the existence of other NRP
+    related queues in the RT web interface (i.e. they see the queues exist,
+    but don't see their contents).
+  - Email notifications to queue operators are provided for each
+    transaction, such as replies, comments, owner or state changes, etc.
+  - There are no limits to transfer tickets to another queue or to your
+    queue.
+  - The queue sends an autoreply to any new conversation (mail) sent to it.
+    The autoreply contains a standard notification that the request has
+    been filed and it was assigned a number. It is extremely useful when
+    users remember to provide additional information (replying to the mail
+    files the conversation to the ticket).
+  - It is possible to create a ticket on behalf of somebody in the web
+    interface (setting the person as a requester).
+
+
+Kindly note that deviations from these standards are discouraged and should
+be properly substantiated.
+

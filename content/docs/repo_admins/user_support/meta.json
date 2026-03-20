@@ -2,6 +2,7 @@
   "title": "User Support",
   "pages": [
     "user_support",
-    "intro_to_rt"
+    "intro_to_rt",
+    "setting-up-queues"
   ]
 }
