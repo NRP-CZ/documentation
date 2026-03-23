@@ -6,7 +6,10 @@ This documentation covers use cases of running repositories and related
 services in the National Repository Platform (NRP).
 
 In general, the reader should be familiar with [current conditions for
-creating repositories in the NRP](https://www.eosc.cz/en/projects/outcomes-of-the-eosc-cz-initiative#repositories_conditions) that describe the process from organisational view.
+creating repositories in the NRP](conditions-for-creating-repositories) that describe the process from organisational view.
+
+Note that you are not expected to handle establishing a repository
+yourself, you should always [contact repository system specialists](https://www.eosc.cz/en/services/data-storage/repositories-in-nrp/creating-repositories-in-the-nrp) first.
 
 In this document, we describe a more technical level, we discuss procedures
 and models of dividing responsibilities in operation of services in the
@@ -42,6 +45,10 @@ physically located in Ostrava and Ústí nad Labem) is 3 replicas in each
 location, 6 data replicas in total. It makes the data resilient to the loss
 of up to 5 disks and, e.g. to the total physical destruction of one of the
 sites. Additional physical locations will be added later.
+
+In order to protect from unwanted deletion (and note that repositories
+should not delete data without triple checking that the operation is
+intended), S3 versioning is deployed.
 
 For ensuring data integrity, the files are equipped with checksums. During
 standard Ceph data scrubbing, the checksums are also periodically verified.
@@ -96,10 +103,6 @@ supported by the NRP, the infrastructure offers the storage and environment
 to run containers only. The repository administrator must ensure the
 technical operation of the repository itself (including sufficient
 personnel to prepare the deployment and to guarantee a reasonable quality of service throughout the whole life cycle).
-
-### Running an instance of CLARIN-DSpace
-
-FIXME
 
 ### Running an instance of ASEP/ARL
 
@@ -173,4 +176,33 @@ functionalities, there may be components that turn out universally useful
 so that the CESNET-Invenio team will implement those). Kindly note that the
 CESNET-Invenio team reserves the right to decide on the status of each
 feature in question.
+
+### Running an instance of CLARIN-DSpace
+
+For CLARIN/DSpace, the models are very similiar to CESNET-Invenio.
+
+The code base consists of original mainstream DSpace code with
+parts specific to CLARIN-DSpace specific in NRP. In addition to that, user
+communities may have specific changes covering their needs.
+
+#### CLARIN-DSpace Fully Managed by the NRP
+
+Similar to Invenio, simple customisations covering look&feel and small
+extensions of the default metadata model will usually be done by the
+CLARIN-DSpace team (mostly of the Institute of Formal and Applied
+Linguistics, CUNI), the entire source code of the repository will thus be
+managed by the infrastructure.
+
+In that case, the repository can be _fully managed by the NRP staff_.
+
+#### Highly Customised Instances of CLARIN-DSpace Repositories
+
+Should more extensive customisations be required by the repository
+administrator, then the repository administrator must take an active role
+in developing and maintaining the code of the repository.
+
+The repository administrator would become the top-level integrator of the
+code of the repository. Kindly refer to the section on highly customised
+CESNET-Invenio instances as the same principles and procedures apply.
+
 
