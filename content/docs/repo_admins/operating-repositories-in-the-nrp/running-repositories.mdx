@@ -1,0 +1,110 @@
+---
+title: Running Standard Repositories in the NRP
+---
+
+This document describes modes of operating standard repository
+implementations in the NRP, i.e. ASEP/ARL, CESNET-Invenio, and
+CLARIN-DSpace.
+
+## Running an instance of ASEP/ARL
+
+For a general overview, consult [Options for Running an ASEP/ARL Repository](https://github.com/LIBCAS/ASEP-ARL/wiki/Mo%C5%Benosti-provozov%C3%A1n%C3%AD-repozit%C3%A1%C5%99e-ASEP) (note the English version directly in the document).
+
+## Running an instance of CESNET-Invenio
+
+There are two basic models of operating CESNET-Invenio-based repositories
+that depend whether there are customised components developed and
+maintained by the repository administrator.
+
+With a bit of simplification, the code base of a CESNET-Invenio-based
+repository consists of
+- the common base maintained by CERN,
+- common parts especially related to the NRP developed by CESNET (those
+  together are known as CESNET-Invenio and may include components useful
+  for various repositories),
+- components specific for a specific repository, such as
+  - user interface styling (logos/colour schemes),
+  - specific metadata model including metadata validation logic and the user interface especially for metadata input,
+  - specific search support, data visualisation components, data
+    validation,
+  - anything else specific for the repository.
+
+### CESNET-Invenio Fully Managed by the NRP
+
+In general, simple customisations like look&feel and small extensions of
+standard metadata models will usually be done by CESNET's development team
+and the full code base of such repository instance will be completely
+managed by the infrastructure.
+
+In that case, the repository can be _fully managed by the NRP staff_ from
+development to full operation. It includes updates and ensuring
+compatibility of custom code. In other words, the repository administrator
+does not need to touch the code nor the deployment ever.
+
+### Highly Customised Instances of CESNET-Invenio Repositories
+
+Should the repository administrator require more extensive customisations
+(large metadata models especially with complex verification logic, fully
+custom components), then the repository administrators must take part of
+their development.
+
+In that case, the repository administrator becomes
+the top-level integrator of the repository instance. Then
+- the customised code must be kept in a git,
+- the NRP will supply test and staging environments for the repository
+  administrator,
+- the NRP will provide their best effort to inform the repository
+  administrator about emerging changes of the main CESNET-Invenio code that
+  may affect compatibility and will provide documentation and
+  recommendations how to handle development and operation of custom
+  components,
+- but the repository administrator is responsible for compatibility of
+  their custom components and for maintaining them (it cannot be expected
+  that the NRP has capacity to take part in their development),
+- this is especially important in the (unlikely but possible) case when a
+  security update must be performed on the infrastructure that cannot be
+  reasonably done without breaking compatibility of CESNET-Invenio
+  interfaces,
+- the production instance of the repository will be operated by the NRP
+  team, i.e. when the repository administrators are happy to release a
+  new version, they will ask the infrastructure support team to do so. The
+  infrastructure team is responsible for day-to-day operation of the
+  repository.
+
+The repository administrators are always advised to discuss their
+particular cases with CESNET-Invenio developers to clarify status of
+intended development work (there may be ready components for some of the
+functionalities, there may be components that turn out universally useful
+so that the CESNET-Invenio team will implement those). Kindly note that the
+CESNET-Invenio team reserves the right to decide on the status of each
+feature in question.
+
+## Running an instance of CLARIN-DSpace
+
+For CLARIN/DSpace, the models are very similiar to CESNET-Invenio.
+
+The code base consists of original mainstream DSpace code with
+parts specific to CLARIN-DSpace specific in NRP. In addition to that, user
+communities may have specific changes covering their needs.
+
+### CLARIN-DSpace Fully Managed by the NRP
+
+Similar to Invenio, simple customisations covering look&feel and small
+extensions of the default metadata model will usually be done by the
+CLARIN-DSpace team (mostly of the Institute of Formal and Applied
+Linguistics, CUNI), the entire source code of the repository will thus be
+managed by the infrastructure.
+
+In that case, the repository can be _fully managed by the NRP staff_.
+
+### Highly Customised Instances of CLARIN-DSpace Repositories
+
+Should more extensive customisations be required by the repository
+administrator, then the repository administrator must take an active role
+in developing and maintaining the code of the repository.
+
+The repository administrator would become the top-level integrator of the
+code of the repository. Kindly refer to the section on highly customised
+CESNET-Invenio instances as the same principles and procedures apply.
+
+
