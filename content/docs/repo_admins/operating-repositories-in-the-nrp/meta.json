@@ -2,9 +2,9 @@
   "title": "Operating Repositories in the NRP",
   "pages": [
     "operating-repositories-and-services-in-the-nrp",
+    "repository-implementations",
     "running-repositories",
     "running_applications",
-    "repository-implementations",
     "exports-to-nma",
     "aai",
     "formal-governing-documents",
