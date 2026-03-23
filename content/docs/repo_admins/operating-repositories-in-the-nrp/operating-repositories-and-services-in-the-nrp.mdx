@@ -24,61 +24,14 @@ group requests for your repository even in case of core repository systems.
 
 To discuss its usage at this level, it is necessary to understand the basic architecture of the NRP.
 
-### NRP Storage
+The lowest layer of the infrastructure consists of hardware clusters. The
+clusters are operated by the NRP staff and support two major enabling
+technologies for the whole enterprise: S3 storage and Kubernetes clusters.
 
-Storage layer of the NRP consists of Ceph clusters exporting S3 service.
-The clusters are geographically distributed throughout the Czech Republic.
-Data in the clusters is accessed by the repositories and services, on a
-conceptual level, the data is not for direct user access (there are
-technical exceptions when the repository creates a pre-signed request for
-the user, but 1. it is controlled by the repository, 2. it is an
-optimisation that doesn't change the principles).
-
-The clusters are implemented as “Ceph stretch clusters”, it means that
-the repository uses a single S3 endpoint and the cluster is responsible for
-replicating the data onto separate geographical locations in a requested
-number of copies. The data is thus made resilient against concurrent loss
-of a number of disks.
-
-Current configuration (in 2026, i.e. on NRP1 and on emerging NRP2 clusters
-physically located in Ostrava and Ústí nad Labem) is 3 replicas in each
-location, 6 data replicas in total. It makes the data resilient to the loss
-of up to 5 disks and, e.g. to the total physical destruction of one of the
-sites. Additional physical locations will be added later.
-
-In order to protect from unwanted deletion (and note that repositories
-should not delete data without triple checking that the operation is
-intended), S3 versioning is deployed.
-
-For ensuring data integrity, the files are equipped with checksums. During
-standard Ceph data scrubbing, the checksums are also periodically verified.
-Should a mismatch be detected, the situation is handled by the
-infrastructure operators. An additional independent layer of checksums is
-usually added by the repository itself.
-
-For data confidentiality, the content of the disks is encrypted. While the
-infrastructure itself logically handles plain text of the files (unless
-additional layer of encryption is deployed for sensitive data), this
-ensures that the content of disks removed for replacement is completely unusable for whoever removes the equipment. Additional layer of protection is added by supplier contracts that require the suppliers to destroy the content of the disks before shipping to the manufacturer etc.
-
-We call this concept a **virtually reliable S3**.
-
-Again, this storage layer is typically used by the repository, not by the
-repository end user.
-
-Note that due to the shear volume of the infrastructure, no standard
-backups are performed on the S3 storage, we rely solely on the properties
-of the stretch cluster.
-
-### Running Applications in NRP Containers
-
-The applications such as repositories are run in Kubernetes clusters. The
-clusters are co-located with the storage facilities and take advantage of
-geographical distribution. Operation of containers running in NRP is
-resilient to outages of whole sites (and a bunch of resources within a
-single site, such as nodes or disks), just the throughput of the system
-would be reduced.
-
+In a nutshell, repositories and services run in Kubernetes and store data
+into a “virtually reliable” S3. If you are interested in principles how
+this level of reliability is achieved, check the [detailed
+description of NRP storage and containers](nrp-storage-and-containers).
 
 ## Involved Personnel, Roles, and Responsibilities
 

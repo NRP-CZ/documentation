@@ -2,6 +2,7 @@
   "title": "Operating Repositories in the NRP",
   "pages": [
     "operating-repositories-and-services-in-the-nrp",
+    "nrp-storage-and-containers",
     "repository-implementations",
     "running-repositories",
     "running_applications",
