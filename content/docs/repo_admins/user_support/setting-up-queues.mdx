@@ -13,9 +13,9 @@ want to handle this yourself.)
 
 In order to set up an RT queue, you should provide the following
 information:
-  1. suggested name of the queue (preferably short and starting with
-     `nrp-` by convention)
-  1. short description (e.g. “End user support of repository XYZ,
+  1. Suggested name of the queue (preferably short and starting with
+     `nrp-` by convention).
+  1. Short description (e.g. “End user support of repository XYZ,
      https://XYZ.repo.cz”). Note that it is very useful to know the URL
      where the repository shall be running.
   1. the queue will _technically_ be reachable via technical mails such as
@@ -32,7 +32,7 @@ information:
      defined in a group in a virtual organisation. You need two groups, one
      for people with access to the contents of the queue, the other for
      “watchers”, i.e. those who receive mail notifications. Provide those
-     groups, preferably via an URL to Perun to the management of the queue.
+     groups, preferably via an URL to Perun in your request.
      If you are a repository administrator in NRP, you need to have such a
      group anyway.
      The groups should be populated by the repository administrator.
@@ -48,7 +48,7 @@ it in the process.
 
 Note that if the repository domain is not under the control of the
 infrastructure, you will need to request configuring mail aliases (the
-exact procedure depends on who operates the domain).
+exact procedure depends on who operates the domain). RT administrator will tell you the exact redirections.
 
 Kindly make sure that the queue is listed in this documentation!
 
@@ -60,7 +60,7 @@ configuration and properties:
   - People with access to the queue will see the existence of other NRP
     related queues in the RT web interface (i.e. they see the queues exist,
     but don't see their contents).
-  - Email notifications to queue operators are provided for each
+  - Email notifications to queue operators (watchers) are provided for each
     transaction, such as replies, comments, owner or state changes, etc.
   - There are no limits to transfer tickets to another queue or to your
     queue.
@@ -70,7 +70,7 @@ configuration and properties:
     users remember to provide additional information (replying to the mail
     files the conversation to the ticket).
   - It is possible to create a ticket on behalf of somebody in the web
-    interface (setting the person as a requester).
+    interface (setting the person as a requestor). This is mainly used when a queue administrator needs to send some information to a user which didn't request it first (ie. information about policy violation).
 
 
 Kindly note that deviations from these standards are discouraged and should
