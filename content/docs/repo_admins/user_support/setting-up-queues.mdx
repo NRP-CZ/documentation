@@ -13,27 +13,25 @@ want to handle this yourself.)
 
 In order to set up an RT queue, you should provide the following
 information:
-  1. suggested name of the queue (preferably short and starting with
-     `nrp-` by convention)
-  1. short description (e.g. “End user support of repository XYZ,
+  1. Suggested name of the queue (preferably short and starting with
+     `nrp-` by convention).
+  1. Short description (e.g. “End user support of repository XYZ,
      https://XYZ.repo.cz”). Note that it is very useful to know the URL
      where the repository shall be running.
-  1. the queue will technically be reachable via technical mails such as
-     `nrp-myqueue@rt.cesnet.cz`, `nrp-myqueue-c@rt.cesnet.cz`, and
-     `nrp-myqueue-com@rt.cesnet.cz` (the `-c` and `-com` variants are for
-     comments). You'll likely want to use an email alias on the repository
-     domain, make sure that you will be able to establish such an alias
-     that will redirect to the rt.cesnet.cz addresses. State the
-     user-oriented mail addresses you intend to use (i.e. those on the
-     repository domain) in your request.
-  1. people managing with the access to the queue should preferably be
-     defined in a group in a virtual organisation. You need two groups, one
+  1. You need three mail aliases to operate the queue, ie:
+     `support@your-repo.cz`, `support-c@your-repo.cz`, `support-com@your-repo.cz` (the `-c` and `-com` variants are for
+     comments). State these user-oriented mail addresses you intend to use in your request. 
+     These aliases should then be directed to inner mail addresses of the queue which will be set up by RT administrator.
+     RT administrator will tell you where to point your aliases during the queue set up process. It will be something like 
+     `nrp-myqueue@rt.cesnet.cz`, `nrp-myqueue-c@rt.cesnet.cz`, and `nrp-myqueue-com@rt.cesnet.cz`. 
+  1. People managing with the access to the queue should preferably be
+     defined in a group in a virtual organisation in Perun. You need two groups, one
      for people with access to the contents of the queue, the other for
      “watchers”, i.e. those who receive mail notifications. Provide those
-     groups, preferably via an URL to Perun to the management of the queue.
+     groups, preferably via an URL to Perun in your request.
      If you are a repository administrator in NRP, you need to have such a
      group anyway.
-  1. State explicitly that the queue should have NRP default configuration
+  1. State explicitly if the queue should have NRP default configuration
      (see below), or suggest deviations from the default when appropriate.
      Note that deviations from the default should be supported by a
      significant technical and/or operational arguments.
@@ -43,7 +41,7 @@ free to provide additional information you see fit.
 
 Note that if the repository domain is not under the control of the
 infrastructure, you will need to request configuring mail aliases (the
-exact procedure depends on who operates the domain).
+exact procedure depends on who operates the domain). RT administrator will tell you the exact redirections.
 
 Kindly make sure that the queue is listed in this documentation!
 
@@ -55,7 +53,7 @@ configuration and properties:
   - People with access to the queue will see the existence of other NRP
     related queues in the RT web interface (i.e. they see the queues exist,
     but don't see their contents).
-  - Email notifications to queue operators are provided for each
+  - Email notifications to queue operators (watchers) are provided for each
     transaction, such as replies, comments, owner or state changes, etc.
   - There are no limits to transfer tickets to another queue or to your
     queue.
@@ -65,7 +63,7 @@ configuration and properties:
     users remember to provide additional information (replying to the mail
     files the conversation to the ticket).
   - It is possible to create a ticket on behalf of somebody in the web
-    interface (setting the person as a requester).
+    interface (setting the person as a requestor). This is mainly used when a queue administrator needs to send some information to a user which didn't request it first (ie. information about policy violation).
 
 
 Kindly note that deviations from these standards are discouraged and should
