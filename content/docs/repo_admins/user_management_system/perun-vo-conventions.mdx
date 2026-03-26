@@ -55,9 +55,15 @@ For example, it makes little sense to have an RT queue watchers (i.e. those
 who get mail from the user support system) who do not have access to
 managing their support system queue through the web interface. We typically
 set up the group managing web access to be filled indirectly with all users
-in the appropriate group of watchers.
+in the appropriate group of watchers. So if you want somebody to receive
+mails and to have access to the web, add them to the watchers group. If
+somebody needs to have access but doesn't want to get mail, then to the
+basic group. You don't have to add users to both groups.
 
-So for example, if your service is very simple and you have just one group
-of admins handling all the tasks, we set up all the groups above and
+Another example, if your service is very simple and you have just one group
+of admins handling all the tasks, we would set up all the groups above and
 reference those indirectly to your initial group of admins.
+
+Note that virtual organisations and groups for standard repositories are
+set up by the infrastructure staff for you.
 
