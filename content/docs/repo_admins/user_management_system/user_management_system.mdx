@@ -2,4 +2,60 @@
 title: User Management System
 ---
 
+User identities, membership of users in groups, and thus access of users to
+various services in the NRP is handled by the Perun system.
+
+As an end-service user, you may encounter it rarely: during registration
+and/or prolongation of your membership in a group. As a repository
+administrator, you should understand basic concepts of the system and how
+it handles users.
+
+Let us start with several use cases:
+
+  1. If you use a CESNET-Invenio-based repository, you do not need to
+     interact with Perun directly, as CESNET-Invenio is heavily integrated.
+     It uses Perun as a backend so that Perun keeps all information about
+     group membership. So for example, setting a person to be community
+     curator in CESNET-Invenio can be done directly in the repository.
+  1. If you use another repository implementation, the integration is not
+     that tight, so refer to the system's documentation for details. In
+     general, at least user identities are handled by Perun (to handle
+     mundane tasks like keeping records of GDPR preferences).
+  1. If you are a repository administrator, you have more systems to handle
+     than just the repository itself. You may have a queue in the request
+     tracker or a mailing list, or administrators who have, e.g. access to
+     the Kubernetes deployment of your system. Those groups of people are
+     typically handled by Perun.
+  1. The infrastructure operator uses Perun to manage groups of
+     administrators with access to majority of the systems (even those
+     you've never heard about).
+
+It is useful to understand basic concepts of Perun user management, here is
+the TL;DR of it:
+  - A _user_ is a representation of a physical person.
+  - The user has various _identities_ in the system, such as the ability to
+    log in through their employer's system (e.g. you can log in through
+    your university) or your social network identity (such as your Google
+    or LinkedIn accounts). Some identities may be rather technical, e.g. an
+    ssh key or Kerberos ticket. The user can have multiple identites.
+  - The user can be a member of _virtual organisations and groups_. Virtual
+    organisations are just groups of users. Groups are, you've guessed it,
+    groups of users. There can be groups in virtual organisations, there
+    can be groups within groups.
+  - Groups and virtual organisations have _managers_ with various defined
+    roles.
+  - A group can be assigned a _service_. The service manages users in the
+    group and propagates them onto the controlled system. For example, if
+    the group manages a mailing list, users in the group and their email
+    addresses will be pushed to the mailing server by an appropriate
+    service.
+  - Users, groups, services, ..., nearly anything in Perun can have
+    _attributes_ that describe some properties of the entity.
+  - Membership of users in groups and virtual organisations may be (and
+    usually is) temporary, life cycle of the membership is handled by
+    _applications_ that can handle either initial application of a user to
+    a group, or prolongation of this membership.
+  - Everything in the previous paragraph is a brutal over-simplification,
+    but it is sufficient for your basic survival.
+
 
