@@ -29,7 +29,7 @@ behind support@eosc.cz), they should know what to do.
 |`cesnet-invenio_developers`|`cesnet-invenio@eosc.cz`       |Developers of CESNET Invenio                          | `VO_repo_operations:rt_queues:cesnet-invenio_developers[_watchers]` |
 |`karantena`                |n/a                            |A queue to flag spam                                  | n/a |
 |`du-support`               |`du-support@cesnet.cz`         |E-infra and NRP storage services/Ceph                 | n/a |
-|?                          |`legal@eosc.cz`                |Legal support of NRP                                  | ? |
+|`einfracz-nrp-compliance`  |`legal@eosc.cz`                |Legal support of NRP                                  | ? |
 |`eosc_cz-support`          |`support@eosc.cz`              |Generic support triaging requests                     | |
 |`nrp-repozitare`           |`nrp.repozitare@eosc.cz`       |Establishing new repositories                         | `VO_repo_operations:rt_queues:nrp-repozitare[-watchers]` |
 |`perun`                    |`perun@cesnet.cz`              |AAI support (Perun, ProxyIdP)                         | n/a |
@@ -41,6 +41,8 @@ Those queues may often be used by repository end users.
 
 |Queue                      |Mail alias                     |Responsibilities                                             | Repository URL                  |Perun groups|
 |---------------------------|-------------------------------|-------------------------------------------------------------|---------------------------------|------------|
+|`nrp-cbird`                |`cbird@e-infra.cz`             |Support for C-BIRD (CzechBioimaging) data repository         | ?                               | `VO_repo_cbird_prod:rt_queues:nrp-cbird[-watchers]` |
+|`nrp-fyzika`               |`physics-support@e-infra.cz`   |End user support of Physics repository                       | http://invenio.fzu.cz/          | `VO_repo_physics_prod:rt_queues:nrp-fyzika[-watchers]` |
 |`nrp-repo_datarepo`        |`nrp-repo_datarepo@eosc.cz`    |Supporting end users of Catch-all Data Repository            | https://datarepo.eosc.cz        | `VO_repo_datarepo_prod:rt_queues:support[-watchers]` |
 |`narodni-repozitar`        |`support@narodni-repozitar.cz` |Supporting end users of the National Repo (for documents)    | https://narodni-repozitar.cz/   | `VO_repo_docsrepo_prod:rt_queues:support[-watchers]` |
 |`nrp-dsw`                  |`support@dmp.eosc.cz`          |Supporting end users of the Data Stewardship Wizard          | https://dmp.eosc.cz/            | `VO_dsw_nrp...`? |
