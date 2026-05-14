@@ -90,38 +90,48 @@ structure of its groups for the purpose of configuring a repository
 instance in the NRP. It is also very beneficial for the repository
 administrator to understand the structure of the groups described below.
 
+### Group structure
+
+Kindly observe the distinction between “group managers” and “group
+membership managers”, those roles differ significantly and should be set
+correctly.
+
 1. Create a virtual organization for managing the instance of repository
   + VO name should follow `VO_repo_repositoryname_test/prod`, example: `VO_repo_nma_prod` for production of the NMA repository
   + set VO managers to: `VO_repo_operations:repo-vo-admins`
-1. Create following groups:
-  + **repository_group_admins** ; Description: Repository user communities admins, Membership managers: repository_group_admins (yes, this group actually manages themselves; also note that we use the membership manager role, not the group manager!)
-  + **repository** ; Description: Management of community membership and role assignment; Membership managers: repository_group_admins
-    - note: there should be a single group named `repository` in the production instance. In testing instances, there may be distinct groups for distinct testing environments, typically  named `repository1` to `repositoryN`
+2. Create following groups:
+  + **repository_group_admins**-- Description: Repository user communities admins, Membership managers: repository_group_admins (yes, this group actually manages themselves; also note that we use the membership manager role, not the group manager!)
+  + **repository**-- Description: Management of community membership and role assignment; Membership managers: repository_group_admins
+    - note there should be a single group named `repository` in the production instance. In testing instances, there may be distinct groups for distinct testing environments, typically  named `repository1` to `repositoryN`
   + **mailing_list** ; Description: mailing_list; Membership managers: repository_group_admins --- FIXME is this a mailing lists for end users?
   + **rt_queues** ; Description: RT queues ; Membership managers: repository_group_admins
-  + **infrastructure** ; Description: S3, k8s, applications ; Group managers: VO_repo_operations:repo-vo-admins (if that group manages the whole VO, then the group manager can be left blank here)
+    - groups for particular RT queues are set as subgroups of rt_queues,
+      typically in pairs (one for web access, one for “-watchers”)
+  + **infrastructure** ; Description: S3, k8s, applications ; Group managers: VO_repo_operations:repo-vo-admins (if that group manages the whole VO, then the group manager can be left blank here). We configure following subgroups:
     - **s3-data** ; Description: S3 data, S3 backups, S3 aai/exports ; Managers from mother group automatically
     - **glitchtip**; Description: Group for Glitchtip user ; Membership managers from mother group automatically
     - FIXME something for Kubernetes?
-1. Configuration of the VO invitation form + notifications
-  + We use the predefined templates form VO_templates - which suits as the latest version for repository invitation forms
-  + Common repository VO, example VO_repo_docsrepo_prod
-    + we copy the main invitation form to the members group including the common notification like - `Created / user`, ...
-    ++ initial and extension aplications set to be approved automatically
-    ++ we do not setup any application module, so far - we do not use it because we will use pre-approved invitation workflow and it can obstruct automatic approvals
-    ++ now we copy the final invitation form to the group `repository` from where it will be distributed to all potential communities groups
-    ++ for the repository group we setup automatic approval for initial and extension applications
-    ++ **last but very important** is to set the notification for the `repository group form` - please put custom notification called `Invitation (preapproved) / user` and fill the body of the notification email as you wish.
-    ++ then add also notification `Mail validation / user` for initial user email validation
-  + in cases when pre-approved invites are not used, FIXME: I don't
-    understand the rest of this item
-Special repository VO, example VO_repo_nma_prod
-      + in generic repositries like `VO_repo_nma_prod` we do not use pre-approved invites, but we wish to allow all authenticated user to login without, checking the groups, communities etc.
-      + here we use only generic invitation form configured on members group, where initial and extension applications are set to automatic
-      + **important** is here to set the invitation form module to `EinfraczEligible` which will together with corect setup of OIDC ensure the user passthrough
-1. Membership expirations
+
+### Configuration of the VO invitation form and membership behaviour
+
+We use the predefined templates form VO_templates where we keep the latest version of repository invitation forms. The configuration depends on whether we use pre-approved invites in the VO or not.
++ Common repository VO with pre-approved invites:
+  + we copy the main invitation form to the members group including the common notification like - `Created / user`, ...
+  + initial and extension aplications set to be approved automatically
+  + we do not setup any application modules; we do not use it because we will use pre-approved invitation workflow and it can obstruct automatic approvals
+  + now we copy the final invitation form to the group `repository` from where it will be distributed to all potential communities groups
+  + for the repository group we setup automatic approval for initial and extension applications
+  + **very important** set the notification for the `repository group form` - please put custom notification called `Invitation (preapproved) / user` and fill the body of the notification email as you wish.
+  + then add notification `Mail validation / user` for initial user email validation
++ in cases when pre-approved invites are not used in the VO:
+  + FIXME this subsection is completely messy
+  + we wish to allow all authenticated user to login without, checking the groups, communities etc.
+  + here we use only generic invitation form configured on members group, where initial and extension applications are set to automatic
+  + **important** is here to set the invitation form module to `EinfraczEligible` which will together with corect setup of OIDC ensure the user passthrough
+
+- Set membership expirations
   + Grace period: 2 Months
-  + Periood: static ; 1.2.
+  + Period: static ; 1.2.
   + General attributes
     - Authentication type : allfed - in attributes for all VO setup in main menu
     - Reply-to email address : fill it with desired addresses
