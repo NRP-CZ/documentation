@@ -1,0 +1,8 @@
+{
+  "title": "Authentication and Authorization Infrastructure",
+  "pages": [
+    "aai",
+    "integrating-repo-systems",
+    "virtual-organisation-setup"
+  ]
+}
