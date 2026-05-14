@@ -25,23 +25,10 @@ specialists who may refer you to AAI specialists when necessary.
 
 # Generic checklist for integrating the repository with AAI
 
-FIXME: this section needs significant reshuffling
-
 Full checklist for integrating a service into NRP AAI follows. It is only
-relevant for you if you integrate a third party service. Otherwise, it only
-serves to scare you here.
+relevant for you if you integrate a third party service. If it not your
+situation, it is just a jump scare for you.
 
-In any case, you, as the repository administrator, must decide on:
-- Repository full name (≤128 characters)
-- Repository short name (≤24 characters; only letters, digits, dot, dash and underscore)
-- Email of the primary technical administrator responsible for operating the repository
-- Name of the institution and department responsible for operating the repository
-- The chosen repository system (e.g. CESNET Invenio, CLARIN-DSpace, ASEP/ARL, etc.)
-- Whether the repository will run on CESNET S3 storage and K8s cluster infrastructure
-- Data your repository needs for access control, if any (like user's academic affiliation)
-- Properties of the storage space for provisioned files (like a URL endpoint for upload)
-
-Afterwards, this information is used by you and/or the repository system provider to:
 - Register the repository in the [AAI Service Registry](https://spadmin.e-infra.cz/auth/requests/new)
 - Create a virtual organization and facility records for the repository in the [AAI Admin GUI](https://perun.e-infra.cz/)
 - Customize the group structure, registration process and email notifications in the [AAI Admin GUI](https://perun.e-infra.cz/)
