@@ -96,10 +96,10 @@ Kindly observe the distinction between “group managers” and “group
 membership managers”, those roles differ significantly and should be set
 correctly.
 
-1. Create a virtual organization for managing the instance of repository
+- Create a virtual organization for managing the instance of repository
   + VO name should follow `VO_repo_repositoryname_test/prod`, example: `VO_repo_nma_prod` for production of the NMA repository
   + set VO managers to: `VO_repo_operations:repo-vo-admins`
-2. Create following groups:
+- Create following groups:
   + **repository_group_admins**-- Description: Repository user communities admins, Membership managers: repository_group_admins (yes, this group actually manages themselves; also note that we use the membership manager role, not the group manager!)
   + **repository**-- Description: Management of community membership and role assignment; Membership managers: repository_group_admins
     - note there should be a single group named `repository` in the production instance. In testing instances, there may be distinct groups for distinct testing environments, typically  named `repository1` to `repositoryN`
