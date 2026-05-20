@@ -2,7 +2,7 @@
   "title": "For Repository Administrators",
   "pages": [
     "repo_admins",
-    "repository_implementations",
+    "repository-implementations",
     "operating-repositories-in-the-nrp",
     "national-metadata-directory",
     "user_management_system",
