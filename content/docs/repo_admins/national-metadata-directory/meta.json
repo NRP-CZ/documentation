@@ -1,6 +1,7 @@
 {
   "title": "National Metadata Directory for Service Administrators",
   "pages": [
+    "exports-to-nma",
     "national-metadata-directory-user-management",
     "national-metadata-directory-editing-records"
   ]
