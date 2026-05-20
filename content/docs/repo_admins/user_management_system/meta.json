@@ -1,8 +1,9 @@
 {
-  "title": "User Management System",
+  "title": "User Management System (AAI)",
   "pages": [
-    "user_management_system",
+    "aai",
+    "integrating-repo-systems",
     "perun-basic-manual",
-    "perun-vo-conventions"
+    "virtual-organisation-setup"
   ]
 }
