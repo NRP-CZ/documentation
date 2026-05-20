@@ -26,7 +26,35 @@ implemented by the developers and/or operators of the repository system.
 
 Current AAI architecture for NRP is described in [the initial architecture document (in Czech)](https://www.eosc.cz/media/3854788/inicialni-architektura-aai-pro-nrp.pdf) (which is definitely not for beginners, you've been warned).
 
-# How does it work for end users?
+# Use Cases of AAI in NRP
+
+As an end-service user, you notice AAI only rarely: often only during
+registration and/or prolongation of your membership in a group. As a
+repository administrator, you should understand basic concepts of the
+system and how it handles users.
+
+Let us start with several **use cases**:
+
+  1. If you use a CESNET-Invenio-based repository, you do not need to
+     interact with Perun directly, as CESNET-Invenio is heavily integrated.
+     It uses Perun as a backend so that Perun keeps all information about
+     group membership. So for example, setting a person to be community
+     curator in CESNET-Invenio can be done directly in the repository.
+  1. If you use another repository implementation, the integration is not
+     that tight, so refer to the system's documentation for details. In
+     general, at least user identities are handled by Perun (to handle
+     mundane tasks like keeping records of GDPR preferences).
+  1. If you are a repository administrator, you have more systems to handle
+     than just the repository itself. You may have a queue in the request
+     tracker or a mailing list, or administrators who have, e.g. access to
+     the Kubernetes deployment of your system. Those groups of people are
+     typically handled by Perun.
+  1. The infrastructure operator uses Perun to manage groups of
+     administrators with access to majority of the systems (even those
+     you've never heard about).
+
+
+# Basic Concepts of AAI
 
 Ideally, a *user* is a representation of a real-world physical person.
 

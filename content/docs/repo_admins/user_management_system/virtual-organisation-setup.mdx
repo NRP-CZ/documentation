@@ -5,19 +5,27 @@ title: Configuration of Virtual Organisations in NRP
 This document describes typical setup of Virtual Organisations for the
 purposes of operating repositories in the NRP.
 
+If you are a repository (or other NRP service) administrator, you surely
+have a virtual organisation (VO) set up for you repository. The VO
+typically handles access to the underlaying infrastructure, various
+supporting services, and often to the repository itself.
+
 ## Scope of the document
 
-CESNET-Invenio based repositories should follow the structure of the
-virtual organisation closely. It should be used for CLARIN-DSpace based
-repositories as well (only the repository group will likely not have
-subgroups as they are not needed there). For alternative
-repository implementations and other services, configure the groups you need.
+Depending on the specifics of your repository implementation and
+deployment, your roles can range from membership management of serveral
+groups in the VO (usually when your repository is operated by the
+infrastructure staff) to full management of the VO (when you operate the
+service yourself).
 
-In all cases, you are strongly encouraged to use conventional group names
-for mailing lists, RT queues, and infrastructure access (e.g. S3,
-Kubernetes) even when the repository is operated by the repository admin
-directly. Sticking to the structure will make supporting the repository
-much easier.
+For services the repository admins operate themselves, setup of the VO has
+been thoroughly discussed when the service was established as it depends on
+the particular situation.
+
+For repositories operated mainly by the infrastructure, such as most of
+CESNET-Invenio, CLARIN-DSpace, and ASEP/ARL instances, we tend to follow
+conventions in the composition of groups and services in the VO to make it
+more manageable.
 
 Setup of the VO itself is done by NRP support staff and this document is
 primarily a reference for them as well as for the repository administrator.
