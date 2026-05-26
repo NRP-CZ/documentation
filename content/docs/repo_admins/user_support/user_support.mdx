@@ -25,7 +25,7 @@ behind support@eosc.cz), they should know what to do.
 
 |Queue                      |Mail alias                     |Responsibilities                                      |Perun groups|
 |---------------------------|-------------------------------|------------------------------------------------------|------------|
-|`nrp-repo_L3`              |`nrp-repo_L3@eosc.cz` and `cesnet-invenio@eosc.cz`    |Running application in the NRP Kubernetes, Developers of CESNET Invenio (see notes below)        | `VO_repo_operations:rt_queues:repo_L3_support[_watchers]` and `VO_repo_operations:rt_queues:cesnet-invenio_developers[_watchers]` |
+|`nrp-repo_L3`              |`nrp-repo_L3@eosc.cz` and `cesnet-invenio@eosc.cz`    |Running application in the NRP Kubernetes, Developers of CESNET Invenio (see notes below)        | `VO_repo_operations:rt_queues:repo_L3_support[_watchers]` |
 |`karantena`                |n/a                            |A queue to flag spam                                  | n/a |
 |`du-support`               |`du-support@cesnet.cz`         |E-infra and NRP storage services/Ceph                 | n/a |
 |`einfracz-nrp-compliance`  |`legal@eosc.cz`                |Legal support of NRP                                  | ? |
@@ -34,7 +34,8 @@ behind support@eosc.cz), they should know what to do.
 |`perun`                    |`perun@cesnet.cz`              |AAI support (Perun, ProxyIdP)                         | n/a |
 
 **Notes:**
-- `cesnet-invenio_developers` queue has been merged with `nrp-repo_L3` as it suits the teams better; all mail aliases are available as listed above. When using the web interface, note that requests for CESNET Invenio developers should be created in the `nrp-repo_L3` queue.
+- `cesnet-invenio_developers` queue has been merged with `nrp-repo_L3` as it suits the teams better; all mail aliases are available as listed above. When using the web interface, note that requests for CESNET Invenio developers should be created in the `nrp-repo_L3` queue
+- note that the groups for handling RT heavily deploy the mechanism of indirect membership. So don't put people directly into them if they already are in a suitable group that is indirectly linked to the RT one.
 
 
 **Specific Repositories and NRP Services for End Users**
