@@ -98,6 +98,20 @@ structure of its groups for the purpose of configuring a repository
 instance in the NRP. It is also very beneficial for the repository
 administrator to understand the structure of the groups described below.
 
+### Basic information for creating a VO
+
+The repository administrator must communicate the following information to
+the repository system specialists so that the NRP DevOps team can configure
+the virtual organisation:
+
+- Full name (≤128 characters)
+- Short name (≤24 characters; only letters, digits, dot, dash and underscore; note that the short name could never be changed!)
+- Email of the primary technical administrator responsible for operating the repository
+- Name of the institution and department responsible for operating the repository
+- Name of the software platform (e.g. CESNET Invenio, CLARIN-DSpace, ASEP/ARL, ...)
+- Will it run on the standardized NRP infrastructure? Yes/No  (i.e. CESNET S3 storage and K8s cluster)
+
+
 ### Group structure
 
 Kindly observe the distinction between “group managers” and “group
