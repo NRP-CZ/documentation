@@ -1,0 +1,116 @@
+---
+title: Authentication and Authorization Infrastructure (AAI) Introduction
+---
+
+This page provides a gentle introduction of the Authentication
+and Authorization Infrastructure (AAI) in the National Repository Platform
+(NRP).
+
+It is intended for repository and service adminstrators to get an overview
+of basic principles. As it is customary in the AAI world, the topic can get
+extremely complex with lots of special cases. Despite necessary
+simplifications, this document should give you an overview of the basics
+sufficient for the repository administrator role.
+
+Repositories and other services in NRP integrate with authentication and
+authorization infrastructure (AAI) to deliver streamlined login process and
+access control to users across NRP. The solution is provided by the [EOSC
+CZ AAI](https://perun.e-infra.cz/) that is integrated with e-INFRA CZ AAI
+for maximum user comfort. The service is powered by [Perun
+AAI](https://perun-aai.org/) software.
+
+In general, repository systems usually use the OIDC protocol
+for authentication, some authorization capabilities
+require API calls if a repository provides these (like integration with computational workflows). It must be
+implemented by the developers and/or operators of the repository system.
+
+Current AAI architecture for NRP is described in [the initial architecture document (in Czech)](https://www.eosc.cz/media/3854788/inicialni-architektura-aai-pro-nrp.pdf) (which is definitely not for beginners, you've been warned).
+
+# Use Cases of AAI in NRP
+
+As an end-service user, you notice AAI only rarely: often only during
+registration and/or prolongation of your membership in a group. As a
+repository administrator, you should understand basic concepts of the
+system and how it handles users.
+
+Let us start with several **use cases**:
+
+  1. If you use a CESNET-Invenio-based repository, you do not need to
+     interact with Perun directly, as CESNET-Invenio is heavily integrated.
+     It uses Perun as a backend so that Perun keeps all information about
+     group membership. So for example, setting a person to be community
+     curator in CESNET-Invenio can be done directly in the repository.
+  1. If you use another repository implementation, the integration is not
+     that tight, so refer to the system's documentation for details. In
+     general, at least user identities are handled by Perun (to handle
+     mundane tasks like keeping records of GDPR preferences).
+  1. If you are a repository administrator, you have more systems to handle
+     than just the repository itself. You may have a queue in the request
+     tracker or a mailing list, or administrators who have, e.g. access to
+     the Kubernetes deployment of your system. Those groups of people are
+     typically handled by Perun.
+  1. The infrastructure operator uses Perun to manage groups of
+     administrators with access to majority of the systems (even those
+     you've never heard about).
+
+
+# Basic Concepts of AAI
+
+Ideally, a *user* is a representation of a real-world physical person.
+
+A user must have at least one *identity*, which means a way to log into the
+federated system using either their institutional/employer credentials
+(e.g. Masaryk University) or even their public social network and/or public
+provider identity (such as Google, Linkedin, Apple, Microsoft, ...). A
+user can have several identities that are *consolidated*--linked together.
+In general, it is strongly recommended to consolidate one's identities.
+
+Note that various identities differ in their trustworthiness, for example,
+anybody can create a Facebook account (and nobody knows who they actually
+are, no way to tell whether they are even a real person or a dog), while it
+is much more involved to become a university employee (they are asked to
+produce a state issued ID during the hiring process).
+
+Identities are supplied to users by *Identity Providers (IdP)* operated by
+universities, companies, and/or public providers. A user logs into the identity provider using local credentials (usually a name and password). An identity is often accompanied with *attributes* that provide further
+details. For example, your university's identity provider may be able to tell the user is their
+employee or their student (and the federation policy requires the identity
+provider to issue factually correct attributes).
+
+Let's discuss how a user can request access to a service. In order to use a NRP
+service, you often encounter following typical use cases (that are far from
+an exhaustive list):
+- some services are publicly available (typically for reading or
+  downloads), no registration needed (such as this documentation),
+- some services require users to self-register and produce certain
+  combinations of attributes related to user's identity to establish their
+  eligibility to access the service,
+- some services require user applications that are sorted out manually.
+In the registration process, the user is legally required to get familiar
+with terms of service, personal data processing statements etc.
+
+From the infrastructure standpoint, access to various services is
+controlled by membership of the user in *Virtual Organisations (VO)* and
+*groups*. VO is just a group of users who are allowed to access a
+particular service. (We often use the terms VO and group interchangeably as
+the difference is quite technical and definitely beyond scope of this
+intro.) A VO is typically divided into groups that represent various roles
+in a user community, e.g. *data curator for canine research*) that
+determines the scope of their access and permitted operations (e.g.
+*canine-related datasets and approving uploads*).
+
+It is useful to know that depending on the system, there may be a slight
+delay between approving user's application (regardless it was automatic or
+manual) and that access to the system is actually available for the user.
+For web-based services, it is often immediate, for storage and
+computational resources, the information must be propagated to a cluster
+and processed, which may take up to an hour (often much less, though).
+
+Group and VO membership may be required to be periodically *renewed* by the
+users, this typically happens on yearly basis. The main purpose of this
+process is to confirm the user is still eligible to access the service in
+question (which is required by the terms of projects that finance the
+infrastructure, note that NRP is *not a public service*).
+
+
+

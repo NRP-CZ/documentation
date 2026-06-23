@@ -1,0 +1,162 @@
+---
+title: Configuration of Virtual Organisations in NRP
+---
+
+This document describes typical setup of Virtual Organisations for the
+purposes of operating repositories in the NRP.
+
+If you are a repository (or other NRP service) administrator, you surely
+have a virtual organisation (VO) set up for you repository. The VO
+typically handles access to the underlaying infrastructure, various
+supporting services, and often to the repository itself.
+
+## Scope of the document
+
+Depending on the specifics of your repository implementation and
+deployment, your roles can range from membership management of serveral
+groups in the VO (usually when your repository is operated by the
+infrastructure staff) to full management of the VO (when you operate the
+service yourself).
+
+For services the repository admins operate themselves, setup of the VO has
+been thoroughly discussed when the service was established as it depends on
+the particular situation.
+
+For repositories operated mainly by the infrastructure, such as most of
+CESNET-Invenio, CLARIN-DSpace, and ASEP/ARL instances, we tend to follow
+conventions in the composition of groups and services in the VO to make it
+more manageable.
+
+Setup of the VO itself is done by NRP support staff and this document is
+primarily a reference for them as well as for the repository administrator.
+The repository administrator needs to understand the structure of the
+virtual organisation.
+
+## Virtual organisations for repository instances
+
+To cover needs of a repository (or other service) in the NRP:
+- there will be a virtual organisation for the production repository
+  instance, and there will be separate VOs for testing and/or staging
+  instances as well,
+- only groups that are necessary (or are extremely likely
+  to become necessary soon) should be configured (aka “don't setup groups
+  just in case”),
+- note that the VO controls access to infrastructure services as well as to
+  the repository itself; therefore, no services shall be provided directly
+  for the `members' group of the VO.
+- The VO will likely need to be set up in steps. For example, should the
+  notifications be redirected to an RT queue, one first has to set up a VO
+  (and to provide a minimal configuration), ask for setup of the RT queue,
+  and then redirect the basic VO contact to the queue. Then one can
+  continue seting up other groups. Always perform a final check that the
+  configuration converged into the required state.
+- In general, auxiliary groups for related services (e.g. mailing lists, RT
+  queues, etc.) should be configured in the *production* Virtual Organisation
+  (except when they are specific to a test instance).
+
+## Actors, groups, limiting permissions
+
+In order to protect the services, use the *principle of minimal necessary
+privileges*:
+- for repositories operated by the NRP staff:
+    - VO administration role should be assigned only to qualified
+    infrastructure personnel.
+    - Group membership management role should be
+    sufficient for the repository administrator (this role cannot change
+    services in the organisation, just manage membership in the groups/VOs),
+    moreover, the repository administrator should be limited to groups related
+    to the repository itself, NOT its infrastructure part.
+- for repository instances where the
+repository administrator has administrative control over the instance itself, the
+repository administrator could be assigned even complete VO management
+privileges.
+- In addition to that, when appropriate, the repository specialists should be assigned an observer
+role in the VO (i.e. can observe full setup of the VO, but cannot change
+anything).
+
+Throughout the setup, we heavily rely on setting repository managers to a
+group and assigning a role to the group. For example, repo-vo-admins is a
+group of administrators that manage group membership in most of the groups.
+DON'T fill group managers in one by one, DO use predefined groups.
+
+In addition to that, we often use the concept of *indirect membership*. In
+simple terms, a group can be filled in by members of another group in the
+same VO. Those are recognisable by an arrow icon in member listing.
+Hovering over the icon in group membership listing reveals where the
+membership originates. Let us give
+an example: say all of your repository admins want to have access to the RT
+system to your repository support queue. It is beneficial to pre-fill the
+group managing RT access with the group of repository admins. Always ask
+yourself: is there an already defined group that contains just the
+identities I need here or a subset of those? Will it always be the case? If
+so, use the relation of the groups to fill that group in.
+
+## Establishing a VO for a NRP repository instance
+
+This section is a checklist to establish a virtual organisation and
+structure of its groups for the purpose of configuring a repository
+instance in the NRP. It is also very beneficial for the repository
+administrator to understand the structure of the groups described below.
+
+### Basic information for creating a VO
+
+The repository administrator must communicate the following information to
+the repository system specialists so that the NRP DevOps team can configure
+the virtual organisation:
+
+- Full name (≤128 characters)
+- Short name (≤24 characters; only letters, digits, dot, dash and underscore; note that the short name could never be changed!)
+- Email of the primary technical administrator responsible for operating the repository
+- Name of the institution and department responsible for operating the repository
+- Name of the software platform (e.g. CESNET Invenio, CLARIN-DSpace, ASEP/ARL, ...)
+- Will it run on the standardized NRP infrastructure? Yes/No  (i.e. CESNET S3 storage and K8s cluster)
+
+
+### Group structure
+
+Kindly observe the distinction between “group managers” and “group
+membership managers”, those roles differ significantly and should be set
+correctly.
+
+- Create a virtual organization for managing the instance of repository
+  + VO name should follow `VO_repo_repositoryname_test/prod`, example: `VO_repo_nma_prod` for production of the NMA repository
+  + set VO managers to: `VO_repo_operations:repo-vo-admins`
+- Create following groups:
+  + **repository_group_admins**-- Description: Repository user communities admins, Membership managers: repository_group_admins (yes, this group actually manages themselves; also note that we use the membership manager role, not the group manager!)
+  + **repository**-- Description: Management of community membership and role assignment; Membership managers: repository_group_admins
+    - note there should be a single group named `repository` in the production instance. In testing instances, there may be distinct groups for distinct testing environments, typically  named `repository1` to `repositoryN`
+  + **mailing_list** ; Description: mailing_list; Membership managers: repository_group_admins --- FIXME is this a mailing lists for end users?
+  + **rt_queues** ; Description: RT queues ; Membership managers: repository_group_admins
+    - groups for particular RT queues are set as subgroups of rt_queues,
+      typically in pairs (one for web access, one for “-watchers”)
+  + **infrastructure** ; Description: S3, k8s, applications ; Group managers: VO_repo_operations:repo-vo-admins (if that group manages the whole VO, then the group manager can be left blank here). We configure following subgroups:
+    - **s3-data** ; Description: S3 data, S3 backups, S3 aai/exports ; Managers from mother group automatically
+    - **glitchtip**; Description: Group for Glitchtip user ; Membership managers from mother group automatically
+    - FIXME something for Kubernetes?
+
+### Configuration of the VO invitation form and membership behaviour
+
+We use the predefined templates form VO_templates where we keep the latest version of repository invitation forms. The configuration depends on whether we use pre-approved invites in the VO or not.
++ Common repository VO with pre-approved invites:
+  + we copy the main invitation form to the members group including the common notification like - `Created / user`, ...
+  + initial and extension aplications set to be approved automatically
+  + we do not setup any application modules; we do not use it because we will use pre-approved invitation workflow and it can obstruct automatic approvals
+  + now we copy the final invitation form to the group `repository` from where it will be distributed to all potential communities groups
+  + for the repository group we setup automatic approval for initial and extension applications
+  + **very important** set the notification for the `repository group form` - please put custom notification called `Invitation (preapproved) / user` and fill the body of the notification email as you wish.
+  + then add notification `Mail validation / user` for initial user email validation
++ in cases when pre-approved invites are not used in the VO:
+  + FIXME this subsection is completely messy
+  + we wish to allow all authenticated user to login without, checking the groups, communities etc.
+  + here we use only generic invitation form configured on members group, where initial and extension applications are set to automatic
+  + **important** is here to set the invitation form module to `EinfraczEligible` which will together with corect setup of OIDC ensure the user passthrough
+
+- Set membership expirations
+  + Grace period: 2 Months
+  + Period: static ; 1.2.
+  + General attributes
+    - Authentication type : allfed - in attributes for all VO setup in main menu
+    - Reply-to email address : fill it with desired addresses
+    - Contact e-mails : fill it with desired address
+    - Registrar URL: https://signup.e-infra.cz/
+
