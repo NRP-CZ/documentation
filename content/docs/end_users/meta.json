@@ -5,6 +5,7 @@
     "catch-all-data-repository-legacy",
     "catch-all-data-repository",
     "national-metadata-directory",
-    "compute"
+    "compute",
+    "end-user-support"
   ]
 }
