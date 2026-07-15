@@ -1,182 +1,231 @@
 ---
-title: Creating Records in the Catch-all Data Repository
+title: Creating Records in the Data Catch-all Repository
 ---
 
-## Specification for the New Release
+This guide explains how to sign in to the Data Catch-all Repository, create a
+record, upload files, provide metadata, configure access, and submit the record
+for publication.
 
-This specification describes basic behaviour of submission workflow in the
-repository for the General community (i.e. all users of the repository
-unless stated otherwise):
+## Before You Start
 
-- all users who are members of appropriate VO can create records
-  (such users are called submitters); this requires registration in the AAI
-  system
-- fair use policy is in place that restricts submitters to create at most 
-  N_FIXME records containing at most M_FIXME bytes of data in at most 
-  K_FIXME files; they need to become members of a special group (handled by user
-  support) to get unlimited access
-- submitters can create a new record using CCMM metadata model and upload
-  files to the record (number and size of files limited by applicable
-  quotas)
-- by submitting data for publishing in the repository, the submitter and the 
-  repository operator conclude the following [Deposit Licence Agreement](FIXME) 
-- submitters retain full ownership of their content, no rights are transferred to 
-  the repository operator
-- submitters shall provide metadata to the fullest extent possible and make every effort 
-  to ensure its accuracy
-- metadata-only records are supported (i.e. records without files)
-- until publication, the record is visible only to the submitter
-- the submitter can create a “share link (preview only)”, i.e. an URL, a
-  recipient of the share link can view the record of metadata and download
-  data files before the record is published (typical use: sending the link to a reviewer). Share links
-  can have limited validity.
-- the submitter can create a “share link with editing”, in addition, it
-  allows the recipient of the link to edit the record with the same
-  permissions as the submitter
-- after clicking the “Save” button, the record is validated against the metadata schema, 
-  and any errors are displayed
-- the submitter can use “advanced check” functionality before submitting the record. In the advanced check, a LLM is triggered to check the metadata and act
-  as a curator, providing recommendations for the submitter to improve
-  quality of the metadata of the record. The LLM is operated on premise in
-  the national infrastructure.
-- DOI policy: by default, records and all their versions are assigned DOIs;
-  the submitter can opt-out from assigning DOI (e.g. for metadata-only
-  records)
-- if a new version of a record with DOI is created, then the new version
-  will get a DOI automatically
-- publishing: after clicking the “Publish” button, the record is published (i.e. it will
-  become publicly available for the whole internet)
+To create and manage records, you must have the appropriate repository
+permissions and be signed in using your institutional identity.
 
-- (for future releases) grace period will be supported for published
-  records that allows to change data files during the period. After the
-  grace period, data files are locked.
+For information about registration, see
+[Getting Access to the Data Catch-all Repository](catch-all-getting-started)
 
-- the record can be published with an embargo: metadata is immediately
-  published, but record's files are hidden until the embargo expires. The
-  files are published after the expiration. (Share links to download the
-  data are still supported for embargoed records as well.)
+## Signing in to the Repository
 
-- restricted records are not supported in the catch-all repository (i.e.
-  records that are never published)
+Browse to the
+[Data Catch-all Repository](https://datarepo.eosc.cz/)
+and sign in using your institutional identity.
 
-## IGNORE THE REST FOR NOW!
+Public records can be searched and viewed without signing in. After signing
+in, you can also access your dashboard, create records, manage drafts, and
+perform actions permitted by your role.
 
+![The Data Catch-all Repository after signing in](/img/nrp/catch-all-data-repository/data-repo2.png)
 
-In this guide describes the Catch-all Data Repository dashboard and the step-by-step process on how to create your record in the catch-all data repository.
+## Creating a New Record
 
+To create a record:
 
-## Logging into the Repository
+1. Select the **+** button in the top navigation.
+2. Select **New record**.
+3. Complete the sections of the record form.
 
-<Callout type="warn" icon="⚠️">
-To be able to log in you need to be registered into virtual organization **[VO_FIXME](catch-all-repository-introduction#register-to-access-and-create-your-very-first-record)**.
-</Callout>
+The form is divided into the following sections:
 
-Browse to the [catch-all repository](https://datarepo.eosc.cz/).
+- **Community and Access**
+- **Upload files**
+- **General information**
+- **Funding**
+- **Alternative identifiers**
+- **Related works**
 
-To manipulate your records and/or handle communities, you need to log in via the **LOG IN** button and select your home institution.
+Fields marked with an asterisk are required.
 
-Naturally, authenticated users can search for records and/or **BROWSE ALL RECORDS**
-in the repository the same way as general public. In addition to that, they
-can handle communities and create new records.
+You can save an incomplete record as a draft. Missing or invalid values are
+highlighted in the form, and the corresponding sections are marked in the
+left-hand navigation.
 
+![Overview of the record creation form](/img/nrp/catch-all-data-repository/record-form-overview.png)
 
-<Callout type="warn" icon="⚠️">
-If you click on **BROWSE ALL RECORDS** you can see all public records. To see your drafts you have to **select the community** where you drafted your record. That is why the number of **results** can differ depending on communities selected.
-</Callout>
+### Community and Access
 
+Use the **Community and Access** section to select the community to which you
+want to submit the record and to configure its visibility.
 
-![new-record](/img/nrp/catch-all-data-repository/data-repo3.png)
+Select **Select a community** and choose the appropriate community.
 
-<Callout type="info" emoji="ℹ️">
-**About communities** <br/>
-Communities represent groups of users. The **General community** is the
-community where new records are created by default.
+Access can be configured separately for the full record and for its uploaded
+files.
 
-As the repository is used by several user groups as a temporary solution
-before their specialised repository is established, you may see other
-communities as well.
+The following configurations are available:
 
-Communities may have specific user sub-groups with specific permissions,
-e.g. to create records, to curate records etc.
+- **Public record and public files** — the metadata and uploaded files are
+  publicly accessible.
+- **Public record and restricted files** — the metadata is publicly
+  accessible, but access to the uploaded files is restricted.
+- **Restricted full record** — access to both the metadata and uploaded files
+  is restricted.
 
-This documentation describes the defaults in the General community, unless
-specified otherwise.
-</Callout>
+Restricted content is not publicly accessible. Access is governed by the
+permissions configured for the record.
 
-## Creation of a New Record
+#### Applying an Embargo
 
-Note that finalised records will **get published** in the Catch-all repository, either immediately, or after the embargo period elapses.
+An embargo can only be applied when the full record or its files are set to
+**Restricted**.
 
-For dataset deposition into the repository, follow those steps:
+To apply an embargo:
 
-![new-record](/img/nrp/catch-all-data-repository/data-repo2.png) 
+1. Set **Full record** or **Files only** to **Restricted**.
+2. Select **Apply an embargo**.
+3. Enter the embargo end date in the **Embargo until** field.
+4. Optionally, describe the reason for the embargo in the
+   **Embargo reason** field.
 
-1. Log in to the [catch-all repository](https://datarepo.eosc.cz/) using you institutional identity.
+The embargo end date is required when an embargo is enabled.
 
-2. Then click on **Upload** button.
+If only the files are embargoed, the record metadata remains publicly
+accessible. The files automatically become publicly accessible when the
+embargo expires.
 
-3. Then you can start to fill in the insert form, which is quite
-   self-explanatory.
+If the full record is embargoed, both the metadata and uploaded files
+automatically become publicly accessible when the embargo expires.
 
-	a) The form is divided into multiple sections. <br/>
-	b) The starred fields are mandatory. <br/>
-	c) In some fields, it is necessary to select a value from a controlled dictionary. If a suitable value is missing, please contact the [catch-all data repository support](catch-all-repository-introduction.mdx#general-information). <br/>
-	d) Check the context help of the fields. <br/>
-	e) Public access to the datasets is controlled with the **Date available** setup, see [access control section](catch-all-repository-access-control#access-embargo-for-published-records). <br/>
+![Configuring an embargo for uploaded files](/img/nrp/catch-all-data-repository/record-files-embargo.png)
 
-4. If you filled in all data fields and there are no errors you can save a draft. Error fields are denoted with red colour.
+### Upload Files
 
-5. Attach the data/files
-	
-	a) The formats of the data/files are not limited. <br/>
-	b) Maximal size of the data/files is limited up to **500 GB**. Contact
-    support if you need bigger datasets (although we would likely try to
-    discourage you from that). <br/>
-	c) You can add descriptions to the individual files (pencil icon under the file name). <br/>
+Use the **Upload files** section to add files associated with the record.
 
-6. Finish the upload by clicking on the green button **Upload file**.
+Files can be added by:
 
-7. Once you finish with inserting you can check your data set and its
-   metadata.
+- dragging them into the upload area;
+- selecting **Browse files**;
+- selecting **Browse folders**.
 
-	a) The blue items are interactive and you can click on them to see other records with the same values. <br/>
-	b) In the left menu you can find [record stage](catch-all-repository-access-control.mdx). <br/>
-	c) In the right panel you can find all available action relating to the records. The list of available actions depends on the [record stage](catch-all-repository-access-control.mdx). <br/>
-	c) For advanced users and machine processing is possible to `View Record Metadata` in json format. <br/>
+Before submitting the record for publication, you must upload at least one
+file. Metadata-only records are not supported in the Data Catch-all
+Repository.
 
-![new-record](/img/nrp/catch-all-data-repository/actions.png)
+The current limits shown in the repository are:
 
-8. Until you `Request Record Approval` you can always `Edit` the draft - change the values or upload data. 
+- a maximum of 100 files per record;
+- a maximum total size of 1,000 GB per record.
 
-	a) While uploading the file **DO NOT FORGET** to finish the upload via click in `Upload file` button. <br/>
-	b) Once you finish uploading **DO NOT FORGET** to save the record. <br/>
+The applicable limits are displayed in the upper-right part of the upload
+section.
 
-9. In case your record has a related publication/paper with DOI identificator, you can attach this paper to your record.
+![Uploading files to a record](/img/nrp/catch-all-data-repository/record-upload-files.png)
 
-	a) Currently **you cannot** attach other types of documents. <br/>
-	b) The steps to attach the paper is as follows: <br/>
-		
-		I. Chose the option "Attach Article". <br/>
-		II. Insert the DOI identificator in the number format (NOT URL), e.g. **10.1108/nlw-09-2015-0068**. <br/>
-		III. The paper metadata will be automatically fetched, please check that is correct and it showed paper which you wish to attach. <br/>
-		IV. Once finished click on "Create Article" button. <br/>
+### General Information
 
-![new-record](/img/nrp/catch-all-data-repository/article.png)
+Use the **General information** section to provide the main descriptive
+metadata for the record.
 
-10. Once you will consider your record draft is finished you can click on **Request Record Approval** button.
+#### DOI
 
-FIXME: this will become just "publish", the checks are performed
-automatically.
+First, specify whether the record already has a DOI:
 
-	a) During this step you can request DOI identificator. <br/>
+- select **Yes, I already have one** and enter the existing DOI; or
+- select **No, I need one** if you need a new DOI.
 
-![new-record](/img/nrp/catch-all-data-repository/doi_request.png)
+Select **Get a DOI now!** to reserve a DOI before publication. The reserved
+DOI can then be included in the uploaded files. The DOI is registered when
+the record is published.
 
-<Callout type="info" emoji="ℹ️">
-**DOI Request** <br/>
-If you are interested in obtaining a permanent DOI identifier, you can request it when submitting the record for approval. In the blue column of the action list, select the option "Submit record for approval." In the next step, the system will ask if you want to assign a DOI, so check the appropriate box. If you have listed multiple publishers in the record, you will be asked to select the primary one. The request is processed at the moment the record is published, and the DOI will be included in the record. **You can freely manipulate the record and files using the edit action until you submit the record for approval. So, make sure to check everything thoroughly. After that, it is no longer possible to make changes to the record without the help of administrators.**
-</Callout>
+![Selecting or reserving a DOI](/img/nrp/catch-all-data-repository/record-general-information-doi.png)
 
+#### Required Metadata
 
-You may be also interested in [details on user roles and record
-life-cycle](catch-all-repository-access-control).
+The required metadata includes:
+
+- **Title**
+- **Resource type**
+- at least one **Creator**
+- **Publication date**
+- **Publisher**
+
+Depending on the record, you can also provide:
+
+- alternative titles;
+- a description and additional descriptions;
+- contributors;
+- version information;
+- languages;
+- keywords and subjects;
+- licences;
+- relevant dates.
+
+Some fields use controlled vocabularies. Select one of the available values
+from the corresponding list.
+
+![Required and optional record metadata](/img/nrp/catch-all-data-repository/record-required-metadata.png)
+
+### Funding
+
+Use the **Funding** section to add grants or other funding associated with the
+record.
+
+Select:
+
+- **Add** to search for and select an existing funding reference;
+- **Add custom** to enter funding information manually.
+
+### Alternative Identifiers
+
+Use the **Alternative identifiers** section to add identifiers other than the
+record's primary DOI.
+
+For each alternative identifier:
+
+1. Enter the identifier in the **Identifier** field.
+2. Select the corresponding identifier scheme in the **Scheme** field.
+3. Select **Add identifier** to add another identifier, if necessary.
+
+### Related Works
+
+Use the **Related works** section to add publications, datasets, software, or
+other resources related to the record.
+
+A related resource can be added in either of the following ways:
+
+- select **Load from DOI** to retrieve its metadata using a DOI;
+- select **Add manually** to enter the related resource information yourself.
+
+## Saving and Validating a Draft
+
+Select **Save draft** to save your progress.
+
+A record can be saved even if it is incomplete. If required information is
+missing or a value is invalid, the repository saves the draft with validation
+feedback.
+
+The validation feedback is displayed:
+
+- in the summary at the top of the form;
+- as numbered indicators next to affected sections;
+- directly next to the missing or invalid fields.
+
+Resolve all validation errors before submitting the record for publication.
+
+## Previewing the Record
+
+Select **Preview** to check how the record and its metadata will appear.
+
+The preview does not publish the record and does not prevent you from
+continuing to edit the draft.
+
+## Submitting a Publication Request
+
+Once all required information has been provided and all validation errors
+have been resolved, select **Submit publish request**.
+
+The subsequent processing of the record depends on the workflow and
+permissions of the selected community.
+
+For more information, see
+[Record Life Cycle and Visibility](catch-all-record-life-cycle).

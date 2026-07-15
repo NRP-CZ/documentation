@@ -1,84 +1,98 @@
 ---
-title: Catch-all Data Repository Introduction
+title: Data Catch-all Repository Introduction
 ---
 
-The [Catch-all Data Repository](https://datarepo.eosc.cz) is a repository for general scientific data.
+The [Data Catch-all Repository](https://datarepo.eosc.cz) is a general-purpose
+repository for research data for which no more suitable disciplinary,
+institutional, or community repository is available.
 
-![Catch-all Logo](https://datarepo.eosc.cz/static/images/logo_en.svg)
+![Data Catch-all Repository logo](https://datarepo.eosc.cz/static/images/logo_en.svg)
 
 ## Mission
 
-The repository is intended for general scientific data that should be
-stored into a repository, but for which no better
-deposition option exists. While the catch-all repository is handled with
-all the care needed to operate a repository, users are advised to
-- prefer using an established topical repository is available for their
-  data in their scientific discipline,
-- get familiar with their scientific community standards and customs in
-  their particular field of study.
+The Data Catch-all Repository provides a place to deposit research data
+that should be preserved and made accessible but cannot be deposited in a
+more suitable specialised repository.
 
-Specific community repositories will usually provide better findability of
-the data and have specific metadata models tailored for the needs of
-particular communities. You can also check the [recommendations to choose a
-repository](../../intro-to-nrp/use-cases#choice-of-a-repository).
+Before depositing data, check whether an established disciplinary,
+institutional, or community repository is available. A specialised repository
+may provide:
 
-If you are positive that no better choice than the catch-all repository is
-available for you, then welcome to the catch-all repository. Make sure to get familiar with its basic principles and limitations.
+- better discovery within the relevant research community;
+- a metadata model tailored to the discipline;
+- specialised curation and preservation services;
+- community-specific policies and guidance.
+
+For more information, see the
+[recommendations for choosing a repository](../../intro-to-nrp/use-cases#choice-of-a-repository).
 
 ## General Information
 
-TL;DR what you need to know:
+The following principles apply to the Data Catch-all Repository:
 
-  - the Catch-all Data Repository is operated by CESNET as part of the [National Repository Platform project](https://www.eosc.cz/en/projects/national-repository-platform-for-research-data-nrp/national-repository-platform)
-    
-  - users of the national e-infrastructure (i.e. staff and students of public universities, the Academy of Sciences, and other research organisations), as well as their direct collaborators, may deposit data there; registration in the identity management system Perun is necessary for data deposition 
-  
-  - [the CCMM metadata model](https://github.com/techlib/CCMM) is used as the internal metadata scheme of the repository
+- The repository is operated by CESNET as part of the
+  [National Repository Platform project](https://www.eosc.cz/en/projects/national-repository-platform-for-research-data-nrp/national-repository-platform).
 
-  - [DOI](https://www.doi.org) persistent identifiers can be assigned to records
-  
-  - by default, data in published records is open access; an embargo period may be set during which the data remains private; once the embargo expires, the data is made available automatically
+- Employees and students of eligible Czech academic and research institutions,
+  their collaborators, and other approved users may deposit research data.
+  Registration and the appropriate repository permissions are required before records can be created.
 
-  - published data is publicly accessible on the internet (without any user authentication) for download
+- The repository uses the
+  [Czech Core Metadata Model](https://github.com/techlib/CCMM)
+  as its metadata model.
 
-  - a set of standard Creative Commons licenses and their variants is available in the repository; 
-    specific licenses can be assigned by the submitters
+- Each record submitted for publication must contain at least one uploaded
+  file. Metadata-only records are not supported.
 
-  - metadata is made publicly available via the web user interface, the OAI-PMH protocol, and API in several standard formats: 
-    Dublin Core, DataCite, CCMM; it is harvested by the National Metadata Directory (NMA) and other search services; 
-    metadata is not considered a work of authorship, therefore its license is CC0 and it is completely free to use
-  
-  - when using the published data, kindly follow the specified license
+- Access can be configured separately for the full record and its uploaded
+  files. A record can have public metadata and public files, public metadata
+  with restricted files, or a restricted full record.
 
-  - there are no restriction on file formats, files can be zipped (which is recommended for large number of small files anyway)
+- An embargo can be applied to restricted files or to the full record.
+  Restricted content automatically becomes publicly accessible after the
+  embargo end date.
 
-  - file previews are available for common file types (ZIP, PDF, JPG, PNG, CSV, TXT)
+- Public records and public files can be accessed without signing in.
 
-  - once a record has been published, its data files can no longer be changed; a new version of the record must be created; should changing the data be necessary, the metadata can be corrected at any time
-    
-  - every record has a canonical DOI registered to represent all its versions, and each individual version has its own unique, persistent DOI; all versions are interlinked in the repository, and the canonical DOI always resolves to the latest version of the record.
+- A record can use an existing [DOI](https://www.doi.org) or request a new
+  DOI. A newly requested DOI is registered when the record is published.
 
-  - data deletion is handled upon user request by user support
+- Standard licences are available in the repository. A custom licence can also
+  be entered when necessary.
 
-  - note that organisations assigning persistent identifiers (e.g. DOIs) require that at least a basic metadata record for a dataset must be kept permanently, even if the data themselves is deleted
+- Metadata of publicly accessible records can be discovered through the
+  repository interface and supported machine-readable interfaces.
 
-  - due to support of diverse file formats, no automatic format conversion is provided
-  
-  - binary consistency of data is regularly checked; data is stored in multiple geographic locations, and the repository frontends also run in multiple locations to ensure high availability
+- The repository accepts different types of research data. Submitters remain
+  responsible for selecting appropriate file formats, describing the data,
+  and providing accurate metadata.
 
-  - retention period: minimum XX_FIXME years; in case of closure, reasonable effort will be made by the repository operator to move the content to an alternative generic repository
+- Communities and community-specific roles and permissions are supported.
+  For more information, see the
+  [Guide for Communities](guide-for-communities).
 
-  - Catch-all Data Repository is part of the European Open Science Cloud (EOSC) environment developed in the Czech Republic for long-term research data retention
-  
-  - [user communities are supported](catch-all-getting-started)
+For instructions on creating and submitting a record, see
+[Creating Records in the Data Catch-all Repository](catch-all-repository-record-creation)
+
+For information about visibility, embargoes, and publication states, see
+[Record Life Cycle and Visibility](catch-all-record-life-cycle).
+
+## Registration and Access
+
+Users must register and receive the appropriate permissions before they can
+create records.
+
+For registration instructions, see
+[Getting Access to the Data Catch-all Repository](catch-all-getting-started)
 
 ## Terms of Service
 
-The repository is operated under the National Repository Platform.
-
-FIXME link to ToS of the infrastructure (under construction).
+The Data Catch-all Repository is operated as part of the National Repository
+Platform. Use of the repository is subject to the applicable service policies
+and terms provided by the repository operator.
 
 ## Contact and User Support
 
-User support for end users of the repository is available through datarepo@eosc.cz.
-
+For assistance with registration, record submission, communities, or other
+repository-related questions, contact
+[datarepo@eosc.cz](mailto:datarepo@eosc.cz).
