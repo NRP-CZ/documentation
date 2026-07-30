@@ -135,6 +135,94 @@ to the user.
 Community owners can manage the community, including inviting users and
 assigning roles.
 
+### AI-Assisted Record Validation
+When a dataset is submitted to your community for review, an AI-powered validation system automatically checks the record for common metadata errors, inconsistencies, and missing information. These checks are based on Large Language Models (LLMs) and are designed to assist human curation.
+
+#### How It Works
+1. A submitter creates a draft record and submits it to your community for review.
+2. The AI validation system automatically analyses the record's metadata (title, abstract, authors, keywords, funding information, technical details, etc.).
+3. The system generates a list of recommendations and potential issues, organised by metadata section.
+4. You can review these recommendations in the **Checks** tab of the submission request.
+5. Recommendations are advisory. They help you identify potential problems, but the final decision to accept, request changes, or reject the record remains with you (the community curator or owner).
+
+
+#### Configuring the Curation Policy
+As a Community Owner, you can define a **Curation Policy** that the AI uses as additional context when checking records submitted to your community. The curation policy you write overrides the default policy 
+documentation.txt
+.
+
+To set the Curation Policy:
+
+Navigate to your community page.
+Go to Settings → Pages.
+Locate the Curation Policy field and enter your policy text.
+Save your changes.
+Writing a Good Curation Policy
+Write your curation policy in normal, natural language — but be specific about what you expect. The AI will use this text to evaluate records, so vague policies will lead to less useful recommendations 
+documentation.txt
+.
+
+Good practices:
+
+Be specific about required fields (e.g., "Each record must include at least 5 keywords").
+Specify formatting expectations (e.g., "Author names must be in 'Surname, First name' format").
+Mention any domain-specific requirements (e.g., "Funding codes must follow the IS VaVaI format").
+State language requirements (e.g., "Abstracts must be provided in both Czech and English").
+Examples of curation policy rules:
+
+"Each dataset must have at least 5 keywords."
+"All authors must have an ORCID iD."
+"Abstracts must be provided in the language matching the record's language code."
+"Licence information must be specified for all datasets."
+"Related publications must be linked via DOI."
+Reviewing AI Checks
+When a record is submitted for review:
+
+Go to Requests in your community tab (or find it in your dashboard) 
+documentation.txt
+.
+Click on the relevant submission request 
+documentation.txt
+.
+Navigate to the Checks tab 
+documentation.txt
+.
+You will see all AI-generated recommendations, organised by metadata section (e.g., metadata.title, metadata.authors.orcid, metadata.license, technical_info, related_resources).
+Each recommendation includes:
+
+Short description — a brief summary of the issue.
+Detailed explanation — a longer description with a suggested fix.
+Manual check needed flag — indicates whether the AI is uncertain and a human reviewer should verify the issue.
+What the AI Checks
+The AI evaluates records against both repository-wide rules and your community's curation policy. Common checks include:
+
+SECTION
+TYPICAL CHECKS
+Title
+Whether the title reflects the record type; presence of unnecessary abbreviations or version numbers
+Abstract
+Language consistency; completeness; redundancy
+Keywords
+Presence of keywords; language consistency; correct formatting (not a single string)
+Authors
+Missing ORCID iDs; duplicate entries; name formatting and diacritics
+Funding
+IS VaVaI code format; missing funding information for grant projects
+Technical info
+Missing file descriptions, methods, formats, or usage conditions
+Related resources
+Missing DOIs for linked publications; version linkage
+Licence
+Missing or outdated licences (e.g., old Creative Commons versions)
+General
+Typos, diacritics issues, empty fields, language mismatches
+
+
+Limitations
+AI checks are advisory and may produce false positives or miss issues. Always use your judgement when reviewing records.
+The AI evaluates based on the information available in the record and the curation policy. If the policy is too vague, recommendations may be less relevant.
+Checks are triggered automatically on record creation and submission. There may be a short delay before results appear.
+
 Changes to the community configuration that are not available through the
 repository interface must be requested from the repository support team at
 [datarepo@eosc.cz](mailto:datarepo@eosc.cz).
