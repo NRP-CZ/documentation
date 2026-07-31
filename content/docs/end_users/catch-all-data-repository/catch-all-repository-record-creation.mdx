@@ -178,21 +178,23 @@ All other identifiers must use the following format:
 The `orcid:` prefix can also be used, although it is not required for ORCID
 identifiers.
 
-The supported prefixes are:
+The following prefixes are supported:
 
-- `orcid`
-- `isni`
-- `gnd`
-- `ror`
-- `scopusid`
-- `researcherid`
-- `czenasautid`
-- `vedidk`
-- `institutionalid`
-- `ico`
-- `doi`
-- `url`
-- `grid`
+| Prefix | Meaning and intended use |
+| --- | --- |
+| `orcid` | **Open Researcher and Contributor ID** — a persistent identifier for an individual researcher or contributor. |
+| `isni` | **International Standard Name Identifier** — identifies the public identity of a person or organization involved in creative or scholarly work. |
+| `gnd` | **Gemeinsame Normdatei (Integrated Authority File)** — an authority identifier used mainly for persons, organizations, events, places, subjects, and works. |
+| `ror` | **Research Organization Registry** — an open persistent identifier for research and funding organizations. |
+| `scopusid` | **Scopus Author ID** — identifies an author profile and the publications assigned to it in Scopus. |
+| `researcherid` | **Web of Science ResearcherID** — identifies a researcher profile in Web of Science. |
+| `czenasautid` | **Czech National Authorities identifier** — identifies an authority record, such as a person or organization, in the Czech National Authorities database. |
+| `vedidk` | **VEDIDK** — identifies a researcher in the Czech Research, Development and Innovation Information System, including RIV and CEP. |
+| `institutionalid` | **Institutional identifier** — a local identifier assigned to a person or organization by an institution, such as a university or research organization. |
+| `ico` | **Czech organization identification number (IČO)** — identifies an economic entity registered in the Czech Republic. |
+| `doi` | **Digital Object Identifier** — a persistent identifier for a digital, physical, or abstract object. It is not normally a person identifier and should only be used where applicable. |
+| `url` | **Uniform Resource Locator** — a web address, for example an official personal profile or organization webpage. |
+| `grid` | **Global Research Identifier Database ID** — a legacy identifier for research organizations. Use it for existing GRID identifiers; ROR is preferred for new organization identifiers. |
 
 For example:
 
@@ -201,6 +203,8 @@ For example:
 - `gnd:118529579`
 - `ror:01ggx4157`
 - `scopusid:12345678900`
+- `ico:12345678`
+- `url:https://example.org/researchers/jane-doe`
 
 ### Funding
 
