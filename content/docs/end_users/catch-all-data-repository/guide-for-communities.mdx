@@ -135,6 +135,46 @@ to the user.
 Community owners can manage the community, including inviting users and
 assigning roles.
 
+### AI-Assisted Record Validation
+When a dataset is submitted to your community for review, an AI-powered validation system automatically checks the record for common metadata errors, inconsistencies, and missing information. These checks are based on Large Language Models (LLMs) and are designed to assist human curation.
+
+#### How It Works
+1. A submitter creates a draft record and submits it to your community for review.
+2. The AI validation system automatically analyses the record's metadata (title, abstract, authors, keywords, funding information, technical details, etc.).
+3. The system generates a list of recommendations and potential issues, organised by metadata section.
+4. You can review these recommendations in the **Checks** tab of the submission request.
+5. Recommendations are advisory. They help you identify potential problems, but the final decision to accept, request changes, or reject the record remains with you (the community curator or owner).
+
+
+#### Configuring the Curation Policy
+As a Community Owner, you can define a **Curation Policy** that the AI uses as additional context when checking records submitted to your community. The curation policy you write overrides the default policy.
+
+To set the Curation Policy:
+
+1. Navigate to your community page.
+2. Go to **Settings → Pages**.
+3. Locate the **Curation Policy** field and enter your policy text.
+4. Save your changes.
+
+<Callout type="info" emoji="ℹ️">
+Write your curation policy in normal, natural language, but be specific about what you expect. The AI will use this text to evaluate records, so vague policies will lead to less useful recommendations. 
+</Callout>
+
+##### Examples of curation policy rules:
+
+- "Each dataset must have at least 5 keywords."
+- "All authors must have an ORCID iD."
+- "Abstracts must be provided in the language matching the record's language code."
+- "Licence information must be specified for all datasets."
+- "Related publications must be linked via DOI."
+
+#### Reviewing AI Checks
+When a record is submitted for review:
+
+1. Go to **Requests** in your community tab (or find it in your dashboard).
+2. Click on the relevant submission request.
+3. Navigate to the **Checks** tab, where you will see all AI-generated recommendations.
+
 Changes to the community configuration that are not available through the
 repository interface must be requested from the repository support team at
 [datarepo@eosc.cz](mailto:datarepo@eosc.cz).
