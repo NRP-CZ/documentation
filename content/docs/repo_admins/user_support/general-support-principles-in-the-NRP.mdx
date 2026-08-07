@@ -1,0 +1,200 @@
+---
+title: General Support Principles in the NRP
+---
+
+## Support in the NRP
+
+This document describes organisation of user support for the NRP, its
+levels, interactions, role of the service desk. Technical implementation
+and projection of established principles into setting of RT queues is
+discussed.
+
+### Actors and Their Roles
+
+For the purpose of establishing user support, we distinguish following
+types of actors:
+  - end users of repositories and various other systems,
+  - repository operators,
+  - infrastructure operators and developers and specialised services,
+  - service desk.
+
+End users of repositories typically seek help with their particular issues.
+
+Repository operators are responsible for operating a particular instance of
+a repository, as described in [the conditions for establishing repositories](../operating-repositories-in-the-nrp/conditions-for-creating-repositories). Repository
+operators are responsible for publishing user documentation of the
+repository and for providing end user support on daily basis.
+
+Infrastructure operators and developers are responsible for providing
+documentation regarding deployment and operation of services in the
+infrastructure. Operators are responsible for technical operation of the
+NRP, data storage, containerised applications and supporting services.
+They are typically contacted by repository operators, not by repository end
+users, though.
+
+Specialised services are responsible for handling topical questions
+regarding establishing and operation of the infrastructure, or related to
+development of the project building it, such as legal, UX, metadata etc.
+They are unlikely to be reached by end users directly, their target
+audience is likely to be repository operators and other infrastructure
+staff.
+
+Service desk is the first point of contact, especially for inexperienced
+users. Contacts to the service desk are also advertised publicly. Service
+desk is primarily responsible for redirecting requests to appropriate
+groups able to solve them, rather than solving the issues by themselves.
+
+### User Support Layers
+
+As user support is typically represented as a layered structure, for the
+purpose of consistency with other documents, we suggest the following:
+
+L0: service desk
+
+L1: repository operators, operators of specialised services intended mainly
+for end users, e.g. Data Stewardship Wizard
+
+L3: anything else
+
+(We lack a meaningful definition of Layer 2, and support for end users
+provided by repository operators has been described as L1 in other
+documents. On the other side of the spectrum, all other services are highly
+specialised.)
+
+
+### Tools for Providing Support
+
+CESNET operates a Request Tracker (RT) system to keep track of user
+requests and how they are handled and resolved. Primary interface is email,
+it is also possible to prepare web forms that submit requests into RT. An
+email sent to a dedicated mail address creates a ticket. A user who created
+the ticket (technically his/her email address) is called a requester.
+
+A (potentially lengthy) email conversation over a topic is kept in a single
+ticket (based on email headers added by the system).
+
+The RT is internally divided into queues into which tickets are sorted. A
+queue is typically dedicated to a single topic and/or infrastructure
+entity. A queue has assigned email addresses, a group of personnel who have
+access to it (“queue handlers”), a set of personnel who receive mail
+(“queue watchers”). Groups of personnel with access to the queues are
+defined in the AAI system (Perun).
+
+Should the personnel handling the queue be unable to resolve the ticket and
+need help from another group, they can
+  - transfer the ticket to a more appropriate queue,
+  - create a “child ticket” to resolve particular sub-issue at hand.
+Those processes are usually called “escalation,” which is just an RT term for
+seeking help by colleagues.
+
+Detailed documentation on using the system is provided in the [basic user
+support page](user_support).
+
+#### RT Implementation and Default Queue Settings
+
+The RT will use the instance operated for the purposes of standard CESNET
+support. There are no technical neither organisational reasons to create a
+separate instance, it would only significantly and unnecessarily complicate
+cooperation and escalation. The NRP should be an integral part of the
+e-infrastructure, including its support system.
+
+Default queue settings are the following:
+  - first response to ticket creation is an auto-reply mail from RT
+    (containing information that the ticket has been recorded and it is
+    assigned a number)
+  - when the ticket is closed, an automated response shall be sent to the
+    requester
+  - when identities are added to email CC, they shall be set as CC for the
+    ticket
+  - the content of the queue (i.e. the texts and other material in the
+    tickets) is visible only to queue handlers
+  - the existence of the queue (i.e. the queue is visible in RT web
+    interface, so that one can create ticket there or escalate a ticket into
+    it) is visible to everybody with access to the RT system
+  - moreover, there are established RT queues whose existence shall be
+    visible to all personnel with access to any of the queues discussed in
+    this document, e.g. queues like du-support, perun, karantena, support.
+
+Settings of a particular queue can differ from those defaults, in that
+case, reasonable and rational justification should be provided by whoever
+requests a particular setting.
+
+#### List of RT Queues, their Email Contacts etc.
+
+KA6.4 will create and maintain a list of RT Queues related to the NRP,
+their mail addresses, their description, and Perun groups controlling them.
+The list shall be available to all personnel with access to any of those
+queues, it would best be available publicly and included in the NRP
+documentation (docs.nrp.eosc.cz).
+
+#### Creating Queues for Repositories, Development Teams, and Other Entities
+
+A repository as well as other services operated within NRP must provide a
+support contact. It is not required for any of those entities to use the RT
+tool, it is nevertheless strongly recommended at least for repositories
+themselves. Using different supporting mechanisms complicates request
+escalation (i.e. a repository administrator would have to create a request
+in the RT and then use their own tools to communicate with the end user,
+acting as a middle man in the process).
+
+RT queues should be provided to all tools and entities requesting that,
+possibly also multiple queues for a single tool or repository, should such
+a distinction make operational sense.
+
+Note that creating a complex queue structure in advance should be
+discouraged, it is much more reasonable in practise to divide a queue in
+two if the need arises, taking this step if and only if the purpose and
+description of each of the resulting queues can be clearly and concisely
+defined.
+
+
+### Presenting the Support to End Users
+
+The first point of contact is the service desk that should be able to
+distribute the request to an appropriate queue to be solved. KA6.4 is
+responsible for creating and maintaining internal service desk
+documentation that supports the staff in classifying the requests.
+
+A repository may publish either a service desk contact as the default (it
+can be expected that vast majority of the requests will just be delayed by
+handling them in the service desk queue, though), or it may publish their
+own L1 queue as the primary contact.
+
+Specialised services (e.g. DSW) should have a dedicated RT queue for end
+user support as well.
+
+### General Observations Regarding Queue Handling and Escalations
+
+In our experience, the users tend to use “the first mail address they
+started using”, it is completely common that long-term Metacentrum users
+contact primarily Metacentrum support even though they are discussing data
+storage issues. Fortunately, most users access just a limited set of
+services, visibility and clear information for the queue handlers is
+nevertheless paramount for them to classify tickets efficiently and to
+redirect them to appropriate queues. (If uncertain, queue handlers can
+always escalate tickets to the service desk, “the service desk should
+always know where to put it.”)
+
+Note that the standard layered support turns a bit fuzzy here, it is
+usually expected that L1 should handle routine questions, L2 is a bit more
+advanced, L3 must know everything. Due to the complexity of the
+infrastructure and division of responsibilities, it is not always the case.
+For example, the queue for a particular repository is the final destination
+that must solve questions regarding issues with deposition in the
+repository: they are the experts who know their own metadata model.
+Escalation would not help at all, as there is nobody else who does. On the
+other hand, if a repository administrator detects a problem with the
+infrastructure, it is completely justified to escalate the problem to the
+infrastructure operator.
+
+
+## List and Description of Established RT Queues and Other Support Channels
+
+List of [established RT queues and other support channels is available on a
+separate page](user_support).
+
+
+## License
+
+Conditions for Creating New and Modifying Existing Domain Repositories in the National Repository Platform © 2026 by D. Antoš et al. is licensed under CC BY 4.0. To view a copy of this license, visit [https://creativecommons.org/licenses/by/4.0/](https://creativecommons.org/licenses/by/4.0/).
+
