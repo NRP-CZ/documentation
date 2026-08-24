@@ -4,12 +4,12 @@ title: FAQs
 
 # How to connect applications to Ceph/S3 storage?
 
-## Workarounds to the CORS OPTIONS request processing error when calling HTTP PUT method
+**Workarounds to the CORS OPTIONS request processing error when calling HTTP PUT method**
 
 In Ceph version "**quincy**" (17.x.), there is a bug in processing CORS OPTIONS request for HTTP PUT method directed to pre-signed URL.  
 When evaluating a CORS OPTIONS request, the system incorrectly uses the default tenant (with an empty name) instead of the tenant of the user, who signed the URL.
 
-### There are 2 workarounds:
+There are 2 workarounds:
 
 1) Create a bucket in the default tenant (with an empty name) with the same name and CORS settings as the original bucket.  
    The CORS OPTIONS request will then use this auxiliary tenant and its CORS settings instead of the original bucket.  
@@ -39,3 +39,7 @@ sense to store individual files.
 - Also consider how you expect the dataset to be cited when deciding on the granularity. If users will 
 always use the same hundred files in their research, it would be annoying for them to all be individual 
 datasets with their own persistent identifiers that they would all need to cite.
+
+### What does a NRP repository need in order to start assigning DOIs?
+
+Repositories are encouraged to join the [Czech National DOI Centre (NC DOI)](https://identifikatory.cz/en/services/nc-doi/), which provides DOI registration through DataCite free of charge for the duration of the CARDS project. NC DOI also provides methodological support at doi@techlib.cz.
