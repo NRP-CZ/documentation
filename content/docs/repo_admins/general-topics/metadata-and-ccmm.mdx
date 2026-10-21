@@ -1,0 +1,85 @@
+---
+title: Metadata and CCMM
+---
+<!--
+  STATUS: draft — content to be reviewed and completed by the owner
+  OPEN:
+    - github.com/techlib/CCMM — plain text, needs a URL
+    - Related: two target pages do not exist yet, currently plain text
+  Do not publish until closed. Delete this block when done.
+-->
+This page covers the metadata profile a repository uses, the vocabularies that go with it, and how metadata reaches the National Metadata Directory.
+
+## What a profile is
+
+The metadata profile is the set of fields a record carries, their types, and the rules that apply to them. It decides what the deposit form, the record page and the search index look like.
+
+Putting a profile into a repository is two things: serialising it into the repository's configuration, and creating the interface for entering and searching metadata.
+
+## CCMM
+
+CCMM is a standard metadata profile — one of the standard profiles available in the NRP, and the basis for harvesting metadata into the National Metadata Directory.
+
+The model is maintained at `github.com/techlib/CCMM`.
+
+The NRP infrastructure handles the standard metadata models — that is, CCMM. For larger and more complex metadata models, the user community or the repository administrator must ensure the capacity for implementation on their side.
+
+## What the repository team does
+
+| Part | What it means |
+|---|---|
+| **Define** the field | What it is, what it accepts, how it is validated. Defined with the NRP specialists and repository specialists. |
+| **Deploy** it in development | Serialise it into the repository's configuration, and build the interface for entering and searching it, in the development environment. |
+| **Verify** it | Confirm it behaves correctly in the form, in search and in the API. The NRP requires cooperation from the repository administrator or technical contact for testing and fine-tuning. |
+| **Map** it | Decide which schema elements are exported to the National Metadata Directory, and how they correspond to CCMM. |
+| **Maintain** it | Keep it working for as long as the repository runs. A system upgrade, a change to CCMM or a change in the system's own limits can break the mapping without anything visible failing — confirming that it still holds is the repository's task. |
+
+Mapping is the repository's task: it is the repository, not the NRP, that defines the metadata schema elements to be exported.
+
+Where a model requires modifications to the repository system or its interface, the repository administrator must have sufficient technical and personnel resources to implement them. These activities and the associated costs are not covered by the NRP. Each repository system has its own limits on how complex a model it can define.
+
+## How this differs by way of joining NRP
+
+Defining, verifying, mapping and maintaining a field are the repository's in every case. What differs is how a change reaches production.
+
+**On a core system**, the team works in the development environment. Moving the change through test and production, and registering the standard metadata profiles, is not the repository's task.
+
+**With your own system, or an integrated one**, there is no such arrangement — operating the system, deploying and registering the profiles, and setting up harvesting into the National Metadata Directory are all the repository's.
+
+## What the NRP provides
+
+In every case, the NRP provides:
+
+- **Tooling** — pre-prepared standardised procedures for working with models, rather than implementation done for you.
+
+- **Documentation and consultations** — including where a model needs changes to the repository system or its interface, and where a model exceeds what a core system can define.
+
+## Controlled vocabularies
+
+The controlled vocabularies used in a repository are either links to authoritative lists, or a custom list of the required terms.
+
+The vocabularies and ontologies a repository uses are registered in the **National Catalogue of Repositories (NKR)**, together with the metadata profile.
+
+## Harvesting into the National Metadata Directory
+
+The **National Metadata Directory (NMD)** is a repository instance designated exclusively for the automated aggregation of metadata from repositories in the NRP.
+
+Two things have to be defined for it: which schema elements are exported, and the technical setup of the harvesting itself. Metadata is harvested in accordance with CCMM.
+
+Metadata exported to the National Metadata Directory must carry a permissive licence that allows unrestricted harvesting and distribution — effectively equivalent to CC0.
+
+> Where the metadata profile is CCMM-compliant, the mapping is handled by the system. Anything outside CCMM has to be verified by the repository administrator.
+
+## Roles
+
+**The repository administrator** is the partner of the infrastructure operator for agreement on the configuration of the repository, and has primary responsibility for the data stored in it and for all the settings. These can be delegated to other individuals.
+
+**The data curator** acts as the metadata specialist: harmonisation of metadata within the repository in line with the established domain-specific profiles, and interoperability with other systems, especially the NMD. The curator also takes part in setting the domain-specific profile. The two roles can be separated, and one person may hold several.
+
+## Related
+
+- **National Metadata Directory for Service Administrators** — where metadata is harvested to
+
+- **National Catalogue of Repositories (NKR)** — where the profile and the vocabularies are registered
+
+- **[Conditions for Creating New and Modifying Existing Domain Repositories in the National Repository Platform](https://docs.nrp.eosc.cz/en/docs/repo_admins/operating-repositories-in-the-nrp/conditions-for-creating-repositories#4-basic-use-cases-of-nrp)** — the division of responsibility, basic use cases of NRP
