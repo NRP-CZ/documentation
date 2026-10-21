@@ -1,0 +1,98 @@
+---
+title: Persistent Identifiers (PID)
+---
+<!--
+  STATUS: draft — content to be reviewed and completed by the owner
+  OPEN:
+    - identifikatory.cz and the Czech National DOI Centre need URLs
+    - Related: Repository Checklist line removed — restore it with a working
+      link and the correct item number
+    - tombstone section: link to Certification and Data Policy not verified
+  Do not publish until closed. Delete this block when done.
+-->
+A repository must be able to assign persistent identifiers to its records. Citations point to them, and they are expected to keep resolving for as long as the record exists.
+
+This is a condition, not a choice. What is a choice is **which identifier**.
+
+| Repository system | Default | Also supported |
+|---|---|---|
+| CESNET Invenio | DOI | other schemes planned |
+| CLARIN DSpace | Handle | DOI |
+| ASEP/ARL | Handle | DOI |
+
+**For an existing repository integrated into the NRP**, the requirement is stated as a capability: the repository must be able to assign identifiers itself. The NRP does not assign them on its behalf.
+
+## Which identifier to use
+
+**DOI** is the practical default. It is what DataCite indexes and what external services expect. Along with the identifier, metadata describing the object is registered — the DOI resolves to a landing page carrying that metadata, and keeps resolving even if the object is moved.
+
+DOI is registered individually for each record, which is why it is not always the right fit:
+
+- **Volume.** Each record needs an identifier registered for it, a landing page that resolves, and metadata kept in sync with the registration agency. With a large number of records that is a great deal to maintain — and the cost grows once registration stops being free.
+
+- **Records that cannot be public at the metadata level.** No DOI can be assigned to these at all — see [When an identifier is assigned](#when-an-identifier-is-assigned).
+
+Where either applies, a different scheme may be more suitable. Which one is available depends on what the repository system supports.
+
+An overview of persistent identifiers and of the national services behind them, including a decision tree for choosing a registration agency, is at **identifikatory.cz** *(in Czech)*.
+
+## Where DOI registration comes from
+
+DOI is registered through a **registration agency** under the International DOI Foundation. For research data the relevant one is **DataCite** — Crossref, the other major agency, serves publishers and publication processes.
+
+A DOI consists of a prefix identifying the organisation that assigns it, and a suffix identifying the object. Repositories are encouraged to join the Czech National DOI Centre, which provides registration through DataCite and issues the prefix.
+
+Registration is free of charge while the CARDS project runs. That is tied to the project, not to the platform — if no follow-up project continues it, registration becomes a cost the repository carries.
+
+The Czech National DOI Centre also provides methodological support: `doi@techlib.cz`.
+
+## When an identifier is assigned
+
+**DOI is assigned at publication.** It has to resolve to a publicly reachable landing page, so it cannot be assigned to a draft.
+
+It also cannot be assigned to a record whose **metadata** are restricted. A record restricted at the file level, or one where access goes through approval or roles, can carry a DOI — its metadata are public even though its content is not. Only a record hidden at the metadata level cannot.
+
+For these records, and where an identifier is needed before publication, a scheme that does not require a publicly reachable landing page can be used — if the repository system supports one.
+
+> Where an identifier is registered for a given record, and at what point in the deposit workflow, is described in your repository's user documentation.
+
+## Withdrawn records and tombstone pages
+
+A DOI cannot be deleted. If a record is withdrawn, its identifier stays — and
+it must keep resolving. What changes is where it resolves to: a **tombstone
+page**, a landing page that describes the item that is no longer available.
+
+This is what makes a citation trustworthy years later. A reader has to be able
+to tell *"this never existed"* from *"this existed and was withdrawn"*.
+
+The page carries the DOI itself — as a URL and in machine-readable form — and a
+full bibliographic citation of the item, so a reader can confirm they found the
+right thing. Alongside that, a statement that the item is unavailable, and why:
+a reason helps, and without one the page answers only half the question.
+
+### How it is done
+
+1. Set the DOI state to **Registered** — it still resolves, but it is no longer
+   indexed in DataCite Commons or the public API.
+2. Create the tombstone page, the same way a normal landing page is created.
+3. Update the URL in the DOI metadata to point at it.
+
+Where a repository cannot create a page specific to the removed item, DataCite
+allows pointing the metadata at a generic page instead. That is a fallback, not
+a solution: a page about the item is what helps the reader.
+
+> **Important.** Withdrawal is a policy decision and is not the same as deletion.
+> Which applies, and when, is set by the repository policy — see
+> [Certification and Data Policy](/en/docs/repo_admins/general-topics/certification-and-data-policy).
+> Avoiding the situation altogether is better: a DOI created by mistake is
+> trouble that stays.
+
+*Reference: [Best Practices for Tombstone Pages](https://support.datacite.org/docs/tombstone-pages) — DataCite*
+
+## Related
+
+- **Repository Checklist** — where the identifier is specified
+
+- **National Catalogue of Repositories (NKR)** — where the repository and its roles are registered
+
+- **Czech National DOI Centre** *(link)*
