@@ -1,56 +1,68 @@
 ---
-title: Security and Monitoring
+title: Sensitive Data and GDPR
 ---
 <!--
   STATUS: draft — content to be reviewed and completed by the owner
   OPEN:
-    - security baseline — document not available yet
-    - contact for reporting an incident — not confirmed
-    - table: "Statistics on operation and usage" — last cell states a purpose,
-      not who does it; needs the actor
-    - CESNET-CERTS, FTAS — expand or link to the glossary
+    - the two References entries need URLs
+    - the three agreement types are named but not described; the source is the
+      Initial AAI architecture
   Do not publish until closed. Delete this block when done.
 -->
-Security and monitoring are a condition of running a repository in the NRP, not an option. What differs is **who carries them** — and that follows from how the repository joins the NRP environment.
+Not everything can be open. Even where research data should be as open as possible, ethical, legal and security limits mean that some of it cannot be — and the FAIR principles acknowledge this.
 
-## How the responsibility divides
+How the NRP treats sensitive data is set out in two documents: the **Charter of the EOSC CZ Working Group Sensitive Data** and the **Initial AAI architecture for sensitive data in NRP**. This page is an overview of both.
 
-The three cases are the basic use cases of the NRP — 4.1, 4.2 and 4.3 in [Conditions for Creating New and Modifying Existing Domain Repositories in the National Repository Platform](https://docs.nrp.eosc.cz/en/docs/repo_admins/operating-repositories-in-the-nrp/conditions-for-creating-repositories#4-basic-use-cases-of-nrp).
+## What makes data sensitive
 
-| Area | 4.1 · On a core system | 4.2 · Your own system on NRP resources | 4.3 · An existing repository, integrated |
-|---|---|---|---|
-| **Cybersecurity monitoring** (CESNET-CERTS, FTAS) | inclusion provided by the NRP | established by the repository | the repository must have appropriate cybersecurity infrastructure |
-| **Penetration testing** | performed by the NRP | collaboration with the cybersecurity team | collaboration with the cybersecurity team |
-| **Incident handling** | handled, with collaboration of the repository | handled, with collaboration of the repository | handled, with collaboration of the repository |
-| **Reporting incidents** | by the repository administrator | by the repository administrator — mandatory | by the repository administrator |
-| **Central logging** | the NRP configures the repository system's logging into the central system | the repository configures logging into the NRP central system | the repository must be logged |
-| **Operational monitoring** | provided by the NRP | the repository's responsibility | at least a basic level, required |
-| **Statistics on operation and usage** | collected by the NRP | collected by the repository | for data collection and statistical purposes |
+- they are intended strictly for a precisely defined group of people;
 
-## Security baseline
+- they require special regulation because of their nature — protected by law, or by trade secrets, contracts or licences;
 
-> **To be added.** Every repository must meet a security baseline. The document that defines it will be linked here. *(awaiting confirmation)*
+- access outside that group is likely to cause significant or damaging consequences — financial, moral, legal, or to health and life.
 
-**Applies to use cases 4.2 and 4.3.** For a repository on a core system (4.1), the baseline is met by the NRP — the repository does not demonstrate it separately.
+The category is decided by the **data owner**, unless the law says otherwise. In practical terms, ordinary protection measures are not enough, and the effort put into protection should be proportionate to the harm disclosure would cause.
 
-## Logging
+## Levels of sensitivity
 
-The repository must be logged. Logging is what makes it possible to analyse a cybersecurity incident — without it there is nothing to analyse.
+| Level | What it covers |
+|---|---|
+| **Low** | Public information and internal data — open research data, method descriptions, unpublished reports |
+| **Medium** | Data under a contractual obligation of protection — donor or student records, intellectual property, contact information |
+| **High** | Data protected by law or an equivalent principle — health, genetic and biometric data, trade secrets, data affecting state security |
 
-For a repository on a core system, the NRP configures the repository system's logging into the central logging system. Where the repository runs its own system, configuring that logging is the repository's task.
+## What it means for a repository
 
-## Reporting an incident
+- **Access** is governed by agreements — data access request, data use agreement, data transfer agreement — and enforced through the AAI. Sensitive data require multi-factor authentication and may require identity vetting.
+Whether a particular dataset needs a data access request, a data use agreement or a data transfer agreement — and what each of them has to contain — is set out in the **Initial AAI architecture for sensitive data in NRP**.
+- **Processing** may have to happen inside a **trusted research environment**, not by downloading the data.
 
-Reporting a cybersecurity incident is the repository's obligation, and it is the repository administrator who reports it. Under use case 4.2 it is stated explicitly as mandatory.
+- **Metadata** — a record hidden at the metadata level cannot carry a DOI.
 
-The administrator also collaborates with the cybersecurity team — during the incident and in handling it afterwards. The same obligation covers security and penetration testing: where testing is not performed by the NRP, the repository takes part.
+- **Policy** — the repository has to state the retention rules and the conditions for removal. Because of the nature of the data, these may differ from the general policy. → [Certification and Data Policy](/en/docs/repo_admins/general-topics/certification-and-data-policy)
 
-> Report a security incident through the channel for it. Do not open a public issue and do not discuss it in a community channel. *(contact for reporting — awaiting confirmation)*
+## Where it is decided
+
+Whether a repository will hold personal or otherwise sensitive data should be decided **before the repository is built**. It affects the metadata model, access control and storage.
+
+## Personal data and GDPR
+
+**Personal data** are any information relating to an identified or identifiable natural person — by reference to a name, an identification number, location data, an online identifier, or factors specific to their physical, physiological, genetic, mental, economic, cultural or social identity. They are protected under **GDPR** and the **Act on the Processing of Personal Data**.
+
+Categories the Working Group treats as sensitive personal data: racial or ethnic origin, political opinions, religious or philosophical beliefs, trade union membership, genetic data, biometric data used to identify a person, data concerning health, and data concerning sex life or sexual orientation.
 
 ## Related
 
-- **Formal Documents Governing NRP Operations** — the CESNET cybersecurity principles, available in Czech and in English, and `legal@eosc.cz` for legal consultations
+- **Licences and Legal** — the licence, and the agreements a depositor and a user enter
 
-- **User Support** — the queues and mail aliases
+- **Persistent Identifiers (PID)** — why a record hidden at the metadata level cannot carry a DOI
 
-- **Establishment and Deployment Checklists** — where the security baseline and monitoring are specified
+- **Metadata and CCMM** — what restricted metadata means for the metadata profile
+
+- **User Management System (AAI)** — authentication, roles and access across the NRP
+
+## References
+
+- **Charter of Working Group Sensitive Data** (EOSC CZ, v1.0, 22 January 2024) — the definition and levels of sensitivity
+
+- **Initial AAI architecture for sensitive data in NRP** (NRP, deliverable 15, v1.0, 31 December 2025, CC BY 4.0) — the use cases, actors, agreements and requirements
