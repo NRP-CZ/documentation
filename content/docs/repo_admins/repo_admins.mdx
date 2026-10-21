@@ -1,45 +1,62 @@
 ---
 title: Documentation for Repository Administrators
 ---
+<!--
+  STATUS: draft — content to be reviewed and completed by the owner
+  OPEN:
+    - ../end_users/end_users — the folder exists, the file was never confirmed
+    - Storage and Containers still lives under operating-repositories-in-the-nrp;
+      the breadcrumb contradicts this page until it is moved to shared-services
+    - links use today's paths; update after the remaining folders are moved
+    - "Core implementation / your own system / NRP environment only" are 4.1,
+      4.2 and 4.3 in the Conditions — align the naming once that page is revised
+    - RIV in the NMD row is not expanded
+  Do not publish until closed. Delete this block when done.
+-->
+This section collects technical documentation for repositories in the National Repository Platform — the repository systems, the services the platform provides, supporting tools, how-tos and policies. It is a reference and a collection of links rather than a guide, written for repository administrators, operators of NRP services, and software developers.
 
+> Questions, errors or missing pieces: [support@eosc.cz](mailto:support@eosc.cz). If you are an end-user of a repository, this section is not for you — we have [documentation for end-users](../end_users/end_users) as well.
 
-<Callout type="warn" icon="⚠️">
-  If you have any questions and/or find any errors or missing pieces, please contact us at support@eosc.cz.
-</Callout>
+## What is your part
 
-If you are just an end-user of a repository, this section is definitely not
-for you, we have a [documentation for end-users as well](../end_users/end_users).
+What you arrange depends on how your repository uses the NRP, and so does where you start. The three situations are 4.1, 4.2 and 4.3 in the [**Conditions for Creating New and Modifying Existing Domain Repositories in the National Repository Platform**](./operating-repositories-in-the-nrp/conditions-for-creating-repositories), which is the binding text — the table below is a summary.
 
-## Overview
+| Your situation | The NRP provides | You take care of | Start with |
+| --- | --- | --- | --- |
+| **Core implementation, highly customised (4.1)** | test and staging environments, production operation, notice of upcoming changes | your custom code in git, its compatibility and maintenance, and asking for releases | [**Repository Checklist**](./operating-repositories-in-the-nrp/repository-checklist) |
+| **Your own repository system, joined to the NRP (4.2)** | shared services: AAI, metadata directory, NKR, identifiers | the system itself, its updates and compatibility, and the integration with the shared services | [**Conditions**](./operating-repositories-in-the-nrp/conditions-for-creating-repositories), then [**Shared Services**](./shared-services) |
+| **NRP environment only (4.3)** | storage, Kubernetes, PostgreSQL | your application, its deployment, security baseline and monitoring | [**Conditions**](./operating-repositories-in-the-nrp/conditions-for-creating-repositories), then [**Shared Services**](./shared-services) |
 
-This section of the site collects documentation relevant for repository
-administrators, e.g.
-- technical documentation of repository implementations,
-- technical documentation for operators and support staff of specific repositories and services in the infrastructure,
-- links to specialised documentation of particular tools, how-tos, and
-  policies,
-- hints for user support,
-- frequently asked questions.
+The Repository Checklist is written for 4.1. For 4.2 and 4.3, additional steps apply and they are set out in the Conditions.
 
-Use the navigation in the Table of Contents.
+## Where to find what
 
-## Scope of this Documentation
+| I want to… | Read |
+| --- | --- |
+| Know how responsibilities are divided between the NRP and the repository | [**Operating Repositories and Services in the NRP**](./operating-repositories-in-the-nrp/operating-repositories-and-services-in-the-nrp) |
+| Learn how a repository on a core system (ASEP/ARL, CESNET Invenio, CLARIN DSpace) is operated | [**Running Core Repositories in the NRP**](./operating-repositories-in-the-nrp/running-repositories) |
+| Find out which rules are in force | [**Formal Documents Governing NRP Operations**](./operating-repositories-in-the-nrp/formal-governing-documents) |
+| Store data and files | [**Storage and Containers**](./operating-repositories-in-the-nrp/nrp-storage-and-containers) |
+| Run an application on the platform — Kubernetes, quotas, PostgreSQL | [**Running Repositories and Applications in the NRP**](./services-and-storage/running_applications) |
+| Set up accounts, virtual organisations and roles | [**User Management System (AAI)**](./user_management_system/aai) |
+| Export metadata, or register the repository | [**National Metadata Directory**](./national-metadata-directory/exports-to-nma) · [**NKR**](./shared-services/national-catalogue-of-repositories) |
+| Assign identifiers and DOIs | [**Persistent Identifiers (PID)**](./shared-services/persistent-identifiers) |
+| Meet the security baseline, or report an incident | [**Security and Monitoring**](./shared-services/security-and-monitoring) |
+| Understand metadata and CCMM, FAIR, licences, sensitive data, certification | [**General Topics**](./general-topics/metadata-and-ccmm) |
+| Ask for help and find out where a request goes | [**User Support**](./user_support/user_support) |
 
-This documentation is intended for repository administrators, operators of
-services in the NRP, and software developers. It is a reference and a
-collection of links to detailed resources than a guide. 
+## Community and materials
 
-If you intend to establish a repository or to operate a
-repository-related service in the NRP, we strongly suggest starting at
-[the guide to create a new repository in the NRP](https://www.eosc.cz/en/services/data-storage/repositories-in-nrp/creating-repositories-in-the-nrp). 
-The documents listed there will give you an easy-to-digest introduction 
-and you will be helped by our staff in the process. You can always come back here for reference and details.
+- [**RepoBuilders Community**](./community/repobuilders) — an informal channel for sharing experience, with meeting notes, templates and methodologies. **For a question that needs an answer, use User Support.** Join on [Discord](https://discord.gg/24CTJayZYD).
 
-## Useful resources for getting started
+- [**FAQs**](./faq) — answers that do not belong to any single page yet: Ceph/S3 and pre-signed URLs, how granular datasets should be, what a repository needs to assign DOIs.
 
-- [Recommendations for Creating Repositories in the NRP 
-Environment](https://www.eosc.cz/media/4054444/recommendations_1-0-2.pdf)/[Doporučení
-pro zakládání repozitářů v NRP](https://www.eosc.cz/media/3886787/doporuceni_0-9-3.pdf)
-- [Repo Builders Workshop recordings and slides](https://www.eosc.cz/en/news-and-events/conference-2025/workshops)
-- How to figure out what users actually need from a data repository? Watch the recording of the webinar [Repozitář očima uživatelů: Od potřeb k funkčnímu řešení](https://www.eosc.cz/novinky-a-akce/kalendar-akci/repozitar-ocima-uzivatelu-od-potreb-k-funkcnimu-reseni) or read the EOSC UX Team's [document with practical tips](https://doi.org/10.71495/x3e9-mf73)
-- [Join the Repo Builders subcommunity on the datasteward.cz Discord server](https://discord.gg/24CTJayZYD)
+- [**How to Contribute to This Documentation**](./documentation-contribution) — where the source lives, and how to report a correction or open a pull request.
+
+### Getting started materials
+
+- **[Recommendations for Creating Repositories in the NRP Environment](https://www.eosc.cz/media/4117266/recommendations_1-0-1.pdf)** / **[Doporučení pro zakládání repozitářů v NRP](https://www.eosc.cz/media/4117265/doporuceni_0-9-3-1.pdf)** — how to keep an overview of the whole process, and not to overlook an essential aspect.
+
+- **[Repo Builders Workshop recordings and slides](https://www.eosc.cz/en/news-and-events/conference-2025/workshops)** — practical sessions from the community.
+
+- What users actually need from a data repository — the webinar **[Repozitář očima uživatelů: Od potřeb k funkčnímu řešení](https://www.eosc.cz/novinky-a-akce/kalendar-akci/repozitar-ocima-uzivatelu-od-potreb-k-funkcnimu-reseni)**, or the EOSC UX Team's **[document with practical tips](https://doi.org/10.71495/x3e9-mf73)**.
