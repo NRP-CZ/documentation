@@ -1,0 +1,102 @@
+---
+title: FAIR Principles
+---
+<!--
+  STATUS: draft — content to be reviewed and completed by the owner
+  OPEN:
+    - CDIF, CARDS, DCAT-AP, CoreTrustSeal — expand or link to the glossary
+    - four groups vs fifteen principles — state the relation explicitly
+    - Related: target pages do not exist yet, currently plain text, not links
+  Do not publish until closed. Delete this block when done.
+-->
+# FAIR Principles
+
+The NRP supports the ideas of data findability, accessibility, interoperability and reusability — FAIR. This page covers what FAIR means for a repository in the NRP, what a repository is expected to do about it, and how far it can be demonstrated.
+
+## FAIR is the repository's responsibility
+
+Supporting FAIR is a property a repository has, not a separate step in the process. It is also not something depositors can deliver on their own.
+
+> Making a repository FAIR does not rest only on the users uploading data files. It rests above all on the infrastructure and the rules of the repositories.
+
+That means the decisions that decide whether data in a repository is FAIR — the metadata profile, the identifiers, the licences, the access rules — are the repository's, and they are made before any record is deposited.
+
+## The principles
+
+FAIR consists of four groups of principles, defined by the research community in 2016 and maintained by the **GO FAIR** initiative:
+
+| Principle         | What it requires                                                                                                                                                                                                                 |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Findable**      | data and metadata have a persistent identifier, are described with rich metadata, the metadata state that identifier, and are registered or indexed in a searchable resource                                                     |
+| **Accessible**    | data and metadata are retrievable by their identifier using a standardised, open and free protocol, with authentication and authorisation where necessary; metadata remain accessible even when the data are no longer available |
+| **Interoperable** | data and metadata use a formal, shared language for knowledge representation, use vocabularies that follow FAIR principles, and include qualified references to other data                                                       |
+| **Reusable**      | data and metadata are richly described, released with a clear and accessible licence, associated with detailed provenance, and meet domain-relevant community standards                                                          |
+
+Each principle has its own requirements on a repository. These are set out, principle by principle, in the NRP analysis of FAIR implementation — available in Czech, see [References](#references).
+
+## How it is interpreted in the NRP
+
+The same analysis sets out, for each of the fifteen principles, the relevant CDIF recommendations, the related CoreTrustSeal requirements, how the principle is met in the NRP, and what it requires of the NRP, of repositories, and of FAIR Implementation Profiles.
+
+**Findable** — a persistent identifier for every dataset, through the National DOI Centre using DataCite; a minimum metadata record, implemented as the DataCite schema with DCAT-AP elements; automatic registration in the National Metadata Directory and harvesting over OAI-PMH; rich domain metadata on top; and signposting from metadata to data.
+
+**Accessible** — HTTPS and OAI-PMH; authentication and authorisation through the NRP's AAI, integrated with identity federations such as eduID.cz; and metadata that outlive the data, with an identifier resolving either to the record or to a tombstone page.
+
+**Interoperable** — machine-readable serialisation in RDF, JSON-LD or XML; controlled vocabularies and ontologies overseen within EOSC-CZ by the CARDS project; and qualified references to other data.
+
+**Reusable** — a licence for every dataset, recorded in the metadata and machine-readable where possible; provenance as a required part of the record; and domain standards supported through FIP profiles.
+
+Supporting tools: **Dataspecer** for metadata schemas, an interactive **licence guide**, granular **access control**, specialised repositories for **sensitive data**, and automated metadata collection from **research instruments**.
+
+What this requires of repositories is set out for each principle in the analysis — the part most relevant to this section. The NRP-side and FIP-side requirements in the same table belong to the platform and to discipline communities.
+
+*Available in Czech.* → **[Analýza a návrh postupů k naplňování FAIR principů v rámci NRP/NDI](https://doi.org/10.71495/5dv6-v116)**
+
+## FAIR Implementation Profiles
+
+FAIR principles deliberately do not recommend any particular technologies, standards or procedures. They are general rules, and how they are met has to be decided largely at the level of individual communities.
+
+A **FAIR Implementation Profile (FIP)** is how a community records those decisions. It lists declared technology choices — **FAIR Enabling Resources** — implementing each of the principles, and is made collectively by the members of a community of practice.
+
+**A community of practice is not the same as a repository.** A FIP can be made for a single dataset, for a collection, or for a whole repository — and a subject community may cover several repositories.
+
+The **FIP Wizard** captures FIPs through a questionnaire, and publishes them as machine-readable open data — nanopublications — so they can be reused by other communities. Two tools go with it: **FIP Matrix**, for comparisons across communities and principles, and **FAIR Implementation Space**, where FIPs and the resources they use can be searched.
+
+An NRP instance of the FIP Wizard is available. It is technically independent of the global nanopublication network, so that control stays at national level; the global nanopublications can still be used and contributed to.
+
+Creating a FIP is optional.
+
+## How far FAIR can be demonstrated
+
+Two kinds of tools exist, and they answer different questions.
+
+**Self-assessment** — a questionnaire with expert-weighted answers. It can be used before a dataset exists, and it is where a FIP can be applied directly.
+
+**Automated assessment** — the tool inspects an existing landing page and its metadata. It can only be used once the dataset is described and stored.
+
+| Type | Tool | What it does |
+|---|---|---|
+| Self-assessment | **FAIR Self-Assessment Tool** (ARDC) | basic assessment for individuals and organisations |
+| | **FAIR Aware** (DANS / FAIRsFAIR) | educational, for researchers |
+| | **Compliance Assessment Toolkit (CAT)** | checklists for organisations and repositories |
+| | **FAIR Data Maturity Model** (RDA) | the framework the tools above use |
+| Automated | **F-UJI** (FAIRsFAIR) | tests 16 of 17 metrics, per-record |
+| | **FAIR-Checker** (ELIXIR/IFB) | builds a knowledge graph from the page, tests it against LOV, OLS, Bioportal |
+| | **FAIR Evaluator** (GO FAIR) | tests machine-readability and accessibility by identifier |
+| | **OpenAIRE Validator** | assesses the repository as a whole, not individual records |
+
+> **Warning.** An automated score is not a measure of data quality, and should not be read as one. Results largely reflect the settings of the repository — its metadata profile and the choices its administrator made — rather than the dataset itself. A low score can mean that data are described in a way the tool could not find, not that they are absent. A 100 % score is not the same as full FAIR compliance.
+
+## Related
+
+- **Metadata and CCMM** — metadata is what FAIR is demonstrated on
+- **Persistent Identifiers (PID)** — the F and A principles depend on them
+- **Licences and Legal** — the licence is what R1.1 requires
+- **Certification and Data Policy** — CoreTrustSeal, which overlaps with FAIR requirements
+- **Establishment and Deployment Checklist** — where the FAIR Implementation Profile is created
+
+## References
+
+- [GO FAIR — FAIR Principles](https://www.go-fair.org/fair-principles/)
+- [FIP Wizard](https://fip.fair-wizard.com/)
+- Wilkinson, M. D. et al. *The FAIR Guiding Principles for scientific data management and stewardship*. Scientific Data 3, 160018 (2016). https://doi.org/10.1038/sdata.2016.18
