@@ -1,0 +1,51 @@
+---
+title: Shared Services
+---
+<!--
+  STATUS: draft — content to be reviewed and completed by the owner
+  OPEN:
+    - four links point to where the pages live today (operating-repositories-in-the-nrp,
+      services-and-storage, user_management_system, national-metadata-directory);
+      update them after the folders are moved into shared-services
+    - NKR and PID do not exist yet
+    - "Running Repositories and Applications in the NRP" vs. the target structure's
+      "Running Core Repositories and Applications" — also nearly identical to
+      "Running Core Repositories in the NRP" in Repository in the NRP
+  Do not publish until closed. Delete this block when done.
+-->
+The NRP provides a set of services that repositories use. Some of them you receive; others are interfaces you supply data to. Which of them apply to your repository depends on how it joins the NRP environment.
+
+## What the platform provides
+
+| Service | What it is |
+|---|---|
+| [**Storage and Containers**](/en/docs/repo_admins/operating-repositories-in-the-nrp/nrp-storage-and-containers) | Where repository data and files live — S3 storage and Kubernetes clusters |
+| [**Running Repositories and Applications in the NRP**](/en/docs/repo_admins/services-and-storage/running_applications) | Running your own application or repository system on the platform — Kubernetes project, quotas, Rancher, `kubectl`, PostgreSQL |
+| [**User Management System (AAI)**](/en/docs/repo_admins/user_management_system/user_management_system) | Accounts, virtual organisations and roles through e-infra AAI and Perun |
+| [**Security and Monitoring**](/en/docs/repo_admins/shared-services/security-and-monitoring) | Baseline requirements, logging, and where incidents go |
+
+## What you supply
+
+These are interfaces the platform harvests from, lists you in, or expects you to assign from. Each page says what you provide to it.
+
+| Interface | What you supply |
+|---|---|
+| [**National Metadata Directory for Service Administrators**](/en/docs/repo_admins/national-metadata-directory/national-metadata-directory) | Metadata mapped to CCMM, exposed for harvesting |
+| **National Catalogue of Repositories (NKR)** | Registration of the repository and of its administrator and curator roles, kept up to date — *page in preparation* |
+| **Persistent Identifiers (PID)** | Identifiers assigned to records — DOI, Handle, or both — *page in preparation* |
+
+> For a repository integrated into the NRP, the three interfaces above are conditions, not options. The scope for each way of joining is set out in **Conditions for Creating New and Modifying Existing Domain Repositories in the National Repository Platform**.
+
+## When you use them
+
+You configure these services while the repository is being built, and keep using them afterwards. What changes is what you need from them:
+
+- **While building** — choosing the metadata profile and the identifiers, setting up roles and access, arranging storage quota and a Kubernetes project.
+
+- **In operation** — raising quota, checking metadata exports, reporting an incident, adding or removing users if not managed via repository.
+
+## Related
+
+- **Repository Checklist** — where each service is needed, by phase
+
+- **General Topics** — metadata, FAIR, licences, sensitive data, certification
