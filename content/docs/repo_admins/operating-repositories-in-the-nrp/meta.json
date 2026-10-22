@@ -1,11 +1,12 @@
 {
   "title": "Intro to Repositories in the NRP",
   "pages": [
+    "conditions-for-creating-repositories",
+    "repo-establishing-recommendations",
     "operating-repositories-and-services-in-the-nrp",
+    "repository-checklist",
     "nrp-storage-and-containers",
     "running-repositories",
-    "running_applications",
-    "formal-governing-documents",
-    "conditions-for-creating-repositories"
+    "formal-governing-documents"
   ]
 }

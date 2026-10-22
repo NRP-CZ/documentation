@@ -1,0 +1,241 @@
+---
+title: Licences and Legal
+---
+<!--
+  STATUS: draft — content to be reviewed and completed by the owner
+  OPEN:
+    - Terms and Conditions "valid from 23 March 2026" — confirm the date
+  Do not publish until closed. Delete this block when done.
+-->
+How a repository functions is based largely on licensing the data it holds. The
+establishing entity must be allowed to store and make the data available, and users must be
+allowed to work with it. This leads to **two-way licensing**:
+
+- the **deposition licence** — what a depositor grants the establishing entity (the founder),
+  so the data can be stored and made available. Agreed at submission;
+
+- the **user licence** — what a depositor grants users of the data, by choosing from what
+  the repository offers. Decided per record.
+
+## The deposition licence
+
+A depositor grants the establishing entity the right to use the content — in particular to
+store it and to make it available to the public. Consent is given by submitting the data,
+in practice by ticking a consent box, with a link to the full text.
+
+> In the interest of legal certainty, active consent should always be required. Terms
+> placed somewhere in the repository are not enough on their own — in a dispute, the
+> establishing entity would have to prove that the depositor had the opportunity to read
+> them.
+
+The depositor declares that they are entitled to grant the licence — that they hold all the
+necessary rights, that they have the consent of all co-authors where relevant, or of an
+employer where the data is a work made for hire, and that no third-party rights are
+infringed. Where the data is a work made for hire, there is no generally valid answer to
+who may grant the licence: it depends on how the institution regulates the exercise of
+copyright. The depositor bears responsibility for the accuracy of the declaration.
+
+### The NRP template
+
+The NRP provides model deposition licence conditions. They may be **taken over in full**,
+**adapted** to the needs of the establishing entity, or **replaced** by an arrangement in
+the repository policy or in a consortium agreement.
+
+
+- **Czech** — [PDF](https://www.eosc.cz/media/3853635/deposit_license_agreement_cs.pdf) · [DOCX](https://www.eosc.cz/media/3853634/deposit_license_agreement_cs.docx)
+
+- **English** — [PDF](https://www.eosc.cz/media/3853637/deposit_license_agreement_en.pdf) · [DOCX](https://www.eosc.cz/media/3853636/deposit_license_agreement_en.docx)
+
+The template deliberately does **not** cover the specific archival conditions of a repository, or the terms on which the establishing entity may remove data. **Those belong in the repository policy.**
+
+> The document has no signature lines or fields identifying the depositor, and that is
+> deliberate. Granting a non-exclusive licence does not require a written form, so consent
+> is given by the act of submitting. The document was previously titled as a licence
+> agreement; the name was changed because it raised questions about missing contractual
+> particulars.
+
+## The user licence
+
+The user licence is what lets users work with the data. It is decided per record: the
+depositor chooses from the licences the repository offers.
+
+Where possible, **the repository should define the range of licences in advance** and let
+the depositor choose between them. Where a range cannot be defined in advance, a depositor
+can supply their own licence — an ad hoc licence.
+
+Giving the depositor a choice between standardised **Creative Commons** licences is the
+sensible solution.
+
+Four things the repository has to ensure:
+
+- **the licence is a required field** — the depositor chooses it as one of the required
+  entries, and cannot leave it unset;
+
+- **the chosen licence is visible** in the record, so that a user can easily find it;
+
+- **it is stated in the metadata**, and in the README for datasets;
+
+- **where a licence can be changed later**, the depositor is warned that the original one
+  does not go away.
+
+> Creative Commons licences are **not revocable** in practice. Once a work is published
+> under one, users may use it under those terms. If a different licence is added later, the
+> work ends up licensed under several licences at once.
+
+## Creative Commons licences
+
+Four elements, combined into six licences, plus CC0:
+
+| Element | Meaning |
+|---|---|
+| **BY** | attribution — the name of the work, the author, the source and the licence must be stated. Present in every CC licence |
+| **SA** | share-alike — a derivative work must carry the same licence |
+| **NC** | non-commercial — the work may not be used for commercial purposes |
+| **ND** | no derivatives — the work may not be modified, combined or otherwise processed |
+
+| Licence | Derivatives | Commercial use |
+|---|---|---|
+| **CC BY** | yes | yes |
+| **CC BY-SA** | yes, under the same licence | yes |
+| **CC BY-NC** | yes | no |
+| **CC BY-NC-SA** | yes, under the same licence | no |
+| **CC BY-ND** | no | yes |
+| **CC BY-NC-ND** | no | no |
+| **CC0** | yes | yes — without any restriction on use |
+
+**Version 4.0 is recommended** — it has no national adaptations and is the same in every
+language, only translated. CC0 has a single version, CC0 1.0 Universal.
+
+### Compatibility
+
+When material under different licences is combined, three elements restrict what is
+possible:
+
+- **ND** — nothing. Material under ND cannot be combined or modified at all.
+
+- **SA** — only material under the same or a compatible SA licence, since the result has to
+  carry that licence.
+
+- **NC** — nothing, if the result is to be used commercially.
+
+### Three points specific to Czech law
+
+**Copyright cannot be waived.** CC0 is written as a waiver — the author gives up their
+rights and the work enters the public domain. Czech law does not allow that, so where CC0
+is applied to a copyright work it is read as a licence without any restriction on use.
+
+**A database is different.** While copyright is non-transferable and cannot be waived under
+Czech law, the special database right can be waived and transferred. CC0 can therefore be
+used to license a database.
+
+**In repository practice, the distinction is not made.** CC0 and CC licences are applied
+without determining which protection regime applies to the data.
+
+## Software
+
+CC licences are not suitable for software. They do not address the specifics of source code
+or patents, and they are not compatible with software licences.
+
+Software uses standardised **FOSS** licences, ranging from permissive to copyleft:
+
+- **permissive** — such as **BSD** and **MIT**, which allow the code to be used and modified
+  and not shared further, including in commercial projects;
+
+- **copyleft** — such as **GNU GPL**, which requires further distribution of modified
+  software to be under the same licence and the source code to be made available.
+
+Where a project combines components under different licences, their licences have to be
+compatible. The European Commission's licence tool and the **License Selector** developed
+within the NRP can help with the choice.
+
+## Licences in the metadata
+
+Every dataset carries its licence, and it forms part of the metadata record. FAIR principle
+**R1.1** requires exactly this: (Meta)data are released with a clear and accessible data
+usage license.
+
+**The licence terms have to be machine-readable** — intelligible to both people and
+automated systems. Standardised formats are recommended:
+
+- **CC REL** — Creative Commons Rights Expression Language
+
+- **Dublin Core** — DC Terms
+
+- **DCAT-AP**
+
+- **JSON-LD**
+
+- **ODRL** — Open Digital Rights Language
+
+- **SPDX** — Software Package Data Exchange
+
+ODRL and CC REL allow a more detailed description of the conditions under which a dataset
+may be used. SPDX is widely supported in software ecosystems and is suitable where the
+metadata relates to software components or open-source data files.
+
+> Metadata exported to the National Metadata Directory **must** have a permissive licence
+> that allows unrestricted harvesting and distribution — effectively equivalent to CC0.
+
+**CC0 is the most common licence for metadata**, recommended together with CC BY. It
+prevents *attribution stacking* — the need to state provenance at every further
+redistribution — and gives the metadata set a single regime.
+
+## What protects research data
+
+There is no single system of legal protection for research data. Depending on the nature of
+the data, different regimes apply; some data may be covered by several at once, and some by
+none at all.
+
+| Regime                     | Applies to                                                                                                                                                                                                 |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Copyright**              | data that are the result of creative activity — a photograph, a computer program, a database                                                                                                               |
+| **Database protection**    | two kinds: copyright, where the selection or arrangement of elements is original; and the **special database right**, where obtaining, verifying or presenting the content involved substantial investment |
+| **Personal data**          | under GDPR and the Act on the Processing of Personal Data                                                                                                                                                  |
+| **Trade secrets**          | commercially significant facts; breach is an act of unfair competition                                                                                                                                     |
+| **Classified information** | information marked with a degree of classification under the Act on the Protection of Classified Information                                                                                               |
+| **Contractual protection** | arising from agreements such as a non-disclosure agreement                                                                                                                                                 |
+
+The regimes do not exclude each other — data may be protected by copyright and be personal
+data at the same time.
+
+Some data are protected by none of these — for example values obtained by measurement with
+meteorological instruments that do not form a database. These are **plain data**.
+
+> **Research data cannot be owned.** There is no property right to them. A researcher has
+> factual control over their data, and loses it at the moment of publication — but holds no
+> legal title. Rights are usually held by the institution. A researcher moving between
+> institutions cannot take the data along.
+
+## Legal aspects
+
+The terms under which a repository operates in the NRP are set out in binding documents:
+
+- **[Terms and Conditions for operating repositories in the NRP](/en/docs/repo_admins/operating-repositories-in-the-nrp/formal-governing-documents)** — valid from 23 March 2026, in Czech and in English;
+
+- **[Contract Proposal between the Repository Administrator and the Infrastructure](/en/docs/repo_admins/operating-repositories-in-the-nrp/formal-governing-documents)** — current version, in Czech.
+
+For questions not answered in [Copyrights and licences](https://www.eosc.cz/media/4251997/autorska-prava-a-licence-prirucka_cz.pdf), contact `legal@eosc.cz`.
+
+## Related
+
+- **Metadata and CCMM** — the licence is a field in the metadata profile
+
+- **FAIR Principles** — R1.1 is the requirement behind this page
+
+- **Certification and Data Policy** — the repository policy, which covers archival conditions and removal, and may replace the deposition licence
+
+- **Sensitive Data and GDPR** — where the licence is not enough and access has to be governed separately
+
+- **National Catalogue of Repositories (NKR)** — where the supported licences are recorded
+
+- **Formal Documents Governing NRP Operations** — the binding terms and conditions
+
+## References
+
+- [Copyrights and licences EN](https://www.eosc.cz/media/4252014/copyrights-and-licences.pdf) [CZ](https://www.eosc.cz/media/4251997/autorska-prava-a-licence-prirucka_cz.pdf) — basic information on copyright and licences, the source for this page
+
+- [Creative Commons — Choose a licence](https://creativecommons.org/choose/)
+
+- [SPDX License List](https://spdx.org/licenses/)
+
+- [Open Data Commons](https://opendatacommons.org/)

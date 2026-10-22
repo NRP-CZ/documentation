@@ -1,0 +1,81 @@
+---
+title: National Catalogue of Repositories (NKR)
+---
+<!--
+  STATUS: draft — content to be reviewed and completed by the owner
+  OPEN:
+    - who creates the catalogue record, and at what point — may be NRP or the
+      repository administrator; not settled
+    - whether the initial upload of records is also done by administrators
+    - field lists in both record tables — working draft, may change
+    - Related: plain text, link once the folders are moved
+    - checklist references are by phase name, not by step number
+  Do not publish until closed. Delete this block when done.
+-->
+The **National Catalogue of Repositories (NKR)** is where repositories in the NRP are registered, together with the entities they relate to — organizations, projects, and the NRP services themselves.
+
+Registration is a condition, not an option. The NRP does not register a repository on its behalf.
+
+> The catalogue lists **entities**. It does not list records — metadata for individual records goes to the National Metadata Directory.
+
+## What the catalogue holds
+
+| Object type | What it is |
+| --- | --- |
+| **Repository** | a repository running in the NRP, or being built for it, kept as a versioned record |
+| **Organization** | an institution involved in a repository or in the platform |
+| **Project** | a project a repository or an entity belongs to |
+| **Schema** | definitions of the object types above, including NRP services such as AAI or the support queues |
+
+Each object has its own persistent identifier.
+
+## What you supply
+
+**The repository** — described under [The record](#the-record).
+
+**Two roles**, each as a natural person, recorded against the repository:
+
+| Role | Recorded as |
+| --- | --- |
+| Repository administrator | first name, last name, e-mail |
+| Data curator | first name, last name, e-mail |
+
+Both people must already exist in Perun. Verifying that the record is linked to that account is part of the step.
+
+## How it is registered
+
+The catalogue holds **one record per repository**. The public level is what makes the repository visible in the catalogue while it is still being built, and it is created from the input you provide. The detailed level is added later.
+
+The record has to be complete before the repository is handed over to production — see the *Going live* phase in the *Repository Checklist*.
+
+From then on, the record is kept up to date by the repository. The repository administrator signs in to the catalogue and edits it directly. Where direct integration between a repository and the catalogue exists, this would happen automatically instead.
+
+## The record
+
+### Public record
+
+| Group | Fields |
+| --- | --- |
+| **Identification** | Repository identifier · Repository name · Repository name in English |
+| **Description** | Description in Czech · Description in English · Keywords in Czech |
+| **Classification** | Repository type · Repository status · Subject classification |
+| **Lifecycle** | Start of production phase · End of production phase |
+| **Relations** | Main contact · Funding project · Organization · Link to another record |
+
+### Detailed record
+
+| Group | Fields |
+| --- | --- |
+| **Access** | Main repository URL · Contact list for the repository administrator |
+| **Policies** | Repository policies · Supported licences |
+| **Organization** | Relevant working group |
+| **Platform** | NRP infrastructure — whether the repository runs on NRP infrastructure |
+| **Capabilities** | Versioning support · Support of related publications and objects |
+
+## Related
+
+- **Repository Checklist** — lists the steps where the administrator and curator roles are entered, and where the record is completed before handover
+
+- **Conditions for Creating New and Modifying Existing Domain Repositories in the National Repository Platform** — where registration is stated as a requirement
+
+- **National Metadata Directory for Service Administrators** — where metadata for records goes

@@ -1,0 +1,121 @@
+---
+title: Repository Checklist
+---
+<!--
+  STATUS: draft — content to be reviewed and completed by the owner
+  OPEN:
+    - scope: written for a core system (4.1); 4.2 / 4.3 steps are only
+      acknowledged, not listed — confirm the wording against Conditions
+    - broken links: row 2.1 points to an Obsidian-internal path
+      (app://obsidian.md/Checklists%20examples); row 2.9 has "…t=vV1Gim…-1more"
+      concatenated into the Figma URL
+    - "confirmation 1.4 in RT" appears in rows 3.4 and 3.5 — looks like a
+      leftover, not a reference to row 1.4
+        - Related: plain text, link once the folder is renamed to repository-in-the-nrp
+    - XLSX attachment — not added
+  Do not publish until closed. Delete this block when done.
+-->
+This page lists what the user group establishing a repository needs to do. It is not a replacement for the conditions or the consultations — it is the list of steps, with the document or the form for each one.
+
+> **Scope.** This checklist is written for a repository on a **core system** — use case 4.1. For the other ways of joining the NRP environment — your own system on NRP resources (4.2) and an existing repository, integrated (4.3) — additional steps are likely to apply. They are set out in the **Conditions for Creating New and Modifying Existing Domain Repositories in the National Repository Platform** — see row 1.1.
+
+Two checklists apply to a repository in the NRP:
+
+- **Establishment** — from preparation to the handover of the production instance.
+
+- **Deployment** — what to verify at each promotion between environments. *Whether it belongs on this page is under consideration.*
+
+## Establishment
+
+### How to read it
+
+**Docs / Action** gives the document, form or template for the step. Where the detail depends on a decision that has not been made yet — the metadata profile, the vocabularies, the identifiers — it links the requirements checklist instead.
+
+**System specific?** marks the steps that differ by core system, and **Format** says what is handed over: a text, a table, a link, or a confirmation in Request Tracker.
+
+**Milestones** close each phase, and are confirmed in Request Tracker — the phase is finished when that confirmation exists.
+
+| # | Task | Docs/Action | System-specific? | Format |
+| --- | --- | --- | --- | --- |
+| **1.** | **PREPARATION** | | | |
+| 1.1 | Read the Conditions for Creating Repositories (OS II) | [EN](https://www.eosc.cz/media/4023899/conditions-nrp.pdf) | N | |
+| 1.2 | Read the Recommendations for Creating Repositories in the NRP | [CZ](https://www.eosc.cz/media/4117265/doporuceni_0-9-3-1.pdf) [EN](https://www.eosc.cz/media/4117266/recommendations_1-0-1.pdf) | N | |
+| 1.3 | Complete the repository-setup questionnaire | [CZ](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fwww.eosc.cz%2Fmedia%2F3921330%2Fcj_sablona.docx&wdOrigin=BROWSELINK) | N | TXT questionnaire |
+| 1.4 | Submit a consultation request and attach the questionnaire | request forms [CZ](https://www.eosc.cz/sluzby/ukladani/repozitare-v-nrp/zalozeni-repozitare-v-nrp) / [EN](https://www.eosc.cz/en/services/data-storage/repositories-in-nrp/creating-repositories-in-the-nrp)<br/>attach the questionnaire | N | contact form that creates an RT ticket with a fixed ticket number for repository progress tracking |
+| 1.5 | Introductory meeting with repository specialists | meeting outline [CZ/EN](https://researchinfracz.sharepoint.com/:w:/s/NRP/IQB7Q4Aa4FXBQqIRDzMzrTB8AVvfrzZ_-uTDuOYBTd3VriQ?e=dZgIxY) | N | online/in person meeting approx. 90 min, recorded<br/>MS Teams / Zoom |
+| 1.6 | Review list of prioritised requirements for a repository | template [EN](https://researchinfracz.sharepoint.com/:x:/s/NRP/IQAdSySSl_F8SqNlLayfHxVcAeS_ia9ha84DjckegRkb-yI?e=C6PSq6) | N | XLS / XLSX / CSV |
+| 1.7 | Follow-up consultations (may include NRP operators / core NRP systems operators) | | N | online/in person meeting, recorded<br/>MS Teams / Zoom |
+| 1.8 | **Milestone:** Select a repository system | | N | confirmation in RT |
+| **2.** | **SPECIFICATION** | | | |
+| 2.1 | Specify the metadata profile for the repository | more details in checklist<br/>Invenio EN | Y | pre-defined format / link to standard |
+| 2.2 | Specify the controlled vocabularies used in the repository | more details in checklist | Y | link to authoritative lists / a custom list of required terms |
+| 2.3 | Provide data sample and metadata for importing into the repository | | Y | link to data sample in pre-defined format<br/>Invenio: JSON |
+| 2.4 | Specify visual identity (logo, colour scheme, name of the repository) — UX team consultation based on capacity | | Y | |
+| 2.5 | Define the user roles available in the repository, incl. relationship to groups, communities, collections if applicable | Invenio: [EN](https://inveniordm.docs.cern.ch/maintenance/architecture/communities/#community-roles) | Y | TXT |
+| 2.6 | Define if or how communities will be used and the rules for assigning users to communities | Invenio: [EN](https://inveniordm.docs.cern.ch/use/communities/)<br/>more details in checklist | Y | TXT |
+| 2.7 | Specify PIDs used in the repository, and how they will be assigned | more details in checklist | Y | TXT<br/>Invenio: DOI default<br/>DSpace & ASEP/ARL: Handle, DOI |
+| 2.8 | Describe the user flow in the system and the main use cases | | N | structured TXT |
+| 2.8.1 | Describe the workflow for data deposition | Invenio: [EN](https://nrp-cz.github.io/docs/customize/workflows)<br/>more details in checklist | Y | TXT / workflow diagram |
+| 2.9 | Specify UI requirements — browse, search, display of individual records (preview, full record), home page, repository administration, other | Invenio: [EN](https://www.figma.com/design/N8sYWwCN3z6Ru267S3d8hx/Components---Semantic-UI--newest-version-?node-id=0-1&t=vV1GimLsvIMD3Jo1-1)<br/>more details in checklist | Y | TXT / wireframe / Figma |
+| 2.9.1 | Required logos and acknowledgment (follow the specific guidelines of your project) | Logo: [CZ](https://www.eosc.cz/o-nas/sablony-eosc-cz#vystupy-projektu) [EN](https://www.eosc.cz/en/about-eosc-cz/templates-eosc-cz)<br/>Acknowledgment: [CZ](https://www.eosc.cz/o-nas/acknowledgement) [EN](https://www.eosc.cz/en/about-eosc-cz/acknowledgement-and-citation) | N | |
+| 2.9.2 | Provide "about" texts for the repository and specify which other websites to link to and how | | N | |
+| 2.9.3 | Recommended format for citing the repository | section Publication outputs: [CZ](https://www.eosc.cz/o-nas/acknowledgement) [EN](https://www.eosc.cz/en/about-eosc-cz/acknowledgement-and-citation) | N | TXT / wireframe |
+| 2.10 | Write down the repository policy — when a record is considered closed, what changes are permissible in a finalized record, and the retention rules by record type | | Y | TXT |
+| 2.10.1 | Specify the conditions for depositing data in the repository (e.g. supported formats, max size) | [EN](https://www.loc.gov/preservation/resources/rfs/index.html) | Y | TXT<br/>list of supported formats as minimum |
+| 2.11 | Define metrics collected about the repository | | Y | TXT |
+| 2.12 | Agree on a deadline for the repository specification | | N | DD/MM/YYYY |
+| 2.13 | Optional — create a FIP | [EN](https://fip.fair-wizard.com/) | Y | FIP Wizard |
+| 2.14 | Select the establishing entity for the repository (natural person or legal organisation) and confirm that the chosen entity accepts the **NRP Terms of Service** and the **Conditions for Establishing Repositories** in the NRP | [Terms of Service](https://www.eosc.cz/media/4211348/20260326_terms_of_service_nrp_en.pdf)<br/>[Conditions: EN](https://www.eosc.cz/media/4023899/conditions-nrp.pdf) | N | confirmation in RT |
+| 2.15 | **Milestone:** Agree to the specification of the repository with the repository system provider and explicit division of responsibilities (community vs infrastructure) | | Y | confirmation in RT |
+| **3.** | **DEVELOPMENT** | | | |
+| 3.1 | Request the NRP operator to prepare a contract, if the repository is established by an organisation or by an individual acting under the auspices of an institution | e-mail to legal@eosc.cz<br/>add to RT as related request | N | |
+| 3.2 | Implement the specified repository features: metadata profiles, controlled vocabularies, workflows, groups/roles, AAI, communities/collections, user interface, visual design, specific functionalities provided by the user group, etc. | Invenio: [EN](https://nrp-cz.github.io/docs/installation/create_instance)<br/>implement in NRP DEV env. | N | GitHub repository output |
+| 3.3 | Prepare sample data for the initial repository import | | N | link to sample data in pre-defined format |
+| 3.4 | Approve the UI mockup | [Invenio – Figma](https://www.figma.com/design/N8sYWwCN3z6Ru267S3d8hx/Components---Semantic-UI--newest-version-?node-id=0-1&p=f) | Y | pictures / Figma<br/>confirmation 1.4 in RT |
+| 3.5 | Optional — verify sanity of the metadata model via entry form mockup | | Y | confirmation 1.4 in RT |
+| 3.6 | Testing of the prototype and report feedback | Invenio: `cesnet-invenio@eosc.cz` | Y | internal document storage |
+| 3.7 | Map non-CCMM metadata to CCMM and set up the harvesting into the NMD | [CZ/EN](https://www.ccmm.cz/) | Y | more details in checklist |
+| 3.8 | Specify a list of licences available in the repository | | Y | TXT |
+| 3.9 | Write deposition licence | Deposit licence [EN](https://www.eosc.cz/en/projects/outcomes-of-the-eosc-cz-initiative#depo_licences) [CZ](https://www.eosc.cz/projekty/vystupy-iniciativy-eosc-cz#depo_licence)<br/>ASEP/ARL: [CZ](https://www.lib.cas.cz/podpora/data/asep/drasep/Licence_vkladatel.pdf) | Y | TXT PDA/UA |
+| 3.10 | Integrate user accounts and roles with e-infra AAI | [EN](https://docs.nrp.eosc.cz/en/docs/repo_admins/user_management_system/aai) | Y | |
+| 3.11 | Create a repository administrator role and record it in the NKR, verify the linkage to Perun | | N | natural person; first name and last name, e-mail |
+| 3.12 | Create a data curator role and record it in the NKR, verify the linkage to Perun | | N | natural person; first name and last name, e-mail |
+| 3.13 | **Milestone:** Confirm final repository prototype | | N | confirmation in RT |
+| **4.** | **GOING LIVE** | | | |
+| 4.1 | Create and share a contact e-mail address for repository users (will be shared as NRP Support for End Users) — optional: created in the **e-infra** domain and connected to RT queues | [NRP Support for End Users: EN](https://docs.nrp.eosc.cz/en/docs/repo_admins/user_support/user_support)<br/>[Setting up RT Queues: EN](https://docs.nrp.eosc.cz/en/docs/repo_admins/user_support/setting-up-queues) | N | sent via RT |
+| 4.2 | Finalize user documentation | [ASEP/ARL CZ](https://asep-portal.lib.cas.cz/)<br/>[Invenio example](https://docs.nrp.eosc.cz/en/docs/end_users/catch-all-data-repository/catch-all-record-life-cycle) | Y | TXT or default templates (Markdown + Git) |
+| 4.3 | Optional — carry out user testing | | N | |
+| 4.4 | Sign a contract with the NRP operator if the repository is established by an organisation or by an individual acting under the auspices of an institution | | N | |
+| 4.5 | Provide required information about the repository into the NKR | | N | |
+| 4.6 | **Milestone:** NRP operator makes the production repository instance available and hands it over to the repository administrator | | N | |
+| 4.7 | Announce the repository to the user community and the public | | N | |
+
+## Deployment
+
+> **Under consideration.** Whether deployment is covered by this checklist at all is not decided. If it is, the section will describe what to verify at each promotion between local, test and production environments.
+
+## Abbreviations
+
+| Abbreviation | Meaning |
+| --- | --- |
+| **AAI** | Authentication & Authorization Infrastructure |
+| **CCMM** | Czech Core Metadata Model |
+| **DOI** | Digital Object Identifier |
+| **EOSC** | European Open Science Cloud |
+| **EOSC CZ** | Czech national initiative implementing the EOSC |
+| **FIP** | Service for FAIR Implementation Profiles development and testing |
+| **L1** | first-level user support, i.e. the front line answering end users' questions |
+| **NKR** | National Catalogue of Repositories (Národní katalog repozitářů, NKR) |
+| **NMD** | National Metadata Directory (Národní metadatový adresář, NMA) |
+| **NRP** | National Repository Platform (Národní repozitářová platforma) |
+| **PID** | persistent identifier |
+| **OS II** | The Open Science II project supports the construction of the National Data Infrastructure (NDI) and the implementation of the EOSC initiative in the Czech Republic |
+| **RT** | Request Tracker (ticket-tracking system) |
+
+## Related
+
+- **Conditions for Creating New and Modifying Existing Domain Repositories in the National Repository Platform**
+
+- **Operating Repositories and Services in the NRP**
+
+- **Formal Documents Governing NRP Operations**

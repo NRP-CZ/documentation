@@ -1,55 +1,82 @@
 ---
 title: Introduction to the National Repository Platform
 ---
-
+<!--
+  STATUS: draft — content to be reviewed and completed by the owner
+  OPEN:
+    - Where to Continue overlaps the link section in overview.mdx; consolidation
+      deferred
+  Do not publish until closed. Delete this block when done.
+-->
 The National Repository Platform (NRP) offers an environment for storing scientific data in data repositories. The platform supports the academic community in storing large data sets equipped with rich descriptive metadata, supporting the ideas of data findability, accessibility, interoperability, and reusability (FAIR).
 
 The NRP offers three generic implementations of repository systems and a plethora of supporting tools, e.g. tools for data management planning, handling metadata, licensing, automated metadata collection, and many others.
 
-The scientific community thus obtains tools to safely store, manage, and share their data while keeping full control over access to the data and possible publication. The repositories be created based on scientific community needs, a catch-all repository is available for long-tail users.
+The scientific community thus obtains tools to safely store, manage, and share their data while keeping full control over access to the data and possible publication. Repositories can be created based on scientific community needs; a catch-all repository is available for long-tail users.
 
-
-<Callout type="warn" icon="⚠️">
-  For general inquiries about the infrastructure, kindly refer to [EOSC CZ Contact page](https://www.eosc.cz/en/about-eosc-cz/contact).
-</Callout>
-
-
-
+> For general inquiries about the infrastructure, refer to the [EOSC CZ Contact page](https://www.eosc.cz/en/about-eosc-cz/contact).
 
 ## What is the NRP
 
 The NRP is:
+
 - distributed geographically throughout the Czech Republic,
+
 - multi-tenant, i.e. it contains many repositories tailored for particular user groups,
-- a system for repository instantiation, it means repositories can be built from pre-fabricated components “as a service”.
+
+- a system for repository instantiation — repositories can be built from pre-fabricated components "as a service".
 
 ## What is a Repository
 
 A repository is a technical, personal, and process solution for long-term storage and publication of citable digital objects.
 
 Less formally, repositories can be characterised as follows:
-- systems for storing data along with rich descriptive metadata,
-- supporting FAIR principles,
-- equipped with web interfaces and APIs for machine access,
-- bearing responsibility for stored data (organisational as well as technical),
-- serving to store “citable data sets and documents”.
 
-By “citable”, we mean that the repository offers guarantees that data sets and documents have not been altered after they are marked as permanent. Practical implementation depends on the repository, but the goal is to make research replicable. Note this requirement doesn't stop users from correcting errors, there are ways of error correction that keep track of the change, such as including a corrected dataset or a patch file for the original one.
+- systems for storing data along with rich descriptive metadata,
+
+- supporting FAIR principles,
+
+- equipped with web interfaces and APIs for machine access,
+
+- bearing responsibility for stored data (organisational as well as technical),
+
+- serving to store "citable data sets and documents".
+
+By "citable", we mean that the repository offers guarantees that data sets and documents have not been altered after they are marked as permanent. Practical implementation depends on the repository, but the goal is to make research replicable. Note this requirement doesn't stop users from correcting errors — there are ways of error correction that keep track of the change, such as including a corrected dataset or a patch file for the original one.
 
 ## Repository Implementations in the NRP
 
-The platform hosts repositories built using several frameworks (software
-implementations), including:
+The platform hosts repositories built using several frameworks (software implementations), including:
 
-* CESNET Invenio: a digital repository software based on Invenio RDM, provided by CESNET,
-* CLARIN DSpace: a digital repository software based on DSpace, provided by LINDAT/CLARIN,
-* ASEP/ARL: a digital repository software used by the Czech Academy of Sciences.
+- **CESNET Invenio**: a digital repository software based on Invenio RDM, provided by CESNET,
+
+- **CLARIN DSpace**: a digital repository software based on DSpace, provided by LINDAT/CLARIN,
+
+- **ASEP/ARL**: a digital repository software used by the Czech Academy of Sciences.
 
 Alternative repository implementations can be run in the infrastructure as well, provided they can be operated within Kubernetes containers and store their data into Ceph/S3 interface.
 
+## How to Get a Repository
+
+A repository can join the NRP environment in three ways. The scope of what the infrastructure provides — and what remains the responsibility of the repository administrator — differs for each:
+
+- built with a core repository system,
+
+- built on NRP resources without a core repository system,
+
+- an existing repository integrated into the NRP.
+
+See [Repositories in the NRP](https://www.eosc.cz/en/services/data-storage/repositories-in-nrp) on eosc.cz for the conditions, the detailed scope of each scenario, and how to request an initial consultation.
 
 ## Myths and Misconceptions about Repositories
 
 - Contrary to popular belief, storing data in a repository doesn't mean it is published. In fact, publication of data is always in the hands of the user and the user's community, and can be controlled with high precision.
+
 - The NRP doesn't contain processing environments. Computation facilities are available elsewhere in the e-infrastructure, though, e.g. MetaCentrum or IT4I.
 
+## Where to Continue
+
+| You are | Go to |
+| --- | --- |
+| Looking for data, or depositing it | For End Users |
+| **Building, running or operating a repository** | For Repository Administrators |
