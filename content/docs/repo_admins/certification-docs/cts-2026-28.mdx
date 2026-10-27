@@ -1,0 +1,124 @@
+---
+title: Core Trust Seal 2026--28
+---
+
+While majority of Core Trust Seal (CTS) requirements depends solely on
+settings and policies of a particular repository, there are several
+requirements that discuss the underlaying technical infrastructure.
+
+This document answers those questions based on [CTS requirements
+2026--28](https://www.coretrustseal.org/why-certification/requirements/),
+namely sections R14 to R16. For those, we provide commentary on internal
+workings of the infrastructure and links to appropriate documentation.
+
+Conventions: texts _in italics_ are expected to be discussed further based on a
+particular repository implementation.
+
+## R14. The repository applies documented processes to ensure data and metadata storage and integrity.
+
+### Processes and documents to ensure that the repository staff have a clear understanding of all storage locations and how they are managed.
+
+[Description of the storage infrastructure operated by
+CESNET](../operating-repositories-in-the-nrp/nrp-storage-and-containers),
+describing the concept of “virtually reliable S3 storage”.
+
+### The repository’s strategy for multiple copies.
+
+See above.
+
+### The risk management techniques used to inform the strategy.
+
+Based on ISO 27001 risk analysis.
+
+### Procedures for handling and monitoring deterioration of storage media.
+
+Storage media quality is monitored during standard Ceph cluster operation by the
+storage layer. Should disk errors or disk outages occur, Ceph relocated
+affected data to healty disks.
+
+### Procedures to ensure that data and metadata are only deleted as part of an approved documented process.
+
+_This depends on the repository implementation rather than the storage
+layer._
+
+FIXME: CESNET-Invenio?
+
+### Any checks (i.e. fixity checks) used to verify that a digital object has not been altered or corrupted from deposit to use.
+
+Ceph provides two basic mechanisms to ensure data fixity: when data is
+split to blocks and written to disks, each block is provided with a
+checksum and the checksum is checked whenever the block is read and also
+during periodic data checks (deep scrubbing). Should a block be damaged, it
+is replaced with a block from another replica.
+
+The other mechanism is ETags that provide checksums for objects and/or
+their parts in case of multipart uploads.
+
+_Finally, the repository software itself provides checksums._
+
+FIXME: CESNET-Invenio?
+
+
+## R15. The repository is managed on well-supported operating systems and other core infrastructural software and hardware appropriate to the services it provides to its Designated Community.
+
+
+### The repository software used for deposit, curation, preservation and access management. Whether it is community supported, open source, or locally developed.
+
+_Depending on particular repository implementation._
+
+CESNET-Invenio is a CESNET-maintained fork of InvenioRDM developed by CERN
+and a community of other institutions.
+
+### Any IT service management approach followed and the functions this approach specifies (e.g. systems documentation, software inventories, code repositories, infrastructure development planning).
+
+_Depending on particular repository implementation._
+
+### Any international, community or other technical infrastructure standards in place and how compliance is monitored.
+
+_Depending on particular repository implementation._
+
+CESNET-Invenio is not tested on animals.
+
+### The version control systems used for repository generated software.
+
+CESNET-Invenio: Git.
+
+### Measures taken to ensure that availability, bandwidth, and connectivity are sufficient to meet the needs of the Designated Community.
+
+The repository is operated in the scope of the national e-infrastructure
+for research and development. The infrastructure has established procedures
+to communicate with the user community, such as CESNET/e-INFRA CZ user forum.
+
+### Processes in place to monitor and manage the need for technical change, including in response to the changing needs of Preservation (R10), and Reuse (R13) by the Designated Community.
+
+Dtto.
+
+
+## R16. The repository protects the facility and its data, metadata, products, services, and users.
+
+
+### The levels of security required for different data and metadata and environments, and how these are supported.
+
+Level of security is anually evaluated during ISO 27001 risk assesment
+procedures.
+
+### The IT security system, employees with roles related to security (e.g. security officers), and any risk analysis approach in use.
+
+IT security is described in the document [https://www.cesnet.cz/en/cybersecurity](https://www.cesnet.cz/en/cybersecurity). CESNET operates s CSIRT team and a forensic laboratory. Risk assesment is performed anually within the ISO 27001 framework.
+
+### Measures in place to protect the facility. How the premises where digital objects are held are secured.
+
+CESNET premises are secured using card access systems. Details of access to
+datacenters used to host the infrastructure depends on local conditions
+that are described in particular housing contracts with the proprietors of
+the data centers. In all cases, the data center is a facility with
+controlled access, typically using RFID access cards.
+
+### Any security-specific standards the repository references or complies with.
+
+ISO 27001, see [https://www.cesnet.cz/en/cybersecurity](https://www.cesnet.cz/en/cybersecurity) for details.
+
+### Any authentication and authorization procedures employed to securely manage access to systems in use.
+
+Access to operated systems is controlled using the [e-INFRA AAI](https://aai.cesnet.cz). The AAI system will be rebranded CESiD during 2027.
+
