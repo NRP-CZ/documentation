@@ -8,28 +8,34 @@ National Repository Platform who need to export metadata to the [National Metada
 There are several use cases.
 
 For repositories in the NRP based on standard implementations:
-  - the repository publishes an OAI-PMH endpoint that must have a ccmm-xml metadataPrefix.
-    This functionality is ready in standard repositories with supported metadata schemas
-  - repository administrator must notify the NMA administrator to set up metadata harvests as described below
-  - repository administrator gets access to a community in NMA to be able to control the
+  - The repository publishes an OAI-PMH endpoint that must have a ccmm-xml metadataPrefix.
+    This functionality is ready in standard repositories with supported metadata schemas.
+  - Repository administrator must notify the NMA administrator to set up metadata harvests as described below.
+  - Repository administrator gets access to a community in NMA to be able to control the
     harvests and see their status.
  
 For repositories in the NRP based on alternative implementations that can not export ccmm-xml natively:
-  - the repository must export an OAI-PMH endpoint with a metadataPrefix that should 
+  - The repository must export an OAI-PMH endpoint with a metadataPrefix that should 
     provide as complete metadata as feasible.
-  - repository administrator will create and publish a XSLT transformation
+  - Repository administrator will create and publish a XSLT transformation
     capable of transforming XML from the given metadata prefix to the ccmm-xml as required
-    by NMA. The XSLT transformation must be publicly available on a stable HTTPS URL.
+    by NMA. The XSLT transformation must be publicly available on a stable HTTPS URL under the control of the repository being harvested.
+  - [Transformations between CCMM versions (CCMM 1.1 <=> CCMM 2.0)](https://github.com/techlib/CCMM-utils/tree/main/version-transformation) are provided and supported by NTK, not the repository. 
+    However, the transformations are both lossy so they should be used only in the meantime until the newer version is fully supported.
+    In case of questions or feedback regarding the XSLT transformations, contact metadata@techlib.cz.
+
+See the [National Metadata Directory Roadmap](/end_users/national-metadata-directory/roadmap) for more details regarding supported CCMM versions and other planned features.
 
 ## Steps for Adding a Repository to be Harvested by the NMA
 
-1. The administrator of the candidate repository contacts the NMA team via the support email channel.
+1. The administrator of the candidate repository contacts the NMA team via email [support@eosc.cz](mailto:support@eosc.cz).
    
 2. They provide:
    - OAI endpoint
    - setspec
    - metadataPrefix
    - Optional HTTPS URL of the XSLT transformation (stored either within the repository or on an external server, e.g., GitHub)
+   - To which email address notifications regarding harvests should be sent.
 
 3. The NMA team will:
    - Spin up a test NMA repository
