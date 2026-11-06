@@ -4,7 +4,7 @@ title: Conditions for Creating New and Modifying Existing Domain Repositories in
 
 L. Matyska and the EOSC-CZ, CARDS, and NRP Projects 
 
-Version 3.4 
+Version 3.5
 
 ## 1. Terminology 
 
@@ -16,7 +16,7 @@ A _repository software system_ refers to the software package on which repositor
 
 In addition to repository systems, the NRP also provides the infrastructure for running them—covering layers from hardware to data storage (via the S3 protocol) and application runtime environments in containers (Kubernetes). For the purposes of this document, it is not necessary to further distinguish these layers; practically, they represent the availability of _S3_ and _Kubernetes as services_ for operators of individual repository systems as well as the repositories themselves within the National Data Infrastructure. We will refer to this layer as the _data storage and application runtime environment_, or, in a more technical context, as _S3 + Kubernetes_.
 
-A specific role is held by the National Metadata Directory (NMD), which is a repository instance designated exclusively for the automated aggregation of metadata from all repository instances operated within the NRP (and possibly other third-party repositories as well). The NMD is developed and operated under the IPs EOSC-CZ project. Metadata exported to the NMD must have a permissive license that allows unrestricted harvesting and distribution (effectively equivalent to CC0; note that stating this requirement in terms of licensing does not have the goal to trigger discussion whether metadata is a specific object with a license). 
+A specific role is held by the National Metadata Directory (NMD), which is a repository instance designated exclusively for the automated aggregation of metadata from all repository instances operated within the NRP (and possibly other third-party repositories as well). The NMD is developed and operated under the IPs EOSC-CZ project. Metadata exported to the NMD must have a permissive license that allows unrestricted harvesting and distribution (effectively equivalent to CC0; note that stating this requirement in terms of licensing does not have the goal to trigger discussion whether metadata is a specific object with a license). The purpose of metadata harvesting is not to create a formal counterpart of each and every record in the repository, but to improve findability of datasets by providing reasonable metadata records that are useful for NMD users, depending on specifics of particular scientific domains and data workflows. Metadata in the NMD does not have to necessarily follow the granularity of datasets in the source repository.
 
 The _National Catalogue of Repositories (NKR)_ has a specific role in the infrastructure; it will register repositories and their characteristics and will be established under the IPs CARDS project. 
 
